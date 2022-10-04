@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>个人主页</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/calendar.css">
+</head>
+<body style="overflow-x: hidden;background: #f4f5f6">
+<div class="row box" >
+  <div class="row show" id="head" style="line-height: 48px">
+    <div style="float: left;padding-left: 37px;padding-top: 2px;padding-bottom: 5px">
+      <img  class="img1" src="../image/loge1.png" style="height: 38px;width: 87px">
+      <span class="form-a">个人中心</span>
+    </div>
+    <div style="float: right;padding-right: 50px;padding-top: 10px">
+      <!--<a class="home" href="../../index3/html/home.html">首页</a>-->
+      <img class="form" src="../image/avatar.jpg">
+      <span class="form-text">palpitate</span>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 10px" >
+    <div class="col-xs-2">
+      <div style="width: 175px;height: 250px;background: #fdfdfe">
+        <ul class="container-left">
+          <li id="home"  >个人资料</li>
+          <li id="account" >账号设置</li>
+          <li id="mistake">错题集</li>
+          <li id="collection">收藏夹</li>
+          <li id="record">搜题记录</li>
+          <li id="lesson" style="background: #f0f0f5">我的课程</li>
+        </ul>
+      </div>
+      <div class="calendar">
+        <div class="title">
+          <h1 class="green" id="calendar-title">Month</h1>
+          <h2 class="green" id="calendar-year">Year</h2>
+          <a href="" id="pre">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zuoyou"></use>
+            </svg>
+          </a>
+          <a href="" id="next">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-zuoyou1"></use>
+            </svg>
+          </a>
+        </div>
+
+        <div class="body">
+          <div class="lightgrey body-list">
+            <ul>
+              <li>Sun</li>
+              <li>Mon</li>
+              <li>Tue</li>
+              <li>Wed</li>
+              <li>Thu</li>
+              <li>Fer</li>
+              <li>Sat</li>
+            </ul>
+          </div>
+
+          <div class="darkgrey body-list">
+            <ul id="days">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-10">
+      <div class="row" style="width: 1030px;background: white">
+        <div class="head1">已购买的课程</div>
+        <div style="float:left;width: 400px;height:120px;overflow: hidden;padding-left: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+          Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+        </div>
+        </div>
+        <div style="float:right;width: 400px;height:120px;overflow: hidden;margin-right: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_1.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+        <div style="float:left;width: 400px;height:120px;overflow: hidden;padding-left: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_2.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+        <div style="float:right;width: 400px;height:120px;overflow: hidden;margin-right: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_3.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+      </div>
+      <div class="row" style="width: 1030px;background: white;margin-top: 20px">
+        <div class="head1">发现更多</div>
+        <div style="float:left;width: 400px;height:120px;overflow: hidden;padding-left: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+        <div style="float:right;width: 400px;height:120px;overflow: hidden;margin-right: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_1.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+        <div style="float:left;width: 400px;height:120px;overflow: hidden;padding-left: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_2.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+        <div style="float:right;width: 400px;height:120px;overflow: hidden;margin-right: 50px">
+          <div style="float: left;padding-left:15px;padding-top:7px;padding-right: 15px">
+            <img class="at" src="../image/img_3.png"></div>
+          <div >
+            <div class="course"> 趣学Python，2天零基础入门</div>
+          </div>
+          <div class="text-course">
+          <span >
+            22节
+          </span> <span >·</span> <span >
+            24000人已学
+          </span>
+          </div>
+          <div style="overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding-top: 10px">
+            Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#home").click(function (){
+    location.href="home.html";
+  })
+  $("#account").click(function (){
+    location.href="account.html";
+  })
+  $("#mistake").click(function (){
+    location.href="mistake.html";
+  })
+  $("#collection").click(function (){
+    location.href="collection.html";
+  })
+  $("#record").click(function (){
+    location.href="record.html";
+  })
+  $("#lesson").click(function (){
+    location.href="lesson.html";
+  })
+</script>
+<script src="../js/calendar.js"></script>
+<script src="../js/head.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>个人主页</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/calendar.css">
+</head>
+<body style="overflow-x: hidden;background: #f4f5f6">
+<div class="row box" >
+  <div class="row show" id="head" >
+    <div style="float: left;padding-left: 30px">
+      <img  class="img1" src="../image/loge1.png">
+      <span class="form-a">个人中心</span>
+    </div>
+    <div style="float: right;padding-right: 40px">
+      <a class="home" href="/TangYu/html/homePage.html">首页</a>
+      <img class="form" src="../image/avatar.jpg">
+      <span class="form-text">palpitate</span>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 10px" id="all">
+    <div class="col-xs-2">
+      <div style="width: 175px;height: 250px;background: #fdfdfe">
+        <ul class="container-left">
+          <li id="home"  >个人资料</li>
+          <li id="account"  style="background: #f0f0f5">账号设置</li>
+          <li id="mistake">错题集</li>
+          <li id="collection" >收藏夹</li>
+          <li id="record">搜题记录</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-10">
+
+      <div class="row " >
+        <div class="head-1">账号设置/修改邮箱</div>
+        <div class="row shadow">
+          <div style="padding-left: 300px;padding-top: 10px">
+            <div><span><p style="float: left;line-height: 30px">输入新邮箱：</p><input class="input-m" id="new"></span></div>
+            <div><span><p style="float: left;line-height: 30px;clear: left">填写验证码：</p><input class="input1" id="io"><button class="button1" id="send">获取验证码</button></span></div>
+            <div class="button-p"><button class="btn" id="go">下一步</button><span id="warn" style="padding-left: 10px"></span></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/calendar.js"></script>
+<script src="/project/js/changePage.js"></script>
+<script>
+  var mail;
+  var send=$("#send");
+  var run;
+  var num='';
+  var result;
+  t=0;
+  $("#send").click(function (){
+        if(t===0)
+        {
+          t=60;
+          send.html(t+"秒");
+          run=setInterval(function (){
+            t--;
+            send.html(t+"秒");
+            if(t==0)
+            {
+              send.html("获取验证码");
+              clearInterval(run);
+            }
+          },1000);
+          mail=$("#new").val();
+          $.post("/user/sendMail.action",{email:mail},function (data){
+            if(data.success)
+            {
+              result=data.msg;
+            }
+          },"json");
+        }
+      })
+
+  $("#go").click(function (){
+    num=$("#io").val();
+    if(num==result&&num!='')
+    {
+      $.post("/user/changeMail.action",{email:mail},function (data){
+        alert(data.msg);
+        location.href="account.html";
+      },"json");
+    }
+    else
+    {
+      var warn=$("#warn");
+      warn.css("color","red")
+      warn.html("验证码错误");
+    }
+  })
+</script>
+<script src="../js/head.js"></script>
+</body>
+</html>

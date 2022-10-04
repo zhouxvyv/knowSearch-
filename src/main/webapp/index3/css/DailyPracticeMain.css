@@ -1,0 +1,238 @@
+body {
+    font-family:"Microsoft YaHei UI", Times, serif;
+    background-color: #f2f2f2;
+    color: #555;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    margin-top: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
+.exe-masthead {
+    height: 48px;
+    background-color: #f6f6fc;
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+}
+
+/* Nav links */
+.exe-nav-item {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #0b4488;
+}
+.exe-nav-item:hover,
+.exe-nav-item:focus {
+    font-weight: 800;
+    color: #1a1919;
+    text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.exe-nav .active {
+    color: #fff;
+}
+.exe-nav .active:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    vertical-align: middle;
+    content: " ";
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid;
+    border-left: 5px solid transparent;
+}
+
+
+/*
+ * Blog name and description
+ */
+
+.exe-header {
+    margin-top: 50px;
+    max-width: 910px;
+    padding-top: 20px;
+
+    margin-bottom: 3px;
+    background-color: rgb(255, 255, 255);
+}
+.exe-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: 400;
+}
+.exe-description {
+    font-size: 20px;
+    color: #999;
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+.exe-sidebar{
+    background-color: rgb(255, 255, 255);
+    margin-left: 3px;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
+
+}
+
+.exe-main {
+    font-size: 13px;
+    line-height: 1.5;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+    padding: 0px;
+    margin: 0 0 15px;
+}
+.sidebar-module-inset {
+    max-width: 230px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+    margin-bottom: 0;
+}
+/* Pagination */
+.pager {
+    margin-bottom: 60px;
+    text-align: left;
+}
+.pager > li > a {
+    width: 140px;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.blog-footer {
+    padding: 40px 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}
+.que-que{
+    font-size: 15px;
+    color: #0f0f0f;
+    padding-left: 13px;
+    padding-bottom: 5px;
+}
+.que-li{
+    font-size: 20px;
+}
+.que-type{
+    font-size: 15px;
+}
+.que-ans{
+    font-size: 11px;
+}
+imput{
+    font-size: 15px;
+}
+.calendar ol li {
+    list-style: none;
+
+    position: relative;
+    float: left;
+    text-align: center;
+    border-radius: 50%;
+}
+.week{
+    padding-left: 0px;
+    font-size: 15px;
+}
+.calendar-display{
+    padding-left: 0px;
+}
+.calendar-year,.calendar-m{
+    font-size: 20px;
+}
+.prev,.next{
+    font-size: 20px;
+}
+.font-medium{
+    font-size: 18px;
+    color: #3c3c3c;
+}
+.font-small{
+    font-size: 14px;
+    color: #666666;
+}
+.font-large{
+    font-size: 25px;
+    color: #8c8c8c;
+    padding: 4px;
+}
+a{
+    text-decoration: none;
+}
+.sidebar-recom{
+    padding-top: 10px;
+}
+.logo{
+    float: left;
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    right: 10px;
+}
+input:focus{
+    border: #666666;
+    color: #666666;
+    text-decoration: none;
+}
+.fa .fa-search{
+display: inline-block;
+    position: relative;
+}
+.username{
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    top: 4px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #213d5b;
+}
+.username:hover,
+.username:focus{
+    color: #2b2b2b;
+    font-weight: 800;
+}
+.navbar,
+.navbar-inverse,
+.navbar-collapse{
+    color: #f6f6fc;
+}

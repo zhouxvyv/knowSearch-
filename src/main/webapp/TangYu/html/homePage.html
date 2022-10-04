@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/userTarget.css">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<script src="../Js/jquery-3.5.1.min.js"><script/>
+<script src="../Js/bootstrap.bundle.min.js"></script>
+<body style="overflow-x: hidden">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                   <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <img src="Img/homePage.svg" alt="" width="270"style="margin-top: 40px">
+        </div>
+    </div>
+</div>-->
+
+<main id="login" class="mainSection" style="display: block;">
+    <div id="login-mainer" style="width: 390px;height: 410px;background-color: #f0f2f5;border-radius: 10px;margin: 50px auto;padding: 10px">
+        <div>
+            <a onclick="backToTheEnd()" style="text-decoration: none;cursor: pointer">
+                <i class="fa fa-reply" aria-hidden="true" style="float:left;margin-top: 5px;"></i>&nbsp;返回
+            </a>
+        </div>
+        <img src="../image/ZhiFouLogo.png" alt="" style="height: 70px;padding-left: 25%;magin: 0 auto">
+        <br>
+        <br>
+        <form action="" onsubmit="return false">
+
+            <div style="height: 60px;width: 300px;height: 40px;margin: 0 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                <div class="row">
+                    <span style="height: 36px;width: 35px;float: left">
+                        <i class="fa fa-user " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="submit_no" type="text" name="no" style="display: inline-block;width: 250px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="用户名：">
+                    <p id="submit_no_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+                </div>
+            </div>
+            <br>
+            <div style="height: 60px;width: 300px;height: 40px;margin: 0 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                <div class="row">
+                    <span style="height: 36px;width: 35px;float: left">
+                        <i class="fa fa-lock " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="submit_pwd" type="password" name="pwd" style="display: block;width: 220px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="密码：">
+                    <span style="height: 36px;width: 22px;float: right">
+                        <a onclick="changeInputType()">
+                            <i id="eyes" class="fa fa-eye-slash" aria-hidden="true" style="color:#6C757D;font-size: 14px;margin-top: 14px"></i>
+                        </a>
+
+                    </span>
+                    <p id="submit_pwd_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+
+                </div>
+            </div>
+
+            <br>
+            <div class="row">
+
+            </div>
+            <div style="height: 60px;width: 180px;height: 40px;margin-left: 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF;float: left">
+                <div class="row">
+                    <span style="height: 36px;width: 35px;float: left">
+                        <i class="fa fa-key " style="color:#6C757D;font-size: 18px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="submit_code" type="text" name="no" style="display: inline-block;width: 140px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="验证码：">
+                </div>
+            </div>
+            <div id="code" style="margin:0px 48px 0 7px ;width: 90px;height: 38px;float: right;border-radius: 5px;overflow: hidden"><img style="width: 100%;height: 100%" onclick="turnImageCode()" src="/createCodeImageServlet.Servlet" alt=""></div>
+            <script>
+                function turnImageCode(){
+                    $("#code img").attr("src","/createCodeImageServlet.Servlet?t="+ new Date().getTime())
+                }
+            </script>
+            <p id="submit_code_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red; margin-bottom: 0rem"></p>
+
+            <!--<div style="height: 60px;width: 350px;padding: 0 30px">
+                <input id="submit_pwd" type="password" name="pwd"
+                       style="display: inline-block;width: 275px;height: 40px;outline: 0;float: left;border: 1px solid #c9c9c9;border-radius: 10px;padding-left: 12px">
+                <p id="submit_pwd_alert"
+                   style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+            </div>-->
+            <br>
+            <div class="row" style="height: 60px;width: 320px;margin: 0 auto;border: 0;padding: 0">
+                <label class="keeplogin" style="float: left; width: 110px;padding-left: 20px">
+                    <span class="checkbox_1">
+                        <input type="checkbox" id="keepLogin">
+                    </span>
+                    <span style="font-size: 14px;color: #6C757D">
+                        自动登录
+                    </span>
+                </label>
+                <label class="linkToSignUp" style="float: right;font-size: 14px;padding-top: 1px;width: 190px;padding-right: 0px">
+                    <span>
+                        <a onclick="clickToSignUp()" style="text-decoration: none;color: #6C757D; padding-right:6px;float:right;">还没有账号？立即注册</a>
+                    </span>
+                </label>
+                <br>
+                <label class="loginSubmit" style="width: 300px;margin: 0 auto">
+                    <button id="submit_login" style="cursor: pointer;height: 40px;width: 100%;float: left;border-radius: 5px;border: 1px solid #54aaff;background-color: #54aaff;font-size: 16px;font-weight: bold;color: white;">
+                        登&nbsp;&nbsp;录
+                    </button>
+                </label>
+                <br>
+
+            </div>
+        </form>
+    </div>
+</main>
+<main id="signin" class="mainSection" style="display: block;">
+    <div id="signin-mainer" style="width: 390px;height: 410px;background-color: #f0f2f5;border-radius: 10px;margin: 20px auto;padding: 10px">
+        <div><a onclick="backToTheEnd()" style="text-decoration: none;cursor: pointer"><i class="fa fa-reply" aria-hidden="true" style="float:left;margin-top: 5px;"></i>&nbsp;返回</a></div>
+        <img src="../image/ZhiFouLogo.png" alt="" style="height: 70px;padding-left: 25%;margin-top: 5px">
+        <br>
+        <br>
+        <form action="" onsubmit="return false">
+
+            <div style="height: 60px;width: 300px;height: 40px;margin: 0 auto;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                <div class="row">
+                    <span style="height: 36px;width: 22px;float: left">
+                        <i class="fa fa-user " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="sign_submit_no" type="text" name="no" style="display: inline-block;width: 180px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="用户名：">
+                    <p id="sign_submit_no_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+                </div>
+            </div>
+            <br>
+            <div style="height: 60px;width: 300px;height: 40px;margin: 0 auto;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                <div class="row">
+                    <span style="height: 36px;width: 22px;float: left">
+                        <i class="fa fa-lock " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="sign_submit_pwd1" type="password" name="pwd" style="display: inline-block;width: 210px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="密码：">
+                    <span style="height: 36px;width: 22px;float: right">
+                    </span>
+                    <p id="sign_submit_pwd_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+
+                </div>
+            </div>
+
+            <br>
+            <div style="height: 60px;width: 300px;height: 40px;margin: 0 auto;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                <div class="row">
+                    <span style="height: 36px;width: 22px;float: left">
+                        <i class="fa fa-lock " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                    <input id="sign_submit_pwd2" type="password" name="pwd" style="display: inline-block;width: 210px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="再次输入密码：">
+                    <span style="height: 36px;width: 22px;float: right">
+                    </span>
+                    <p id="sign_submit_pwd_alert1" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+
+                </div>
+            </div>
+            <br>
+            <div class="row" style="height: 60px;width: 350px;margin: auto">
+                <label class="linkToSignUp" style="font-size: 14px;padding-top: 1px;width: 210px;margin-left: 120px">
+                    <span>
+                        <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #6C757D; padding-right:6px;float:right;">已有账号？立即登录</a>
+                    </span>
+                </label>
+                <br>
+                <label class="loginSubmit">
+                    <button id="sign_submit_login" onclick="signin()" style="cursor: pointer;margin: 0 14px;height: 40px;width: 300px;border-radius: 5px;border: 1px solid #54aaff;background-color: #54aaff;font-size: 16px;font-weight: bold;color: white;">
+                        注&nbsp;&nbsp;册
+                    </button>
+                </label>
+                <br>
+                <script>
+                    function signin(){
+                        $.ajax({
+                            url: "/signinServlet",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                userName: $("#sign_submit_no").val(),
+                                pwd: $("#sign_submit_pwd1").val()
+                            },
+                            success: function (res){
+                                if(res.success){
+                                    window.open("/TangYu/html/homePage.html?todo=login","_self")
+                                }else {
+                                    alert("用户名被占用,请换一个")
+                                }
+                            }
+                        })
+                    }
+                </script>
+
+            </div>
+        </form>
+    </div>
+</main>
+<main id="search" class="mainSection" style="display: none">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5 d-none d-lg-block">
+        <div class="row align-items-center g-lg-5 py-5" id="homePageTarget1">
+            <div id="search_mainer1" style="display: block" class="col-lg-8 text-center text-lg-start">
+                <div class="row row-cols-auto ">
+                    <p class="col-md-6 d-none d-lg-block" style="font-size: 55px"><strong>知 你 所 求</strong></p>
+                    <p class="col-md-6 d-none d-lg-block" style="font-size: 55px"><strong>搜 你 所 想</strong></p>
+                </div>
+
+                <p class="text-center" style="font-size: 60px"><strong> </strong></p>
+                <p class="text-start text-muted" style="font-size: 45px"><strong>上 知 否 全 都 懂</strong></p>
+                <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+                    <form id="file-form" target="target_frame" action="/readFileServlet.Servlet" method="post" enctype="multipart/form-data">
+                        <input id="file" type="file" name="file" style="display: none">
+                        <iframe name="target_frame" style="display:none"></iframe>
+                    </form>
+                    <form action="#"  >
+                        <div class="row">
+                            <div class="col-lg-9 d-flex align-items-center form-group">
+                                <input id="text" class="form-control border-0 shadow-0 input-form" type="text" name="text"
+                                       placeholder="有问题  就会有答案">
+                            </div>
+                            <div id="select-file" style="cursor: pointer" class="col-lg-1 align-items-center">
+                                <i class="bi bi-camera" style="font-size: 2rem; color: darkgray;"></i>
+                            </div>
+                            <div class="col-lg-2 d-grid">
+                                <button id="submit" class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="search_mainer2" style="display: block" class="col-md-10 mx-auto col-lg-4">
+                <img src="../image/homePage.svg" alt="" width="270" style="margin-top: 40px">
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 d-lg-none">
+        <div class="row align-items-center g-lg-5">
+            <div class="col-xs-6 row justify-content-center" style="max-width: 60% ;margin-left: 20%">
+                <img src="../image/homePage.svg" alt="" width="100px" style="margin-top: 40px" class="">
+            </div>
+            <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-9 d-flex align-items-center form-group">
+                            <input class="form-control border-0 shadow-0" type="text" name="search"
+                                   placeholder="有问题 就会有答案">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-lg-1 align-items-center">
+
+                        </div>
+                        <div class="col-lg-2 d-grid">
+                            <button class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="ZF-footer">
+    <p class="text-muted" style="margin-bottom: 0.1rem">© 2022 ZhiFou, Inc</p>
+    <p>
+        <a href="#" style="text-decoration: none;color: #adb5bd">Back to top</a>
+    </p>
+</footer>
+
+<script>
+    var flickerNo = 0
+    var flickerNoRun = ""
+    var flickerPwd = 0
+    var flickerPwdRun = ""
+    var keep = 0
+    var submit = $("#submit_login")
+    $("#submit_no").change(function (e) {
+        isOkNo()
+    })
+    $("#submit_login").click(function () {
+        console.log($("#keepLogin"))
+        if($("#keepLogin").get(0).checked)
+            keep = "Y"
+        else keep = "N"
+        checkLogin()
+    })
+    $("#keepsubmit").click(function () {
+        keep = "Y"
+        checkLogin()
+    })
+
+
+
+</script>
+<script src="../Js/homePage.js"></script>
+<script src="../Js/homePage-loginAndSignin.js"></script>
+<script src="../Js/homePage-searchFile.js"></script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage1.css">
+
+    <link rel="stylesheet" href="../css/section/video.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+    <script src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full" async></script>
+
+
+    <style>
+
+        @font-face{
+            font-family: "yuan_ti1";
+            src: url('../../zx-FONT/975MaruSC-Regular.ttf');
+        }@font-face{
+            font-family: "yuan_ti2";
+            src: url('../../zx-FONT/975MaruSC-Medium.ttf');
+        }@font-face{
+            font-family: "yuan_ti3";
+            src: url('../../zx-FONT/975MaruSC-Bold.ttf');
+        }@font-face{
+            font-family: "kai_ti1";
+            src: url('../../zx-FONT/yrdkai-Medium.ttf');
+        }
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .section{
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 7px;
+            padding: 7px;
+            margin-bottom: 6px;
+        }
+
+
+
+        .type_row{
+            height: 32px;
+            width: 100%;
+            border-bottom: 5px solid #4fa0ff;
+            margin:0 0 5px;
+        }
+        .type{
+            height: 28px;
+            margin: 0 10px;
+            text-align: center;
+            line-height: 28px;
+            cursor: pointer;
+        }
+        .check_type{
+            border-top: 2px solid #4fa0ff;
+            border-left: 2px solid #4fa0ff;
+            border-right: 2px solid #4fa0ff;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            color: #4fa0ff;
+            font-weight: bold;
+        }
+
+        /*试卷搜索列表位置*/
+        #testResultList{
+            width: 100%;
+            padding: 20px;
+        }
+        #testResultList .test{
+            width: 100%;
+            height: 40px;
+            padding: 0 15px;
+            line-height: 40px;
+            border-radius: 4px;
+            margin: 3px 0 0;
+            position: relative;
+            cursor: pointer;
+        }
+        #testResultList .test:hover{
+            background-color: #fcfcfc;
+        }
+        #testResultList .test:first-of-type{
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        #testResultList .test:last-of-type{
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        #testResultList .test div{
+            height: 22px;
+            position: absolute;
+            top: 7px;
+            right: 10px;
+            padding: 0 15px;
+            font-size: 12px;
+            line-height: 22px;
+            cursor: pointer;
+            background-color: #4fa0ff;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        #testResultList .test span{
+            display: block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+
+        .recommended_test{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 13px;
+        }
+        .questionBank{
+            display: inline-block;
+            height: 20px;
+            font-size: 10px;
+            margin: 2px 4px;
+            background-color: #F1F1F1;
+            border-radius: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        .relatedExams{
+            width: 100%;
+            height: 20px;
+            position: relative;
+        }
+        .relatedExams .examName{
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .relatedExams .joinExamPreparation{
+            display: none;
+            width: 130px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            box-sizing: border-box;
+            border: 1px #4fa0ff solid;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: yuan_ti2;
+            background-color: whitesmoke;
+            position: absolute;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(65px);
+        }
+        .relatedExams:hover .joinExamPreparation{
+            display: block;
+        }
+
+        .testCenter .title{
+            border-top: 1px solid #4fa0ff;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 60px;
+        }
+        .testCenter .title div{
+            opacity: 0;
+            transition: 0.5s;
+            position: absolute;
+            box-sizing: content-box;
+            width: 60px;
+            padding: 0 10px;
+            height: 100%;
+            line-height: 100%;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, #4fa0ff00,#4fa0ffff,#4fa0ffff,#4fa0ffff);
+        }
+        .testCenter .title:hover div{
+            opacity: 1;
+        }
+        .testCenter .title div span{
+            width: 100%;
+            line-height: 20px;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            font-family: yuan_ti2;
+            transform: translate(-10px,-10px);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .topic{
+            height: 0;
+            padding: 0 18px;
+            transition-duration: 0.3s;
+            transition-delay: 0.2s;
+            overflow: hidden;
+            background-color: #fcfcfc;
+        }
+        .topic:hover{
+            height: auto;
+        }
+        .test:hover+.topic{
+            height: auto;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/userTarget.css">
+    <!--分页插件样式-->
+    <link rel="stylesheet" href="../../plugins/paginationPlugin/jquery.page.css">
+
+
+</head>
+<script src="../Js/bootstrap.bundle.min.js"></script>
+<script src="../Js/jquery-3.5.1.min.js"></script>
+<body style="overflow-x: hidden;background-color: #f1f1f1" >
+
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                    <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                     </a>
+                     <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                         <li><a class="dropdown-item" href="#">New project...</a></li>
+                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                         <li><a class="dropdown-item" href="#">Profile</a></li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="#">Sign out</a></li>
+                     </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <div id="asset" style="position: absolute;left: 8px;top: 8px">
+                        <img src="../image/asset.gif" style="width: 15px;height: 15px" alt="">
+                        <span style="font-weight: bold;color: gold;line-height: 15px">123</span>
+                    </div>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-sm" style="margin-top: 10px">
+    <div>
+        <!--左边范围-->
+        <div style="width: 76%;float: left;box-sizing: border-box;padding: 0">
+            <!--试卷搜索结果块-->
+            <div class="section" style="border-radius: 15px;padding: 15px">
+                <div id="nav" style="width: 70%;min-width: 400px;margin: 0">
+                    <form id="file-form" target="target_frame" action="/readFileServlet.Servlet" method="post" enctype="multipart/form-data">
+                        <input id="file" type="file" name="file" style="display: none">
+                        <iframe name="target_frame" style="display:none"></iframe>
+                    </form>
+                    <form action="#"  >
+                        <div class="row">
+                            <div class="col-md-9 d-flex align-items-center form-group">
+                                <input id="text" class="form-control shadow-0 input-form" type="text" name="text"
+                                       placeholder="有问题  就会有答案">
+                            </div>
+                            <div id="select-file" style="cursor: pointer" class="col-md-1 align-items-center">
+                                <i class="bi bi-camera" style="font-size: 2rem; color: darkgray;"></i>
+                            </div>
+                            <div class="col-md-2 d-grid">
+                                <button id="submit" class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row type_row">
+                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-1 type" id="toTopic">题目</div>
+                    <div class="col-sm-5 col-md-4 col-lg-4 col-xl-2 type check_type">相似试卷</div>
+                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-1 type" style="display: none">课程</div>
+                    <script>
+                        $("#toTopic").click(function (e){
+                            window.open("topicResultPage.html?text="+paramters.text,"_self")
+                        })
+                    </script>
+                </div>
+
+                <div id="testResultList" style="display: none">
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div class="test">
+                        <div>收藏</div>
+                        全国中小学生数学竞赛考试
+                    </div>
+                    <div style="width: 100%;height: 40px;text-align: center;line-height: 60px;background: none;color: #cccccc">
+                        没有更多了...
+                    </div>
+                </div>
+                <div id="pageController" style="height: 60px;padding: 0 100px;display: none"></div>
+                <img id="loading" src="../image/loading.gif" style="display: block;width: 150px;height: 150px;margin: 0 auto" alt="">
+
+
+            </div>
+        </div>
+        <!--右边范围-->
+        <div style="width: 23%;float: right;">
+            <div class="section">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">最新试卷</div>
+                <div id="testPaperRecommendations">
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多维随机变量及其分布</div>
+                    <div class="recommended_test">2022考研《数学二》章节习题：线性代数</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：向量代数和空间解析几何</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多元函数微积分学</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多维随机变量及其分布</div>
+                </div>
+            </div>
+
+            <div class="section" style="display: none">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">题库刷题</div>
+                <div id="questionBanks" style="width: 100%;padding-top: 3px">
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高题集</div>
+                    <div class="questionBank">高等题集</div>
+                    <div class="questionBank">高等数学集</div>
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高等数题集</div>
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高等数学线代题集</div>
+                </div>
+            </div>
+
+            <div class="section" style="display: none">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">相关考试</div>
+                <div style="width: 100%;padding-top: 3px">
+                    <div class="relatedExams">
+                        <div class="examName">全国硕士研究生统一招生考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">全国大学英语四、六级考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">计算机技术与软件专业技术资格(水平)考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">教师从业资格证书考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">公务员考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../Js/testResultPage.js"></script>
+<script src="../Js/test-get-show-control.js"></script>
+<script>
+    var user;  // 存储用户的基本信息
+    var collectionList = []
+    var nowTestList = []
+    var countTest = 60
+
+    getTestList(1)
+</script>
+<script src="../../plugins/paginationPlugin/jquery.page.js"></script>
+<script src="../Js/homePage-searchFile-test.js"></script>
+<script type="text/javascript">
+    function showPaginationPlugin(){
+        $("#pageController").Page({
+            totalPages: Math.round(countTest/10),//分页总数
+            liNums: 5,//分页的数字按钮数(建议取奇数)
+            activeClass: 'activP', //active 类样式定义
+            callBack : function(page){
+                showPageMain(page)
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

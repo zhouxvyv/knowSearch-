@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZHIFOU Background</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/backgroundQues.css">
+    <link rel="stylesheet" href="../css/postbirdAlertBox.min.css">
+    <script src="../Js/postbirdAlertBox.min.js"></script>
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/echarts.min.js"></script>
+    <script src="../Js/echarts-wordcloud.js"></script>
+    <script src="../../kityformula-master/example/editor/ckeditor.js"></script>
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="../Js/backgroundQueManage.js"></script>
+</head>
+<body>
+<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03152a;max-height: 50px;padding: 4px 0">
+        <div class="container-fluid">
+            <a href="../../index3/html/home.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZHIFOUBlackSeries.png" alt="zhifou" height="45px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid user-main" style="padding-left: 0px">
+    <div class="wrapper">
+        <div class="leftside-menu leftside-menu-detached show bg-white" style="width: 190px;height: 100%">
+            <div class="leftbar-user" style="height: 50px">
+
+            </div>
+            <li class="side-nav-item menuitem-active side-top pt-2 pb-2"
+                style="float: left;width: 100%;margin-left: 20px">
+                <i class="fa fa-bar-chart" aria-hidden="true" style="color: #6C757D;margin-right: 10px"></i>
+                <a href="BackgroundData.html">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #6C757D">数据面板
+                        </span>
+                </a>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #428bca;margin-right: 10px;font-weight: bolder"></i>
+                <a data-bs-toggle="collapse" href="#sidebarDashboards"
+                   aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #428bca"><strong>题单数据</strong></span>
+                </a>
+                <div class="collapse show" id="sidebarDashboards" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertQues.html" style="color: #6C757D">新增客观题</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundPaperManage.html" style="color: #428bca">题目管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #6C757D;margin-right: 10px;"></i>
+                <a data-bs-toggle="collapse" href="#sidebarDashboards2"
+                   aria-expanded="false" aria-controls="sidebarDashboards2" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span  style="color: #6C757D">试卷数据&nbsp;&nbsp;</span>
+                </a>
+                <div class="collapse" id="sidebarDashboards2" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertPaper.html" style="color: #6C757D">新增试卷</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundPaperManage.html" class="active" style="color: #6C757D">试卷管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+        </div>
+        <!--main-->
+        <div name="Main" id="main" class="content-page" style="padding-left: 0;display: block">
+            <div style="padding-top: 40px;width: 99%">
+                <!--<div class="bg-white" style="margin:20px 0 10px 0;padding-top: 10px">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div style="padding:40px 0px 40px 40px" class="row">
+                                <div class="searchDes" style="float: right;padding-right: 0px;width: 130px">请输入题目编号 :&nbsp;</div>
+                                <div class="col-sm-8 " style="padding-left: 0px">
+                                    <input type="text" value="" class="form-control " style="float:right;padding-left: 0px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div style="padding:40px 0px 40px 10px" class="row">
+                                <div class="searchDes" style="float: right;padding-right: 0px;width: 130px">请输入题目描述 :&nbsp;</div>
+                                <div class="col-sm-8 " style="padding-left: 0px">
+                                    <input type="text" value="" class="form-control " style="float:right;padding-left: 0px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div style="padding: 40px 20px 40px 0px">
+                                <button type="button" class="btn btn-lg btn-primary" style="width: 70px;height: 40px;padding-top: 9px;font-size: 15px">查询</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>-->
+                <div class="bg-white" style="margin: 5px 0px">
+                    <div style="padding: 20px 20px 0px 25px;font-size: 20px;color: #6C757D;font-weight: bolder">
+                        题单数据
+                    </div>
+                    <div style="padding: 20px">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th class="col-sm-1">编号</th>
+                                <th class="col-sm-6" style="padding-right: 30px">题目描述</th>
+                                <th class="col-sm-1" style="text-align: center">题目类型</th>
+                                <th class="col-sm-1"style="text-align: center">被搜索次数</th>
+                                <th class="col-sm-1"style="text-align: center">状态</th>
+                                <th class="col-sm-2" style="text-align: center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbodyMain">
+
+
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <style>
+                        .dot-processing:after {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid #1890ff;
+                            background-color: #1890ff;
+                            border-radius: 50%;
+                            animation: antStatusProcessing 1.2s ease-in-out infinite;
+                            content: "";
+                        }
+                        .dot-online:after {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid #5dc047;
+                            background-color: #5dc047;
+                            border-radius: 50%;
+                            animation: antStatusProcessing 1.2s ease-in-out infinite;
+                            content: "";
+                        }
+                        .dot-offline:after {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid #9f9cad;
+                            background-color: #9f9cad;
+                            border-radius: 50%;
+                            animation: antStatusProcessing 1.2s ease-in-out infinite;
+                            content: "";
+                        }
+                        .dot-warrning:after {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid #f54242;
+                            background-color: #f54242;
+                            border-radius: 50%;
+                            animation: antStatusProcessing 1.2s ease-in-out infinite;
+                            content: "";
+                        }
+                        .zhifou-dot {
+                            position: relative;
+                            top: -1px;
+                            display: inline-block;
+                            width: 6px;
+                            height: 6px;
+                            vertical-align: middle;
+                            border-radius: 50%;
+                        }
+                        td,th{
+                            height: 50px;
+                            display:table-cell;
+                            vertical-align:middle!important;
+                        }
+                        td{
+
+                            font-size: 14px;
+                            white-space:nowrap;
+                            overflow:hidden;
+                            text-overflow: ellipsis;
+                        }
+                        th{
+                            color: #393941;
+                            background-color: #fafafa !important;
+
+                        }
+                        tr{
+                            border-bottom: 1px solid #efefef;
+                            color: #6C757D;
+                        }
+                        table{
+                            color: #efefef!important;
+                            table-layout: fixed;
+                        }
+                        a{
+                            text-decoration: none;
+                            color: #54aaff;
+                        }
+                        .searchDes{
+                            font-size: 15px;
+                            color: #6C757D;
+                            text-align: center;
+                            vertical-align:middle!important;
+                            padding-top: 8px;
+                        }
+                        input{
+                            color: #6C757D;
+                            height: 40px;
+                        }
+
+                        a{
+                            cursor: pointer;
+                        }
+                        .queInfoManage{
+                            padding-right: 40px!important;
+                        }
+                    </style>
+                    <div class="row">
+                        <!--分页文字信息  -->
+                        <div class="col-md-3" id="page_info_area"style="display: none"></div>
+                        <!-- 分页条信息 -->
+                        <div class="col-md-9" style="padding-left: 30%">
+                            <nav aria-label="Page navigation" id="page_nav_area"></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div name="operation" id="operation"class="content-page" style="display: none">
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

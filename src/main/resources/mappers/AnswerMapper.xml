@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.AnswerMapper">
+
+
+    <insert id="addAnswer" parameterType="answer">
+        insert into answer (answer, image, user_id, topic_id) value(#{answer}, #{image}, #{userId}, #{topicId})
+    </insert>
+
+    <select id="selectAnswerByTopicId" resultType="answer">
+        select * from answer where topic_id=#{topicId}
+    </select>
+
+    <select id="readAllAnswer" resultType="answer">
+        select * from answer
+    </select>
+
+    <resultMap id="answerWithNotopic" type="answer">
+        <id column="answer_id" property="answerId"></id>
+        <result column="answer" property="answer"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="image" column="image"></result>
+        <result property="topicId" column="topic_id"></result>
+        <association property="noTopic" javaType="noTopic" column="topic_id"
+                     select="com.zhifou.ztc.mapper.NoAnswerTopicMapper.findByTopicId"></association>
+    </resultMap>
+    <select id="getAnswer" resultMap="answerWithNotopic">
+        select * from answer where answer_id = #{answerId}
+    </select>
+
+    <delete id="deleteAnswer" parameterType="int">
+        delete from answer where answer_id=#{answerId}
+    </delete>
+    <delete id="deleteAnswerOfNotopic" parameterType="int">
+        delete From answer where topic_id=#{notopicId}
+    </delete>
+</mapper>

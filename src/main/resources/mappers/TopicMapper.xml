@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.TopicMapper">
+    <!--用作假的的搜索结果-->
+    <select id="getAllTopic" parameterType="map" resultType="topic">
+        select * from topictable where state=1 order by topic_id limit 0,3
+    </select>
+
+    <select id="add" resultType="topic">
+        select * from topictable
+    </select>
+
+    <update id="updateTopic">
+        update topictable set topic_title=#{topicTitle}, topic_type=#{topicType}, topic_options=#{topicOptions}, topic_answer=#{topicAnswer}, topic_explain=#{topicExplain},answer_number=#{answerNumber}, answer_ok_number=#{answerOkNumber}, topic_source=#{topicSource},subject_id=#{subjectId}, label=#{label}, imgs=#{imgs},`state`=#{state}  where topic_id=?
+    </update>
+
+    <delete id="deleteTopic" parameterType="topic">
+        delete from topictable where topic_id = ?
+    </delete>
+
+    <select id="readTopic" parameterType="int" resultType="topic">
+        select * from topictable where topic_id=#{topicId}
+    </select>
+
+    <select id="getTopicHasLabel" parameterType="string" resultType="topic">
+        select * from topictable where label regexp #{labelRegex} order by rand()
+    </select>
+
+    <select id="selectForBGQueList" resultType="topic">
+        select *
+        from topictable
+    </select>
+    <select id="onlyOneQue" parameterType="int" resultType="topic">
+        select * from topictable where topic_id=#{topicId}
+    </select>
+
+    <insert id="insertTopic" parameterType="map">
+        insert into topictable(topic_title,topic_type,topic_options,topic_answer,topic_explain,subject_id,uploadDate,`label`) values(#{topicTitle},#{topicType},#{topicOptions},#{topicAnswer},#{topicExplain},1,#{uploadDate},'微积分')
+    </insert>
+    <insert id="createTopic" parameterType="topic">
+        insert into topictable (topic_title,topic_type,topic_options,topic_answer,topic_explain,subject_id,uploadDate,`label`) values (#{topicTitle},#{topicType},#{topicOptions},#{topicAnswer},#{topicExplain},1,#{uploadDate},'微积分')
+    </insert>
+
+    <select id="selectTopicByTitleAndDate" parameterType="map" resultType="String">
+        select * from topictable
+        where topic_title=#{topicTitle} and uploadDate=#{uploadDate}
+    </select>
+
+    <update id="updateTopicState" parameterType="map">
+        update topictable set state=#{state} where topic_id= #{topicId}
+    </update>
+</mapper>

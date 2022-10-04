@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.NoAnswerTopicMapper">
+
+    <insert id="addNoAnswerTopic" parameterType="noTopic">
+        insert into topicnoanswer (topic_title,topic_image,user_id,`type`,`options`) values(#{topicTitle},#{topicImage},#{userId},#{type},#{options})
+    </insert>
+
+    <select id="getNoAnswerTopicOfUser" parameterType="user" resultType="noTopic">
+        select * from topicnoanswer where user_id=#{userId} order by topic_id desc
+    </select>
+
+    <delete id="deleteTopic" parameterType="list">
+        delete from topicnoanswer
+        <where>
+            <foreach collection="noTopics" separator="," item="i" close=")" open="topic_id in(" >
+                #{i.topicId}
+            </foreach>
+        </where>
+    </delete>
+    <delete id="deleteTopicById">
+        delete from topicnoanswer where topic_id=#{notopicId}
+    </delete>
+
+    <resultMap id="noTopicWithUser" type="noTopic">
+        <id column="topic_id" property="topicId"></id>
+        <result column="Topic_title" property="topicTitle"></result>
+        <result column="topic_image" property="topicImage"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="options" property="options"></result>
+        <result column="type" property="type"></result>
+        <result column="answer_count" property="answerCount"></result>
+        <association property="owner" javaType="user">
+            <result property="userId" column="user_id"></result>
+            <result property="userName" column="user_name"></result>
+        </association>
+    </resultMap>
+<!--
+    and user_id!=#{userId} and topic_id not in (select topic_id from answer where user_id=#{userId})
+-->
+    <select id="selectRandNoAnswerTopicByCheck" parameterType="map" resultMap="noTopicWithUser">
+        select * from topicnoanswer t, user u where t.type like #{noTopic.type} and t.user_id=u.user_id order by Rand() desc
+    </select>
+
+    <update id="updateNoAnswerTopic" parameterType="noTopic">
+        update topicnoanswer
+        <set>
+            <if test="topicTitle!=null and topicTitle!=''">
+                topic_title=#{topicTitle},
+            </if>
+            <if test="topicImage!=null">
+                topic_image=#{topicImage},
+            </if>
+            <if test="userId!=0">
+                user_id=#{userId},
+            </if>
+            <if test="options!=null">
+                options=#{options},
+            </if>
+            <if test="type!=null">
+                type=#{type},
+            </if>
+        </set>
+        <where>
+            topic_id=#{topicId}
+        </where>
+    </update>
+
+
+    <select id="readAllNoTopic" resultType="noTopic">
+        select * from topicnoanswer
+    </select>
+    <select id="findByTopicId" resultType="noTopic">
+        select * from topicnoanswer where topic_id=#{topicId}
+    </select>
+
+    <update id="clearAnswerCounter" parameterType="int">
+        update topicnoanswer set answer_count = 0 where topic_id=#{topicId}
+    </update>
+
+    <update id="addAnswerCounter" parameterType="int">
+        update topicnoanswer set answer_count = answer_count+1 where topic_id=#{topicId}
+    </update>
+
+</mapper>

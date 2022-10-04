@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZHIFOU Background</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/BackgroundIntro.css">
+    <script src="../Js/backgroundIntro.js"></script>
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/echarts.min.js"></script>
+    <script src="../Js/echarts-wordcloud.js"></script>
+
+</head>
+<body>
+<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03152a;max-height: 50px;padding: 4px 0">
+        <div class="container-fluid">
+            <a href="../../index3/html/home.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZHIFOUBlackSeries.png" alt="zhifou" height="45px" style="margin-left: 10px">
+            </a>
+
+
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid user-main" style="padding-left: 0px">
+    <div class="wrapper mainPage">
+        <main id="login" class="mainSection" style="display: block;padding-top: 10%">
+            <div id="login-mainer" style="width: 390px;height: 410px;background-color: #f0f2f5;border-radius: 10px;margin: 0 auto;padding: 10px">
+                <img src="../image/ZhiFouLogo.png" alt="" style="height: 70px;padding-left: 28%;magin: 0 auto">
+                <br>
+                <div style="text-align: center;color: #6C757D">后台数据中心</div>
+                <br>
+                <form action="" onsubmit="return false">
+
+                    <div style="height: 60px;width: 300px;height: 40px;margin: 0 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                        <div class="row">
+                            <span style="height: 36px;width: 35px;float: left">
+                                    <i class="fa fa-user " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                            </span>
+                            <input id="submit_no" type="text" name="no" style="display: inline-block;width: 250px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="管理员账号：">
+                            <p id="submit_no_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="height: 60px;width: 300px;height: 40px;margin: 0 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF">
+                        <div class="row">
+                    <span style="height: 36px;width: 35px;float: left">
+                        <i class="fa fa-lock " style="color:#6C757D;font-size: 20px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                            <input id="submit_pwd" type="password" name="pwd" style="display: block;width: 220px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="密码：">
+                            <span style="height: 36px;width: 22px;float: right">
+                        <a onclick="changeInputType()">
+                            <i id="eyes" class="fa fa-eye-slash" aria-hidden="true" style="color:#6C757D;font-size: 14px;margin-top: 14px"></i>
+                        </a>
+
+                    </span>
+                            <p id="submit_pwd_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+
+                        </div>
+                    </div>
+
+                    <br>
+                    <div class="row">
+
+                    </div>
+                    <div style="height: 60px;width: 180px;height: 40px;margin-left: 35px;border: 1px solid #6C757D;border-radius: 10px;padding-left: 12px;background-color: #FFFFFF;float: left">
+                        <div class="row">
+                    <span style="height: 36px;width: 35px;float: left">
+                        <i class="fa fa-key " style="color:#6C757D;font-size: 18px;margin-top: 8px" aria-hidden="true"></i>
+                    </span>
+                            <input id="submit_code" type="text" name="no" style="display: inline-block;width: 140px;height: 34px;outline: 0;float: left;border: 0px solid #c9c9c9;border-radius: 10px;/*margin-left: 30px*/;margin-top: 2px;margin-bottom: 1px" placeholder="验证码：">
+                        </div>
+                    </div>
+                    <div id="code" style="margin:0px 48px 0 7px ;width: 90px;height: 38px;float: right;border-radius: 5px;overflow: hidden"><img style="width: 100%;height: 100%" src="/createCodeImageServlet.Servlet" alt=""></div>
+                    <p id="submit_code_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red; margin-bottom: 0rem"></p>
+
+                    <!--<div style="height: 60px;width: 350px;padding: 0 30px">
+                        <input id="submit_pwd" type="password" name="pwd"
+                               style="display: inline-block;width: 275px;height: 40px;outline: 0;float: left;border: 1px solid #c9c9c9;border-radius: 10px;padding-left: 12px">
+                        <p id="submit_pwd_alert"
+                           style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+                    </div>-->
+                    <br>
+                    <div class="row" style="height: 60px;width: 320px;margin: 0 auto;border: 0;padding: 0">
+
+                        <br>
+                        <label class="loginSubmit" style="width: 320px;margin: 0 auto;padding-top: 20px">
+                            <button id="submit_login" style="cursor: pointer;height: 40px;width: 100%;float: left;border-radius: 5px;border: 1px solid #54aaff;background-color: #54aaff;font-size: 16px;font-weight: bold;color: white;">
+                                登&nbsp;&nbsp;录
+                            </button>
+                        </label>
+                        <br>
+
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>
+<script>
+    var flickerNo = 0
+    var flickerNoRun = ""
+    var flickerPwd = 0
+    var flickerPwdRun = ""
+    var keep = 0
+    var submit = $("#submit_login")
+    $("#submit_no").change(function (e) {
+        isOkNo()
+    })
+    $("#submit_login").click(function () {
+        keep = "N"
+        checkLogin()
+    })
+    $("#keepsubmit").click(function () {
+        keep = "Y"
+        checkLogin()
+    })
+</script>
+
+
+</body>
+</html>

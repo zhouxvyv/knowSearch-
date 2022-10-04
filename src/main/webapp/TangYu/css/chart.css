@@ -1,0 +1,18 @@
+.chart-wrapper{
+    position: relative;
+    margin: auto;
+    min-height: 232px;
+    width: auto;
+}
+.chart-container1{
+    position: relative;
+    margin: auto;
+    height: 298px;
+    width: auto;
+}
+.chart-container2{
+    position: relative;
+    margin: auto;
+    height: 310px;
+    width: auto;
+}

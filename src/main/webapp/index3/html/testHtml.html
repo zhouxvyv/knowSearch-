@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery-form-3.51.0.js"></script>
+</head>
+<body>
+<form action="/TestServlets" onsubmit="return false" id="form" encType="multipart/form-data"  method="post" >
+  <input type="file" id="file" name="file">
+  <button id="ajaxServlet">提交</button>
+</form>
+<script>
+    $("#ajaxServlet").click(function (){
+        console.log(1)
+        /*var $ava = $("$file")[0].files[0];
+        var $formData = new FormData();
+        $formData.append("ava",$ava)
+        $.ajax({
+            url: "/TestServlet",
+            type: "post",
+            dataType: "json",
+            process: false,
+            contentType: false,
+            data: $formData,
+            success: function (data){
+                console.log(data)
+            }
+        })
+
+        console.log(2)
+        $("ajaxServlet").ajaxSend({
+            url: "/TestServlet",
+            type: "post",
+            dataType: "json",
+            success: function (data){
+                console.log(data)
+            }
+        })*/
+            $("#form").ajaxSubmit({
+                success: function (data) {
+                    window.open("index3/html/hone1topic.html?text="+data.key)
+                },
+                error: function (error) { alert("上传异常"); },
+                type: "post", /*设置表单以post方法提交*/
+                dataType: "json" /*设置返回值类型为文本*/
+            })
+        console.log(3)
+    })
+</script>
+</body>
+</html>

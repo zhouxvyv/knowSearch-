@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>答案补全</title>
+    <link rel="stylesheet" href="../css/indexCSS.css">
+    <link rel="stylesheet" href="../css/doTopic.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/jquery-form-3.51.0.js"></script>
+</head>
+<body>
+
+<div style="width: 100%;background-color: white">
+    <div id="header">
+        <div id="loge"><a href="home.html">
+            <img src="../image/loge.gif" alt="">
+        </a></div>
+        <div id="searchFrame">
+            <form action="">
+                <input id="input" name="text" type="text" />
+                <button id="search" type="button">搜索</button>
+            </form>
+        </div>
+
+        <div id="loge1">
+            <div><span></span><span></span><span></span></div>
+            <div id="content">
+                <ul class="list1">
+                    <li class="item1">
+                        <a href="">listItem</a>
+                        <ul class="list2">
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                        </ul>
+                    </li>
+                    <li class="item1">
+                        <a href="">listItem</a>
+                        <ul class="list2">
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                        </ul>
+                    </li>
+                    <li class="item1">
+                        <a href="">listItem</a>
+                        <ul class="list2">
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                        </ul>
+                    </li>
+                    <li class="item1">
+                        <a href="">listItem</a>
+                        <ul class="list2">
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                        </ul>
+                    </li>
+                    <li class="item1">
+                        <a href="">listItem</a>
+                        <ul class="list2">
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                            <li class="item2"><a href="">item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <!--用户信息-->
+            <div id="user"><!--隐含用户列表-->
+                <div style="height: 60px">
+                    <div id="avatar">
+                        <img src="" alt="">
+                    </div>
+                    <div id="name">
+                        <p>周诩</p>
+                        <div>退出</div>
+                    </div>
+                    <ul>
+                        <li><a href="/project/html/home.html">个人资料</a></li>
+                        <li><a href="/project/html/account.html">账号设置</a></li>
+                        <li><a href="/project/html/mistake.html">错题集</a></li>
+                        <li><a href="/project/html/collection.html">收藏夹</a></li>
+                        <li><a href="/project/html/record.html">搜题记录</a></li>
+                        <li><a href="/project/html/lesson.html">我的课程</a></li>
+                        <li id="logout"><a>退出登录</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="noUser">
+                <div style="height: 60px">
+                    <div id="noAvatar">
+                        <img src="/index3/image/noAvatar.png" alt="">
+                    </div>
+                    <div id="noName">
+                        <p>未登录</p>
+                        <div>登录</div>
+                        <div>注册</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="mainer">
+    <div id="topic">
+        <img id="image" src="" alt="">
+        <p id="title"></p>
+        <div id="options">
+            <p class="option"></p>
+        </div>
+    </div>
+    <div id="control">
+        <form action="" onsubmit="return false">
+            <select name="type" id="type">
+                <option value="单选题" selected>单选题</option>
+                <option value="多选题">多选题</option>
+                <option value="填空题">填空题</option>
+                <option value="解答题">解答题</option>
+                <option value="主观题">主观题</option>
+            </select>
+            <select name="type" id="subject">
+                <option value="高等数学" selected>高等数学</option>
+                <option value="大学物理">大学物理</option>
+                <option value="英语">英语</option>
+                <option value="线性代数">线性代数</option>
+                <option value="计算机组成原理">计算机组成原理</option>
+            </select>
+            <button id="turnTopic">换一题</button>
+        </form>
+    </div>
+    <div id="answer">
+        <h4>我的答案:</h4>
+        <form action="/addAnswerServlet" onsubmit="return false" id="submitAnswer" enctype="multipart/form-data">
+            <input type="text" style="display: none" id="topicId" name="topicId">
+            <input type="text" name="answer" id="answerInput" style="display: none">
+            <textarea name="" id="my_answer" cols="30" rows="10"></textarea>
+            <img id="answerImage" style="max-width: 100%" src="" alt="">
+            <input type="file" name="file" id="file" style="display: none">
+            <button id="change">选择/更换图片</button>
+            <button id="submit">提交</button>
+        </form>
+    </div>
+</div>
+<script src="../js/doTopic.js"></script>
+</body>
+</html>

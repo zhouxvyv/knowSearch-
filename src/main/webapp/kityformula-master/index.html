@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>编辑题目</title>
+   </head>
+  <body>
+    <div id="body" name="body" style="display: none;">
+    </div>
+
+    <script src="example/editor/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace('body',
+        {
+         filebrowserImageUploadUrl: "/",
+         height: 500
+      });
+    </script>
+  </body>
+</html>

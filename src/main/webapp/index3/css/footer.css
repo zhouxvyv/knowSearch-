@@ -1,0 +1,65 @@
+#footer{
+    width: 100%;
+    height: 80px;
+    background-color: black;
+}
+#in_footer{
+    width: 1000px;
+    height: 80px;
+    margin: 0 auto;
+}
+#routeNavigation{
+    width: 500px;
+    height: 30px;
+    overflow: hidden;
+    position: absolute;
+    transform: translate(0,5px);
+}
+.breadcrumb a{
+    color: white;
+    font-size: 14px;
+}
+#in_footer .p1{
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    transform: translate(100px,45px);
+    color: white;
+}
+#in_footer .p2{
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    transform: translate(250px,45px);
+    color: white;
+}
+#wechat,#android{
+    width: 100px;
+    height: 80px;
+    position: absolute;
+}
+.qrCode img{
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    float: left;
+}
+.qrCode div{
+    width: 20px;
+    height: 80px;
+    float: left;
+    text-align: center;
+    color: #aaa;
+}
+.qrCode div:nth-of-type(1){
+    padding: 15px 0;
+}
+.qrCode div:nth-of-type(2){
+    padding: 7px 0;
+}
+#wechat{
+    transform: translate(700px,0);
+}
+#android{
+    transform: translate(820px,0);
+}

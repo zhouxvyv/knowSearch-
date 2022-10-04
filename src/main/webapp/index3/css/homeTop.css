@@ -1,0 +1,40 @@
+#top{
+    height: 30px;
+    width: 100%;
+    background-color: black;
+    clear: both;
+    float: left;
+}
+#in_top{
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+#in_top ul{
+    display: block;
+    height: 30px;
+    list-style-type: none;
+}
+#in_top ul:first-of-type{
+    margin-left: 30px;
+    float: left;
+}
+#in_top ul:last-of-type{
+    margin-right: 30px;
+    float: right;
+}
+#in_top ul li{
+    display: block;
+    height: 100%;
+    margin: 0 10px;
+    float: left;
+}
+#in_top ul li a{
+    display: block;
+    height: 100%;
+    font-size: 14px;
+    line-height: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}

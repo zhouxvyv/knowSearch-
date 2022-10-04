@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>video1</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/line.css">
+    <link rel="stylesheet" href="../css/video-js.min.css">
+</head>
+<body>
+<div style="overflow: hidden">
+    <div class="row show" >
+        <div style="float: left;padding-left: 30px">
+            <img  class="img1" src="../image/loge1.png">
+            <span class="form-a">课程中心</span>
+        </div>
+        <div style="float: right;padding-right: 40px">
+            <a class="home">首页</a>
+            <img class="form" src="../image/avatar.jpg">
+            <span class="form-text">palpitate</span>
+        </div>
+    </div>
+    <div style="padding-left: 200px;padding-top: 10px;float: left">
+        <h4>java入门</h4>
+        <h6>5000次播放</h6>
+        <div class="m">
+            <video id="my-video" class="video-js" controls preload="auto" width="638" height="447"
+                  data-setup="{}">
+                <source id="sr" src="../video/001_Java语言发展史.mp4" type="video/mp4">
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="http://videojs.com/html5-video-support/video1.html" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+        </div>
+        <div class="csh">
+            <span id="collect"><img width="34" src="../image/收藏.png"><span>收藏</span></span><span style="padding-left: 30px" id="share"><img style="padding-bottom: 5px" width="34"  src="../image/转发.png"><span style="padding-top: 5px">转发</span></span>
+        </div>
+        <div style="width:620px;height: 130px;padding: 10px" >
+            <p>简介：</p>
+            <p style="font-size: 5px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此套JavaWeb视频为非常全面的教程，涵盖JavaWeb阶段所有核心知识点，如数据库、JDBC、JavaWeb核心、前端技术、Tomcat、Linux、Ngnix，最后通过《黑马旅游网》综合案例，巩固Web基础知识，提升综合运用能力。</p>
+        </div>
+        <div style="width: 620px">
+            <p style="font-size: 16px;font-weight: 600;border-bottom: 1px solid #d1d2d4">评论</p>
+            <ul style="width: 620px">
+                <li class="cl">
+                    <div style="float: left"><img src="../image/avatar.jpg" class="form" style="width: 50px;height: 50px"></div>
+                    <div style="float: left;padding-left: 20px;font-size: 15px" >
+                        <p>palpitate</p>
+                        <p>讲的很好，受益匪浅</p>
+                    </div>
+                </li>
+                <li class="cl">
+                    <div style="float: left"><img src="../image/avatar.jpg" class="form" style="width: 50px;height: 50px"></div>
+                    <div style="float: left;padding-left: 20px;font-size: 15px" >
+                        <p>palpitate</p>
+                        <p>讲的很好，受益匪浅</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div style="padding-top: 52px;padding-right:65px;float: right">
+        <div style="width: 320px;height:447px;background:#ddd">
+            <h3 style="padding-left:10px;padding-top:10px;font-size: 18px">视频选集</h3>
+            <ul style="font-size: 100%;color: #212121;width: 320px;padding: 10px" id="sel" >
+                <li><a href="video1.html" style="color: #0a53be"><div style="float: left"><span>p1</span><span style="padding-left: 20px" id="01">001_Java语言发展史</span></div><div style="float: right;">4:05</div></a></li>
+                <li ><a href="video2.html"><div style="float: left"><span>p2</span><span style="padding-left: 20px" id="02">002_Java语言跨平台原理</span></div><div style="float: right;">4:05</div></a></li>
+            </ul>
+        </div>
+        <div style="width:320px;margin-top: 10px">
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+            <div class="lcourse">
+                <div style="float: left">
+                    <img src="../image/课程1.png" class="limg" >
+                </div>
+                <div style="float: right;width:170px;padding-left: 10px">
+                    <div class="course1">趣学Python，2天零基础入门</div>
+                    <div style="font-size: 12px;padding: 5px">22节</div>
+                    <div class="course2">Python作为炙手可热的编程语言，其流行度依然处在上升势头。对于初学者和完成普通任务，Python语言是非常简单易用的。连Google都在大规模使用Python，你就不用担心学了会没用。&amp;nbsp;本课程基于Python3版本，通过详细的讲解与实战案例，让你快速入门并能够自主地编写简单的Python程序。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/video.min.js"></script>
+<script type="text/javascript">
+    var myPlayer = videojs('my-video');
+    videojs("my-video").ready(function(){undefined
+        var myPlayer = this;
+        myPlayer.play();
+    });
+    $("#collect").click(function (){
+        var collect=$("#collect");
+        collect.css("color","blue");
+    })
+</script>
+</body>
+</html>

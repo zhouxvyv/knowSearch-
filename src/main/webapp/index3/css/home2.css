@@ -1,0 +1,510 @@
+#header{
+    width: 100%;
+    max-width: 1200px;
+    min-width: 800px;
+    height: 60px;
+    background-color: white;
+    margin: 0 auto;
+}
+#header li{
+    cursor: pointer;
+}
+#loge{
+    height: 40px;
+    margin:10px 0;
+    float: left;
+}
+#loge img{
+    height: 100%;
+}
+#loge1{
+    width: 60px;
+    height: 60px;
+    padding-top: 13px;
+    float: right;
+}
+#loge1 div{
+    margin: 0 auto;
+}
+#loge1:hover #content{
+    display: block;
+    transition-delay: 0.2s;
+}
+#content{
+    padding: 10px 0;
+    display: none;
+    width: 100px;
+    background-color: white;
+    transform: translate(-40px);
+    transition-delay: 0s;
+}
+#content li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    line-height: 40px;
+}
+#content ul{
+    background-color: white;
+}
+#content .list1{
+    display: block;
+}
+#content .list1 li{
+    list-style-type: none;
+    display: block;
+    height: 40px;
+    width: 100%;
+}
+#content .list1 li:hover{
+    background-color: #9c9c9cee;
+}
+#content .list1 .item1 a{
+    position: absolute;
+    list-style-type: none;
+    display: block;
+    height: 40px;
+    width: 100%;
+}
+#content .list1 .item1:hover ul{
+    display: block;
+    transition-delay: 0.2s;
+}
+#content .list1 .item1 ul{
+    position: absolute;
+    display: none;
+    width: 100px;
+    transform: translate(-99px);
+    transition-delay: 0s;
+}
+#loge1 div span{
+    display: block;
+    width: 35px;
+    height: 4px;
+    background-color: #666;
+    margin: 6px auto;
+    border-radius: 2px;
+}
+
+#user{
+    width: 200px;
+    height: 60px;
+    float: right;
+}
+#avatar{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    overflow: hidden;
+    border-radius: 60px;
+    float: left;
+}
+#avatar img{
+    width: 100%;
+    height: 100%;
+}
+#name{
+    width: 130px;
+    height: 60px;
+    float: right;
+}
+#name p{
+    display: block;
+    width: 60px;
+    height: 24px;
+    margin-top: 6px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 16px;
+}
+#name div{
+    width: 60px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    background-color: #f6f6f6;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#name div:hover{
+    background-color: red;
+    color: white;
+}
+#avatar:hover ~ ul{
+    height: 215px;
+    opacity: 1;
+}
+#user ul{
+    display: block;
+    width: 120px;
+    height: 0;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #FFFFFFee;
+    border-bottom: 5px solid white;
+    opacity: 0;
+    transition-duration: 0.4s;
+    position: relative;
+    z-index: 999;
+}
+#user ul:hover{
+    height: 215px;
+    opacity: 1;
+}
+#user ul li{
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    padding-left: 20px;
+}
+#searchFrame{
+    height: 60px;
+    padding: 5px 0;
+    width: 600px;
+    max-width: 50%;
+    float: left;
+    margin-left: 3%;
+}
+#searchFrame form{
+    width: 100%;
+    background-color: white;
+}
+#searchFrame form input{
+    width: 85%;
+    height: 45px;
+    border-left: 1px solid lightskyblue;
+    border-top: 1px solid lightskyblue;
+    border-bottom: 1px solid lightskyblue;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+    float: left;
+    padding-left: 10px;
+    font-size: 20px;
+    color: #666;
+    position: relative;
+}
+#search{
+    width: 15%;
+    height: 45px;
+    float: right;
+    border-right: 1px solid lightskyblue;
+    border-top: 1px solid lightskyblue;
+    border-bottom: 1px solid lightskyblue;
+    border-left: 0;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+#imageSearch{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    transform: translate(-45px,2px);
+    border: 0;
+    cursor: pointer;
+    background: url("../image/imageSearch.gif") center center no-repeat;
+}
+
+
+
+#mainer{
+    width: 90%;
+    max-width: 1200px;
+    min-width: 750px;
+    background-color: white;
+    margin: 5px auto 0;
+}
+#left{
+    width: 76%;
+    float: left;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
+#right{
+    width: 23%;
+    float: right;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+#left #now{
+    width: 100%;
+    float: left;
+}
+#left #question{
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    float: left;
+    border-bottom: 1px solid #aaa;
+}
+#left #answer{
+    width: 100%;
+    min-height: 100px;
+    float: left;
+    border-bottom: 1px solid #aaa;
+    padding: 2px;
+}
+
+
+#comment{
+    padding-top: 10px;
+    width: 100%;
+    float: left;
+}
+#comment ul li{
+    display: block;
+    float: left;
+}
+.commentItem{
+    display: block;
+    width: 100%;
+    background-color: #fcfcfc;
+}
+.commentItem .commentHeader{
+    height: 35px;
+    padding: 2px 3px;
+    border-bottom: 1px solid #9c9c9c;
+}
+.commentItem .commentHeader div{
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    float: left;
+}
+.commentItem .commentHeader div img{
+    width: 100%;
+    height: 100%;
+}
+.commentItem .commentHeader h4{
+    display: block;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 550;
+    line-height: 30px;
+    margin-right: 10px;
+    color: #2aabd2;
+    float: left;
+}
+.commentItem .commentHeader p{
+    display: block;
+    height: 30px;
+    max-width: 70%;
+    font-size: 13px;
+    line-height: 30px;
+    margin-right: 10px;
+    color: #aaaaaa;
+    float: left;
+}
+.commentItem .commentHeader t{
+    display: block;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    margin-right: 10px;
+    color: #aaaaaa;
+    float: right;
+}
+.commentItem .followUp{
+    display: block;
+    width: 100%;
+    float: left;
+}
+.commentItem .followUp li{
+    display: block;
+    width: 100%;
+    height: 25px;
+    padding: 2px 0 3px 5%;
+    border-bottom: 1px solid #aaa;
+}
+.commentItem .followUp li h4{
+    display: block;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 25px;
+    margin-right: 10px;
+    color: #2aabd2;
+    float: left;
+}
+.commentItem .followUp li h4 a{
+    text-decoration: none;
+    color: #2aabd2;
+}
+.commentItem .followUp li div p{
+    display: block;
+    height: 25px;
+    font-size: 12px;
+    line-height: 25px;
+    margin-right: 10px;
+    color: #aaaaaa;
+    float: left;
+}
+.commentItem .followUp li div t{
+    display: block;
+    height: 25px;
+    font-size: 11px;
+    line-height: 25px;
+    margin-right: 10px;
+    color: #aaaaaa;
+    float: right;
+}
+
+
+
+
+
+#left #questionList{
+    width: 29%;
+    float: right;
+    border-radius: 5px;
+}
+#questionList button{
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #2aabd2;
+    font-size: 18px;
+    color: white;
+    border: 0;
+}
+#questionList ul{
+    display: block;
+}
+#questionList ul li{
+    display: block;
+    list-style-type: none;
+    width: 100%;
+    height: 25px;
+    font-size: 13px;
+    line-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#questionList ul li.checkNow{
+    background-color: #CCC;
+}
+
+
+
+
+#oneQuestionPerDay{
+    width: 100%;
+}
+#right h3{
+    font-size: 18px;
+}
+#oneQuestionPerDay .questionMainer{
+    width: 100%;
+}
+#oneQuestionPerDay .questionMainer .question{
+    width: 100%;
+    font-size: 12px;
+    max-height: 100px;
+    overflow: hidden;
+}
+#oneQuestionPerDay .questionMainer .selecter p{
+    font-size: 13px;
+    line-height: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+#oneQuestionPerDay .questionMainer .selecter p.checkedAnswer{
+    background-color: #9c9c9c66;
+}
+#oneQuestionPerDay .questionMainer .selecter p:hover{
+    background-color: #9c9c9c66;
+}
+#oneQuestionPerDay .questionMainer .ender{
+    width: 100%;
+}
+#oneQuestionPerDay .questionMainer .ender *{
+    display: block;
+    width: 50%;
+    height: 25px;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: bold;
+}
+#oneQuestionPerDay .questionMainer .ender div{
+    background-color: yellow;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#oneQuestionPerDay .questionMainer .ender.true p{
+    color: green;
+}
+#oneQuestionPerDay .questionMainer .ender.false p{
+    color: red;
+}
+#learningStar{
+    margin: 10px auto;
+    width: 230px;
+}
+#learningStar .mainerUser{
+    width: 230px;
+}
+#learningStar .mainerUser .user{
+    height: 40px;
+    margin: 2px 0;
+    border-bottom: 1px solid #eee;
+}
+#learningStar .mainerUser .user div:first-of-type{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+    float: left;
+}
+#learningStar .mainerUser .user div:first-of-type img{
+    width: 40px;
+    height: 40px;
+}
+#learningStar .mainerUser .user div:last-of-type{
+    float: left;
+}
+#learningStar .mainerUser .user div:last-of-type p{
+    display: block;
+    float: left;
+    height: 20px;
+    margin-left: 10px;
+    clear: both;
+    line-height: 20px;
+}
+#learningStar .mainerUser .user div:last-of-type p:first-of-type{
+    font-size: 14px;
+    font-weight: 600;
+}
+#learningStar .mainerUser .user div:last-of-type p:last-of-type{
+    font-size: 12px;
+    color: #aaa;
+}
+#problemSolving{
+    border-top: 1px solid black;
+}
+#problemSolving ul li{
+    display: inline-block;
+    padding: 0 2px;
+    margin: 0 2px;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+}
+#problemSolving ul li:hover{
+    background-color: #f0f0f0;
+}
+

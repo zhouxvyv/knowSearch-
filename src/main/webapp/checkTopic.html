@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检查题目质量</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            width: 1200px;
+            min-height: 400px;
+            margin: 0 auto;
+            background-color: #fcfcfc;
+        }
+        #left{
+            width: 800px;
+            float: left;
+        }
+        #right{
+            width: 400px;
+            float: left;
+        }
+        .btn{
+            width: 120px;
+            height: 50px;
+            background-color: green;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            margin-right: 80px;
+        }
+        .btn:first-of-type{
+            background-color: #4fa0ff;
+            color: white;
+        }
+        .btn:last-of-type{
+            background-color: yellow;
+            color: green;
+        }
+        #del{
+            background-color: red;!important;
+        }
+    </style>
+    <script src="index2/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+</head>
+<body>
+<div id="container">
+    <a id="testSrc" href="">查看来源页面</a>
+    <div id="left">
+        <div id="title"><p>【】-</p></div>
+        <div id="options">
+            <p>. </p>
+        </div>
+        <p>答案: <p id="answer"></p></p>
+        <form id="submitForm" action="" ></form>
+        <button class="btn" id="check">完成</button>
+        <button class="btn" id="submit">提交</button>
+        <button class="btn" id="add">添加选项</button>
+        <button class="btn" id="del">删除</button>
+    </div>
+    <div id="right">
+        <div id="mainer"></div>
+    </div>
+</div>
+<script>
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+    console.log(getUrlParam("page"))
+    topics = []
+    topic = ""
+    $.ajax({
+        url: "/checkTopicServlet.servlet",
+        type: "post",
+        dataType: "json",
+        data: {
+            page: getUrlParam("page")
+        },
+        success: function (data){
+            topics = data.topics
+            page = parseInt(getUrlParam("page"))
+            topic = topics[page]
+            show(topic)
+            console.log(topic)
+        }
+    })
+    function show(topic){
+        console.log(topic)
+        $("#testSrc").attr("href",topic.topicSource)
+        var topicImgA = ""
+        console.log(topic.imgs)
+        for(var i=0;i<topic.imgs.length;i++)
+            topicImgA = topicImgA+"<div><img style='max-width: 400px' src='"+topic.imgs[i]+"'/><a href='"+topic.imgs[i]+"'>"+topic.imgs[i]+"</a></div>"
+        $("#mainer").html(topicImgA)
+
+        var formInner = ""
+
+        var title = "<p>【"+topic.topicType+"】-"+topic.topicTitle+"</p>"
+            formInner = formInner+"<input id='titleInput' name='title' style='width: 100%;height: 50px' type='text' value='【"+topic.topicType+"】-"+topic.topicTitle+"' />"
+        $("#title").html(title)
+
+        var options = ""
+        for(var i=0;i<topic.topicOptions.length;i++){
+            options = options + "\n" +
+                "        <p>"+topic.topicOptions[i].title+". "+topic.topicOptions[i].main+"</p>\n"
+                formInner = formInner+"        <input class='option' style='width: 100%;height: 50px' type='text' value='"+topic.topicOptions[i].title+". "+topic.topicOptions[i].main+"' />"
+        }
+        $("#options").html(options)
+        $("#submitForm").html(formInner)
+
+
+        var answer = topic.topicAnswer
+        $("#answer").html(answer)
+    }
+
+    $("#submit").click(function (){
+        topic.topicType = $("#titleInput").val().match('【(.*)】-(.*)')[1]
+        topic.topicTitle = $("#titleInput").val().match('【(.*)】-(.*)')[2]
+        topic.topicOptions = []
+        for(var i =0;i<$(".option").length;i++){
+            var option1 = new Object({
+                title: $(".option")[i].value.match('([A-Z]*)\. (.*)')[1],
+                main: $(".option")[i].value.match('([A-Z]*)\. (.*)')[2]
+            })
+            topic.topicOptions.push(option1)
+        }
+        topic.topicOptions = JSON.stringify(topic.topicOptions)
+        console.log(topic)
+        $.ajax({
+            url: "/updateTopicServlet.servlet",
+            type: "post",
+            dataType: "json",
+            data: topic,
+            success: function(data){
+                console.log(data)
+                window.open("checkTopic.html?page=0","_self")
+            }
+        })
+    })
+    $("#add").click(function(){
+        $("<input class='option' style='width: 100%;height: 50px' type='text' value='' />").appendTo($("#submitForm"))
+    })
+    $("#check").click(function(){
+        topic.state=1
+
+        topic.topicType = $("#titleInput").val().match('【(.*)】-(.*)')[1]
+        topic.topicTitle = $("#titleInput").val().match('【(.*)】-(.*)')[2]
+        topic.topicOptions = []
+        for(var i =0;i<$(".option").length;i++){
+            var option1 = new Object({
+                title: $(".option")[i].value.match('([A-Z]*)\. (.*)')[1],
+                main: $(".option")[i].value.match('([A-Z]*)\. (.*)')[2]
+            })
+            topic.topicOptions.push(option1)
+        }
+        topic.topicOptions = JSON.stringify(topic.topicOptions)
+        console.log(topic)
+        $.ajax({
+            url: "/updateTopicServlet.servlet",
+            type: "post",
+            dataType: "json",
+            data: topic,
+            success: function(data){
+                console.log(data)
+                window.open("checkTopic.html?page=0","_self")
+            }
+        })
+
+        /*topic.topicType=$("#titleInput").val().match("【(.*)】-(.*)")[1]
+        topic.topicTitle=$("#titleInput").val().match("【(.*)】-(.*)")[2]
+        var options = []
+        for (var i = 0; i < $(".option").length; i++) {
+            options.push(new Object({
+                title: $(".option")[i].value.match('([A-Z]*)\. (.*)')[1],
+                title: $(".option")[i].value.match('([A-Z]*)\. (.*)')[2]
+            }))
+        }
+        show(topic)*/
+    })
+
+    $("#del").click(function(){
+        $.ajax({
+            url: "/deleteTopicServlet.servlet",
+            dataType:"json",
+            type: "post",
+            data: topic,
+            success: function (data){
+                window.open("checkTopic.html?page=0","_self")
+            }
+        })
+    })
+
+
+</script>
+</body>
+</html>

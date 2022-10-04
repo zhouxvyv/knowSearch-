@@ -1,0 +1,116 @@
+@font-face{
+    font-family: "yuan_ti1";
+    src: url('../../../zx-FONT/975MaruSC-Regular.ttf');
+}@font-face{
+    font-family: "yuan_ti2";
+    src: url('../../../zx-FONT/975MaruSC-Medium.ttf');
+}@font-face{
+    font-family: "yuan_ti3";
+    src: url('../../../zx-FONT/975MaruSC-Bold.ttf');
+}
+
+
+.video_type_1{
+    width: 100%;
+}
+
+
+.video_type_1 i.bi{
+    color: white;
+}
+
+
+.video_type_1 .video_msg{
+    width: 92%;
+    margin: 4%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.video_type_1 .video_msg_img{
+    width: 100%;
+}
+.video_type_1 .video_msg_data{
+    width: 100%;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    transition-delay: 0.15s;
+    transition-duration: 0.3s;
+    background: linear-gradient(#00000000, #000000aa);
+
+}
+.video_type_1 .video_msg:hover .video_msg_data{
+    bottom: -25px;
+}
+.video_type_1 .video_msg_data .video_msg_play{
+    float: left;
+    font-size: 9px;
+    line-height: 15px;
+    margin-left: 4px;
+    color: white;
+}
+.video_type_1 .video_msg_data .video_msg_like{
+    float: left;
+    font-size: 9px;
+    line-height: 15px;
+    margin-left: 4px;
+    color: white;
+}
+.video_type_1 .video_msg_data .video_msg_long{
+    float: right;
+    font-size: 9px;
+    line-height: 15px;
+    margin-right: 4px;
+    color: white;
+}
+
+
+.video_type_1 .video_up_msg{
+    width: 100%;
+    height: 49px;
+    box-sizing: border-box;
+    padding: 0 3px;
+}
+.video_type_1 .video_up_title{
+    height: 36px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 18px;
+    overflow: hidden;
+    font-family: yuan_ti3;
+    letter-spacing: -1px;
+}
+.video_type_1 .video_up_blogger{
+    box-sizing: border-box;
+    padding: 0 6px;
+    height: 13px;
+    width: 100%;
+    font-size: 6px;
+    line-height: 13px;
+    font-family: yuan_ti2;
+    letter-spacing: -1px;
+}
+
+
+/*
+
+<div class="video_type_1">
+    <div class="video_msg">
+        <img class="video_msg_img" src="Img/video.jpg" alt="">
+        <div class="video_msg_data">
+            <div class="video_msg_play"><i class="bi bi-play-btn"></i><span>1.5万</span></div>
+            <div class="video_msg_like"><i class="bi bi-hand-thumbs-up"></i><span>953</span></div>
+            <div class="video_msg_long"><span>03:20</span></div>
+        </div>
+    </div>
+    <div class="video_up_msg">
+        <div class="video_up_title">【原创】张晓涵《平平仄仄》全网上新！(热乎儿的歌词PV来啦~</div>
+        <div class="video_up_blogger"></div>
+    </div>
+</div>
+
+*/

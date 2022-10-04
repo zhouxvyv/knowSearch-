@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.CollectionMapper">
+
+    <resultMap id="testWithSubject" type="test">
+        <result column="test_id" property="testId"></result>
+        <result column="test_name" property="testName"></result>
+        <result column="upload_time" property="uploadTime"></result>
+        <result column="source_url" property="sourceUrl"></result>
+        <result column="count" property="count"></result>
+        <result column="avg_grade" property="avgGrade"></result>
+        <association property="subject" javaType="subject">
+            <result column="subject_id" property="subjectId"></result>
+            <result column="subject_name" property="subjectName"></result>
+        </association>
+    </resultMap>
+    <select id="collections" resultMap="testWithSubject" parameterType="map">
+        select * from testtable a,test_collection b,subjecttable c
+        where a.test_id=b.test_id and user_id=#{user.userId} and a.subject_id=c.subject_id order by time desc limit #{num},3
+    </select>
+
+
+
+    <resultMap id="testCollectionMap" type="collections">
+        <id column="test_collection_id" property="testCollectionId"></id>
+        <result column="time" property="time"></result>
+        <association property="user">
+            <result column="user_id" property="userId"></result>
+        </association>
+        <association property="test">
+            <result column="test_id" property="testId"></result>
+            <result column="test_name" property="testName"></result>
+            <result column="upload_time" property="uploadTimeDate"></result>
+            <result column="source_url" property="sourceUrl"></result>
+            <result column="count" property="count"></result>
+            <result column="avg_grade" property="avgGrade"></result>
+            <association property="subject">
+                <result column="subject_id" property="subjectId"></result>
+                <result column="subject_name" property="subjectName"></result>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <select id="getCollectionByUser" resultMap="testCollectionMap" parameterType="map">
+        select * from testtable a,test_collection b,subjecttable c
+        where a.test_id=b.test_id and user_id=#{user.userId} and a.subject_id=c.subject_id order by time desc limit #{num},3
+    </select>
+    <select id="getAllTestCollection" resultMap="testCollectionMap">
+        select * from testtable a,test_collection b,subjecttable c
+        where a.test_id=b.test_id and a.subject_id=c.subject_id
+    </select>
+
+    <delete id="delete" parameterType="int">
+        delete from test_collection where test_id=#{id}
+    </delete>
+</mapper>

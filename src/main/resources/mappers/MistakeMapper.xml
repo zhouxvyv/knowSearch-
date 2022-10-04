@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.MistakeMapper">
+
+
+    <select id="search" resultMap="newMistake" parameterType="map">
+        select * from topictable a,mistake b,subjecttable c
+        where a.topic_id=b.topic_id and user_id=#{user.userId} and a.subject_id=c.subject_id order by mistake_time desc limit #{num},3
+    </select>
+
+
+
+    <resultMap id="newMistake" type="mistake">
+        <id column="mistake_id" property="mistakeId"></id>
+        <result column="mistake_time" property="mistakeTime"></result>
+        <result column="topic_id" property="topicId"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="subject_id" property="subjectId"></result>
+        <association property="user" javaType="user">
+            <result column="user_id" property="userId"></result>
+        </association>
+        <association property="subject">
+            <result column="subject_id" property="subjectId"></result>
+            <result column="subject_name" property="subjectName"></result>
+        </association>
+        <association property="topic">
+            <result column="topic_title" property="topicTitle"></result>
+        </association>
+    </resultMap>
+    <select id="searchNew" resultMap="newMistake" parameterType="map">
+        select * from topictable a,mistake b,subjecttable c
+        where a.topic_id=b.topic_id and user_id=#{user.userId} and a.subject_id=c.subject_id order by mistake_time desc limit #{num},3
+    </select>
+
+    <delete id="delete" parameterType="mistake">
+        delete from mistake where mistake_id=#{mistakeId}
+    </delete>
+
+    <select id="readAllMistake" resultMap="newMistake">
+        select * from topictable a,mistake b,subjecttable c
+        where a.topic_id=b.topic_id and a.subject_id=c.subject_id
+    </select>
+</mapper>

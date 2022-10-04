@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.UserMapper">
+    <resultMap id="UserMapper" type="user">
+        <result property="userId" column="user_id"></result>
+        <result property="userName" column="user_name"></result>
+    </resultMap>
+    <resultMap id="userWithCollection" type="user">
+        <id property="userId" column="user_id"></id>
+        <result property="userName" column="user_name"></result>
+    </resultMap>
+    <sql id="userChoose">
+        <where>
+            <choose>
+                <when test="userId!= null and userId != ''">
+                    and user_id=#{userId}
+                </when>
+                <otherwise>
+                    and userId==null
+                </otherwise>
+            </choose>
+        </where>
+
+    </sql>
+    <sql id="userWhere">
+        <where>
+            <if test="userId!= null and userId != ''"></if>
+                and user_id=#{userId}
+        </where>
+    </sql>
+    <sql id="userForeach">
+        <where>
+            <if test="ids!=null">
+                <foreach collection="ids" item="id" open="user_id in(" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </sql>
+    <sql id="userUpdate">
+        <set>
+            <if test="pwd!=null and pwd != ''">
+                pwd=#{pwd}
+            </if>
+        </set>
+        where user_name=#{userName}
+    </sql>
+    <sql id="pwdWhere">
+        <where>
+            <if test="pwd!= null">
+                and pwd=#{pwd}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="getUserWithCollection" resultMap="userWithCollection" parameterType="user">
+
+    </select>
+
+    <select id="findLoginUser" resultMap="UserMapper" parameterType="user">
+        select * from user where user_name=#{userName} and pwd=#{pwd}
+    </select>
+
+    <select id="getTopSearch" resultType="map" parameterType="string">
+        select a.user_id, count(search_no) count,b.user_name,b.avatar from Search a, user b
+                    where a.user_id=b.user_id and Date(a.time)=#{time} 
+                    group by a.user_id,b.user_name,b.avatar 
+                    order by count(search_no) desc 
+                    limit 0,10
+    </select>
+
+    <select id="search" resultMap="UserMapper" parameterType="user">
+        select * from user 
+        <include refid="userWhere"></include>
+    </select>
+    
+
+    <insert id="insert" parameterType="user">
+        insert into user(user_id,user_name,pwd) values(#{userId},#{userName},#{pwd})
+    </insert>
+
+    <update id="updatePwd" parameterType="user" >
+        update user
+        <include refid="userUpdate"></include>
+    </update>
+
+    <update id="updateEmail" parameterType="user">
+        update user set email=#{email} where user_id=#{userId};
+    </update>
+
+    <delete id="delete"   parameterType="user">
+        delete from user
+        <include refid="userChoose"></include>
+    </delete>
+
+    <select id="searchPwd" resultType="user" parameterType="user">
+        select * from user where user_name=#{userName} and pwd=#{pwd}
+    </select>
+
+    <update id="update"    parameterType="user">
+        update user set user_name=#{userName}, birthday=#{birthday} ,grade=#{grade} ,hometown=#{hometown} , setting=#{setting},asset=#{asset},free_count=#{freeCount} where user_id=#{userId}
+    </update>
+    <update id="updateDefaultUser" parameterType="int">
+        update user set free_count=#{count},add_count=5
+    </update>
+
+    <update id="updateAvatar" parameterType="user">
+        update user set avatar=#{avatar}
+
+    </update>
+
+    <select id="select" resultMap="UserMapper" parameterType="user">
+        select * from user
+        <include refid="userForeach"></include>
+    </select>
+    <select id="getUserById" resultType="user">
+        select * from user where user_id = #{userId}
+    </select>
+
+    <insert id="addUser" parameterType="map">
+        insert into user (user_name,pwd) values(#{userName},#{pwd})
+    </insert>
+    <update id="addUserAsset" parameterType="map">
+        update user set asset=asset+#{count} where user_id=#{userId}
+    </update>
+    <update id="delUserAsset" parameterType="map">
+        update user set asset=asset-#{count} where user_id=#{userId}
+    </update>
+    <update id="delAddCount" parameterType="int">
+        update user set add_count=add_count-1 where user_id=#{userId}
+    </update>
+
+    <update id="delFreeCount">
+        update user set free_count=free_count-1 where user_id=#{userId}
+    </update>
+</mapper>

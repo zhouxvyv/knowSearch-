@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage1.css">
+
+    <link rel="stylesheet" href="../css/section/video.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+  <!--  <script type="text/javascript"
+            src="http://api.xkw.com/mathjax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          messageStyle: 'none',
+          jax: ["input/MathML","output/SVG"],
+          extensions: ["mml2jax.js","MathEvents.js"]
+      })
+    </script>-->
+
+    <script src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full" async></script>
+
+    <!--<script>
+        window.MathJax.Hub.Config({
+            showProcessingMessages: false, //关闭js加载过程信息
+            messageStyle: "none", //不显示信息
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+                displayMath: [["$$", "$$"], ["\\[", "\\]"], ["`", "`"]], //段内公式选择符
+                skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+            },
+            "HTML-CSS": {
+                availableFonts: ["STIX", "TeX"], //可选字体
+                showMathMenu: false //关闭右击菜单显示
+            }
+        });
+        //下面第三个参数可以不写，默认对整个html内的latex进行翻译
+        window.MathJax.Hub.Queue(["Typeset", MathJax.Hub,document.getElementsByClassName("ck-content")]);
+
+    </script>-->
+
+    <style>
+
+        @font-face{
+            font-family: "yuan_ti1";
+            src: url('../../zx-FONT/975MaruSC-Regular.ttf');
+        }@font-face{
+            font-family: "yuan_ti2";
+            src: url('../../zx-FONT/975MaruSC-Medium.ttf');
+        }@font-face{
+            font-family: "yuan_ti3";
+            src: url('../../zx-FONT/975MaruSC-Bold.ttf');
+        }@font-face{
+            font-family: "kai_ti1";
+            src: url('../../zx-FONT/yrdkai-Medium.ttf');
+        }
+
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .section{
+            box-sizing: border-box;
+            background-color: white;
+            border-radius: 7px;
+            padding: 7px;
+            margin-bottom: 6px;
+        }
+
+
+
+        .type_row{
+            height: 32px;
+            width: 100%;
+            border-bottom: 5px solid #4fa0ff;
+            margin:0 0 5px;
+        }
+        .type{
+            height: 28px;
+            margin: 0 10px;
+            text-align: center;
+            line-height: 28px;
+            cursor: pointer;
+        }
+        .check_type{
+            border-top: 2px solid #4fa0ff;
+            border-left: 2px solid #4fa0ff;
+            border-right: 2px solid #4fa0ff;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            color: #4fa0ff;
+            font-weight: bold;
+        }
+        .topic_no{
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            color: white;
+            background-color: #4fa0ff;
+            border-radius: 30px;
+            border: 2px solid #4fa0ff;
+            float: left;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .check_topic_no{
+            color: #4fa0ff;
+            background-color: whitesmoke;
+        }
+        .options{
+            display: inline-block;
+            min-width: 50%;
+            padding-left: 15px;
+        }
+
+        #control_list{
+            width: 100%;
+            height: 30px;/*
+            background: radial-gradient(circle, #4fa0ff, #f1f1f1);*/
+        }
+        #control_list div{
+            color: #0d6efd;
+            font-weight: bold;
+        }
+        .msg-ctl{
+            width: 25%;
+            margin: 0;
+            float: left;
+            text-align: center;
+            height: 30px;
+            font-size: 14px;
+            line-height: 30px;
+        }
+        #difficulty .bi{
+            color: gold;
+        }
+        #viewAnswer{
+            cursor: pointer;
+        }
+        #viewAnswer .bi{
+            color: #9499a0;
+         }
+        #quiz{
+            cursor: pointer;
+        }
+        .answer{
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .recommended_test{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 13px;
+        }
+        .questionBank{
+            display: inline-block;
+            height: 20px;
+            font-size: 10px;
+            margin: 2px 4px;
+            background-color: #F1F1F1;
+            border-radius: 20px;
+            line-height: 20px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        .relatedExams{
+            width: 100%;
+            height: 20px;
+            position: relative;
+        }
+        .relatedExams .examName{
+            height: 20px;
+            font-size: 12px;
+            line-height: 20px;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .relatedExams .joinExamPreparation{
+            display: none;
+            width: 130px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            box-sizing: border-box;
+            border: 1px #4fa0ff solid;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: yuan_ti2;
+            background-color: whitesmoke;
+            position: absolute;
+            bottom: 20px;
+            right: 50%;
+            transform: translateX(65px);
+        }
+        .relatedExams:hover .joinExamPreparation{
+            display: block;
+        }
+
+        .recommended_video{
+            padding: 0;
+        }
+
+        .testCenter{
+            border-top: 1px solid #4fa0ff;
+        }
+        .testCenter .title{
+            border-top: 1px solid #4fa0ff;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 60px;
+        }
+        .testCenter .title div{
+            opacity: 0;
+            transition: 0.5s;
+            position: absolute;
+            box-sizing: content-box;
+            width: 60px;
+            padding: 0 10px;
+            height: 100%;
+            line-height: 100%;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, #4fa0ff00,#4fa0ffff,#4fa0ffff,#4fa0ffff);
+        }
+        .testCenter .title:hover div{
+            opacity: 1;
+        }
+        .testCenter .title div span{
+            width: 100%;
+            line-height: 20px;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            font-family: yuan_ti2;
+            transform: translate(-10px,-10px);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/userTarget.css">
+
+</head>
+<script src="../Js/bootstrap.bundle.min.js"></script>
+<script src="../Js/jquery-3.5.1.min.js"></script>
+<body style="overflow-x: hidden;background-color: #f1f1f1">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                    <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                     </a>
+                     <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                         <li><a class="dropdown-item" href="#">New project...</a></li>
+                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                         <li><a class="dropdown-item" href="#">Profile</a></li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="#">Sign out</a></li>
+                     </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <div id="asset" style="position: absolute;left: 8px;top: 8px">
+                        <img src="../image/asset.gif" style="width: 15px;height: 15px" alt="">
+                        <span style="font-weight: bold;color: gold;line-height: 15px">123</span>
+                    </div>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-sm" style="margin-top: 10px">
+    <div>
+        <!--左边范围-->
+        <div style="width: 76%;float: left;box-sizing: border-box;padding: 0">
+            <!--题目搜索结果块-->
+            <div class="section" style="border-radius: 15px;padding: 15px">
+                <div id="nav" style="width: 70%;min-width: 400px">
+                    <form id="file-form" target="target_frame" action="/readFileServlet.Servlet" method="post" enctype="multipart/form-data">
+                        <input id="file" type="file" name="file" style="display: none">
+                        <iframe name="target_frame" style="display:none"></iframe>
+                    </form>
+                    <form action="#"  >
+                        <div class="row">
+                            <div class="col-md-9 d-flex align-items-center form-group">
+                                <input id="text" class="form-control shadow-0 input-form" type="text" name="text"
+                                       placeholder="有问题  就会有答案">
+                            </div>
+                            <div id="select-file" style="cursor: pointer" class="col-md-1 align-items-center">
+                                <i class="bi bi-camera" style="font-size: 2rem; color: darkgray;"></i>
+                            </div>
+                            <div class="col-md-2 d-grid">
+                                <button id="submit" class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row type_row">
+                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-1 type check_type">题目</div>
+                    <div class="col-sm- col-md-4 col-lg-4 col-xl-2 type" id="toTest">相似试卷</div>
+                    <div class="col-sm-3 col-md-2 col-lg-2 col-xl-1 type" style="display: none">课程</div>
+                    <script>
+                        $("#toTest").click(function (){
+                            window.open("testResultPage.html?text="+paramters.text,"_self")
+                        })
+                    </script>
+                </div>
+                <div id="topic" style="padding-bottom: 5px">
+                    <div id="topicList" style="height: 30px">
+                        <div class="topic_no check_topic_no">1</div>
+                        <div class="topic_no">2</div>
+                        <div class="topic_no">3</div>
+                        <div class="topic_no">4</div>
+                    </div>
+
+                    <div id="topicTitle">
+                        设常数`\lambda \gt 0`, 且 `\sum_{n=1}^{\infty} a_n^2` 收敛,  则`\sum_{n=1}^{\infty} (-1)^ {n}\frac {|a_ {n}|}{\sqrt {n^2+\lambda}}`()。
+                    </div>
+
+                    <div id="topicOptions">
+                        <p class="options">A、`f(x)+f(x)`必为某一随机变量的概率密度</p>
+                        <p class="options">B、`f_ {1}(x)f_ {2}(x)`必为某一随机变量的概率密度</p>
+                        <p class="options">C、`F_ {1}(x)+F_ {2}(x)`必为某一随机变量的分布函数</p>
+                        <p class="options">D、`F_ {1}(x)F_ {2}(x)`必为某一随机变量的分布函数</p>
+                    </div>
+
+                    <div id="control_list">
+                        <div id="difficulty" class="msg-ctl">难度</div>
+                        <div id="correctRate" class="msg-ctl">正确率</div>
+                        <div id="viewAnswer" class="msg-ctl"><i class='bi bi-eye'></i>查看答案</div>
+                        <div id="quiz" class="msg-ctl">去提问</div>
+                    </div>
+                    <div id="answer" style="display: none;width: 100%">
+                        <div class="row"><div class="col-sm-1 answer">答案：</div><div id="answer_main" class="col-sm-10">A</div></div>
+                        <div class="row"><div class="col-sm-1 answer">解释：</div><div id="explain_main" class="col-sm-10">人生没有解释</div></div>
+                    </div>
+                </div>
+            </div>
+            <!--题目相关视频块   隐藏了-->
+            <div class="section" style="border-radius: 10px;padding: 10px;display: none">
+                <div style="padding-left: 10px;font-size: 18px;font-family: yuan_ti2;border-bottom: 1px solid #4fa0ff;">讲解视频</div>
+                <div class="row" style="width: 100%;margin: 0;border-top: 2px solid #4fa0ff;">
+                    <div class="col-lg-3 col-md-4 col-sm-6 recommended_video">
+                        <div class="video_type_1">
+                            <div class="video_msg">
+                                <img class="video_msg_img" src="../image/video.jpg" alt="">
+                                <div class="video_msg_data">
+                                    <div class="video_msg_play"><i class="bi bi-play-btn"></i><span>1.5万</span></div>
+                                    <div class="video_msg_like"><i class="bi bi-hand-thumbs-up"></i><span>953</span></div>
+                                    <div class="video_msg_long"><span>03:20</span></div>
+                                </div>
+                            </div>
+                            <div class="video_up_msg">
+                                <div class="video_up_title">【原创】张晓涵《平平仄仄》全网上新！(热乎儿的歌词PV来啦~</div>
+                                <div class="video_up_blogger"><span>周云诩</span><span style="font-weight: bolder">&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span>13-14</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 recommended_video">
+                        <div class="video_type_1">
+                            <div class="video_msg">
+                                <img class="video_msg_img" src="../image/video.jpg" alt="">
+                                <div class="video_msg_data">
+                                    <div class="video_msg_play"><i class="bi bi-play-btn"></i><span>1.5万</span></div>
+                                    <div class="video_msg_like"><i class="bi bi-hand-thumbs-up"></i><span>953</span></div>
+                                    <div class="video_msg_long"><span>03:20</span></div>
+                                </div>
+                            </div>
+                            <div class="video_up_msg">
+                                <div class="video_up_title">【原创】张晓涵《平平仄仄》全网上新！(热乎儿的歌词PV来啦~</div>
+                                <div class="video_up_blogger"><span>周云诩</span><span style="font-weight: bolder">&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span>13-14</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-none d-md-block recommended_video">
+                        <div class="video_type_1">
+                            <div class="video_msg">
+                                <img class="video_msg_img" src="../image/video.jpg" alt="">
+                                <div class="video_msg_data">
+                                    <div class="video_msg_play"><i class="bi bi-play-btn"></i><span>1.5万</span></div>
+                                    <div class="video_msg_like"><i class="bi bi-hand-thumbs-up"></i><span>953</span></div>
+                                    <div class="video_msg_long"><span>03:20</span></div>
+                                </div>
+                            </div>
+                            <div class="video_up_msg">
+                                <div class="video_up_title">【原创】张晓涵《平平仄仄》全网上新！(热乎儿的歌词PV来啦~</div>
+                                <div class="video_up_blogger"><span>周云诩</span><span style="font-weight: bolder">&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span>13-14</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 d-none d-lg-block recommended_video">
+                        <div class="video_type_1">
+                            <div class="video_msg">
+                                <img class="video_msg_img" src="../image/video.jpg" alt="">
+                                <div class="video_msg_data">
+                                    <div class="video_msg_play"><i class="bi bi-play-btn"></i><span>1.5万</span></div>
+                                    <div class="video_msg_like"><i class="bi bi-hand-thumbs-up"></i><span>953</span></div>
+                                    <div class="video_msg_long"><span>03:20</span></div>
+                                </div>
+                            </div>
+                            <div class="video_up_msg">
+                                <div class="video_up_title">【原创】张晓涵《平平仄仄》全网上新！(热乎儿的歌词PV来啦~</div>
+                                <div class="video_up_blogger"><span>周云诩</span><span style="font-weight: bolder">&nbsp;&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;&nbsp;</span><span>13-14</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--题目考点相同题目-->
+            <div class="section" id="testCentermain" style="border-radius: 10px;padding: 10px">
+                <div style="padding-left: 10px;font-size: 18px;font-family: yuan_ti2;border-bottom: 1px solid #4fa0ff;">相似考点题目</div>
+                <div class="testCenter" id="testCenters">
+                    <div class="title" style="display: none">
+                        设常数`\lambda \gt 0`, 且 `\sum_{n=1}^{\infty} a_n^2` 收敛,  则`\sum_{n=1}^{\infty} (-1)^ {n}\frac {|a_ {n}|}{\sqrt {n^2+\lambda}}`()。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右边范围-->
+        <div style="width: 23%;float: right;">
+            <div class="section">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">最新试卷</div>
+                <div id="testPaperRecommendations">
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多维随机变量及其分布</div>
+                    <div class="recommended_test">2022考研《数学二》章节习题：线性代数</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：向量代数和空间解析几何</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多元函数微积分学</div>
+                    <div class="recommended_test">2022年考研《数学一》考点习题：多维随机变量及其分布</div>
+                </div>
+            </div>
+
+            <div class="section" style="display: none">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">题库刷题</div>
+                <div id="questionBanks" style="width: 100%;padding-top: 3px">
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高题集</div>
+                    <div class="questionBank">高等题集</div>
+                    <div class="questionBank">高等数学集</div>
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高等数题集</div>
+                    <div class="questionBank">高等数学题集</div>
+                    <div class="questionBank">高等数学线代题集</div>
+                </div>
+            </div>
+
+            <div class="section" style="display: none">
+                <div style="width: 100%;border-bottom: 1px solid #4fa0ff;font-family: yuan_ti2;font-size: 18px;line-height: 30px">相关考试</div>
+                <div style="width: 100%;padding-top: 3px">
+                    <div class="relatedExams">
+                        <div class="examName">全国硕士研究生统一招生考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">全国大学英语四、六级考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">计算机技术与软件专业技术资格(水平)考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">教师从业资格证书考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                    <div class="relatedExams">
+                        <div class="examName">公务员考试</div>
+                        <div class="joinExamPreparation">加入备考计划</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <img src="Img/homePage.svg" alt="" width="270"style="margin-top: 40px">
+        </div>
+    </div>
+</div>-->
+
+<script>
+    var flickerNo = 0
+    var flickerNoRun = ""
+    var flickerPwd = 0
+    var flickerPwdRun = ""
+    var keep = 0
+    var submit = $("#submit_login")
+
+
+
+</script>
+<script src="../Js/topicResultPage.js"></script>
+<script src="../Js/topic-get-show-control.js"></script>
+<script>
+
+    var user;  // 存储用户的基本信息
+    var result_topic_list = []; // 存储搜索结果
+    var topic_no; // 代表当前的
+    var test_recommendation_list = [] // 存储推荐试卷结果
+    var topic_recommendation_list = [] // 存储推荐的题目结果
+
+    getTopic()
+
+
+    setTimeout(function (){
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    },1000)
+    $("#quiz").click(function (){
+        if(user===undefined){
+            alert("请先登录")
+            return
+        }
+        window.open("uploadNoTopicPage.html")
+    })
+</script>
+
+<script src="../Js/homePage-searchFile.js"></script>
+</body>
+</html>

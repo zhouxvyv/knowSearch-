@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZHIFOU Background</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/echarts.min.js"></script>
+    <script src="../Js/echarts-wordcloud.js"></script>
+
+</head>
+<body>
+<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03152a;max-height: 50px;padding: 4px 0">
+        <div class="container-fluid">
+            <a href="../../index3/html/home.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZHIFOUBlackSeries.png" alt="zhifou" height="45px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid user-main" style="padding-left: 0px">
+    <div class="wrapper">
+        <div class="leftside-menu leftside-menu-detached show bg-white" style="width: 190px;height: 90%">
+            <div class="leftbar-user" style="height: 50px">
+
+
+            </div>
+            <li class="side-nav-item menuitem-active side-top pt-2 pb-2"
+                style="float: left;width: 100%;margin-left: 20px">
+                <i class="fa fa-bar-chart" aria-hidden="true" style="color: #428bca;margin-right: 10px"></i>
+                <a href="BackgroundData.html">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #428bca"> <strong>数据面板 </strong>
+                        <i class="fa fa-angle-right" style="font-weight: 1000" aria-hidden="true"></i></span>
+                </a>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #6C757D;margin-right: 10px"></i>
+                <a data-bs-toggle="collapse" href="https://coderthemes.com/hyper/modern/index.html#sidebarDashboards"
+                   aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #6C757D"> 题单数据</span>
+                </a>
+                <div class="collapse" id="sidebarDashboards" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertQues.html" style="color: #6C757D">新增题目</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundQueManage.html" class="active" style="color: #6C757D">题目管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #6C757D;margin-right: 10px;"></i>
+                <a data-bs-toggle="collapse" href="#sidebarDashboards2"
+                   aria-expanded="false" aria-controls="sidebarDashboards2" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span  style="color: #6C757D">试卷数据&nbsp;&nbsp;</span>
+                </a>
+                <div class="collapse" id="sidebarDashboards2" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertPaper.html" style="color: #6C757D">新增试卷</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundPaperManage.html" class="active" style="color: #6C757D">试卷管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+
+        </div>
+        <div class="content-page" style="padding-left: 0">
+            <div class="content">
+                <div class="row" style="padding-top: 65px">
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="row" style="margin-bottom: 0px">
+                            <div class="col-sm-6">
+                                <div class="card widget-flat" style="margin-bottom: 15px">
+                                    <div style="padding: 10px 20px 0px 20px">
+                                        <span style="font-size: 20px;color: #6C757D">总访问量</span>
+                                        <br>
+                                        <span style="font-weight: bolder;color: #1a1e21;font-size: 30px">4070</span>
+                                    </div>
+                                    <div class="" id="chartDis1" style="width: 100%;height: 100%; padding: 0 0">
+
+                                    </div> <!-- end card-body-->
+                                    <script>
+                                        var chart = echarts.init(document.getElementById('chartDis1'));
+                                        var option = {
+                                            triggerOn: 'mousemove',
+                                            enterable: true,
+
+                                            xAxis: {
+                                                type: 'category',
+                                                boundaryGap: false,
+                                                data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13'],
+                                                show: false,
+                                            },
+                                            yAxis: {
+                                                type: 'value',
+                                                show: false,
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    label: {
+                                                        backgroundColor: '#996ce8'
+                                                    }
+                                                }
+                                            },
+                                            areaStyle: {
+                                                color: {
+                                                    type: 'linear',
+                                                    x: 0,
+                                                    y: 0,
+                                                    x2: 0,
+                                                    y2: 1,
+                                                    colorStops: [
+                                                        {
+                                                            offset: 0,
+                                                            color: '#996ce8' // 0% 处的颜色
+                                                        },
+                                                        {
+                                                            offset: 1,
+                                                            color: '#fff' // 100% 处的颜色
+                                                        }
+                                                    ],
+                                                    global: false
+                                                }
+                                            },
+                                            grid:{
+                                                top:"0px",
+                                                left:"20px",
+                                                right:"20px",
+                                                bottom:"0px"
+                                            },
+                                            series: [
+                                                {
+                                                    data: [820, 232, 901, 434, 1290, 900, 820,699,200,900,123,500,800],
+                                                    type: 'line',
+                                                    smooth: true,
+                                                    areaStyle: {},
+                                                    symbol: 'none',
+                                                }
+                                            ]
+                                        };
+
+                                        chart.setOption(option);
+                                        window.onresize = chart.resize;
+                                    </script>
+                                    <div style="margin: 10px 15px 0 20px;;border-top: 1px solid #eceaea">
+
+                                    </div>
+                                    <span style=";padding-top: 10px;padding-left: 20px;padding-bottom: 10px;font-size: 16px;color: #6C757D">
+                                                月访问量&nbsp;&nbsp;&nbsp;439
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card widget-flat" style="margin-bottom: 15px">
+                                    <div style="padding: 10px 20px 0px 20px">
+                                        <span style="font-size: 20px;color: #6C757D">总搜索量</span>
+                                        <br>
+                                        <span style="font-weight: bolder;color: #1a1e21;font-size: 30px">1010</span>
+                                    </div>
+                                    <div class="" id="chartDis2" style="width: 100%;height: 100%; padding: 0 0">
+
+                                    </div> <!-- end card-body-->
+                                    <script>
+                                        var chart = echarts.init(document.getElementById('chartDis2'));
+                                        var option = {
+                                            triggerOn: 'mousemove',
+                                            enterable: true,
+
+                                            xAxis: {
+                                                type: 'category',
+                                                boundaryGap: false,
+                                                data: ['1', '2', '3', '4', '5', '6', '7','8','9','10','11','12'],
+                                                show: false,
+                                            },
+                                            yAxis: {
+                                                type: 'value',
+                                                show: false,
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis',
+                                                axisPointer: {
+                                                    label: {
+                                                        backgroundColor: '#996ce8'
+                                                    }
+                                                }
+                                            },
+                                            areaStyle: {
+                                                color: {
+                                                    type: 'linear',
+                                                    x: 0,
+                                                    y: 0,
+                                                    x2: 0,
+                                                    y2: 1,
+                                                    colorStops: [
+                                                        {
+                                                            offset: 0,
+                                                            color: '#996ce8' // 0% 处的颜色
+                                                        },
+                                                        {
+                                                            offset: 1,
+                                                            color: '#fff' // 100% 处的颜色
+                                                        }
+                                                    ],
+                                                    global: false
+                                                }
+                                            },
+                                            grid:{
+                                                top:"0px",
+                                                left:"40px",
+                                                right:"40px",
+                                                bottom:"0px"
+                                            },
+                                            series: [
+                                                {
+                                                    data: [82, 23, 90, 43, 129, 90, 82,69,20,90,12,50],
+                                                    type: 'bar',
+                                                    smooth: true,
+                                                    areaStyle: {},
+                                                    symbol: 'none',
+                                                }
+                                            ]
+                                        };
+
+                                        chart.setOption(option);
+                                        window.onresize = chart.resize;
+                                    </script>
+                                    <div style="margin: 10px 15px 0 20px;;border-top: 1px solid #eceaea">
+
+                                    </div>
+                                    <span style=";padding-top: 10px;padding-left: 20px;padding-bottom: 10px;font-size: 16px;color: #6C757D">
+                                                月搜索量&nbsp;&nbsp;&nbsp;139
+                                            </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- end col -->
+
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="col-sm-12">
+                            <div class="card widget-flat" style="margin-bottom: 15px">
+                                <div style="padding: 10px 20px 0px 20px">
+                                    <span style="font-size: 20px;color: #6C757D">总用户</span>
+                                    <br>
+                                    <span style="font-weight: bolder;color: #1a1e21;font-size: 30px">97</span>
+                                </div>
+                                <div class="" id="chartDis3" style="width: 100%;height: 100%; padding: 0 0">
+
+                                </div> <!-- end card-body-->
+                                <script>
+                                    var chart = echarts.init(document.getElementById('chartDis3'));
+                                    var option = {
+                                        triggerOn: 'mousemove',
+                                        enterable: true,
+                                        color:'rgb(255, 70, 131)',
+                                        xAxis: {
+                                            type: 'category',
+                                            boundaryGap: false,
+                                            data: ['1', '2', '3', '4', '5', '6', '7','8','9','10'],
+                                            show: false,
+                                        },
+                                        yAxis: {
+                                            type: 'value',
+                                            show: false,
+                                        },
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                label: {
+                                                    backgroundColor: 'rgb(255, 70, 131)'
+                                                }
+                                            }
+                                        },
+                                        areaStyle: {
+                                            color: {
+                                                type: 'linear',
+                                                x: 0,
+                                                y: 0,
+                                                x2: 0,
+                                                y2: 1,
+                                                itemStyle: {
+                                                    color: 'rgb(255, 70, 131)'
+                                                },
+                                                colorStops: [
+                                                    {
+                                                        offset: 0,
+                                                        color: 'rgb(255, 158, 68)' // 0% 处的颜色
+                                                    },
+                                                    {
+                                                        offset: 1,
+                                                        color: 'rgb(255, 70, 131)' // 100% 处的颜色
+                                                    }
+                                                ],
+                                                global: false
+                                            }
+                                        },
+                                        grid:{
+                                            top:"0px",
+                                            left:"20px",
+                                            right:"20px",
+                                            bottom:"0px"
+                                        },
+                                        series: [
+                                            {
+                                                data: [10, 22, 31, 44, 50, 61, 70,89,90,97],
+                                                type: 'line',
+                                                smooth: true,
+                                                areaStyle: {},
+                                                symbol: 'none',
+                                            }
+                                        ]
+                                    };
+                                    chart.setOption(option);
+                                    window.onresize = chart.resize;
+                                </script>
+                                <div style="margin: 10px 15px 0 20px;;border-top: 1px solid #eceaea">
+
+                                </div>
+                                <span style=";padding-top: 10px;padding-left: 20px;padding-bottom: 10px;font-size: 16px;color: #6C757D">
+                                                月增用户&nbsp;&nbsp;&nbsp;19
+                                            </span>
+                            </div>
+                        </div>
+
+                    </div> <!-- end col -->
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="header-title" style="color: #6C757D;">线上热门搜索</h5>
+                                    </div>
+                                    <div style="border-bottom: 1px solid #eceaea"></div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="card widget-flat" style="margin-bottom: 15px">
+                                                <div style="padding: 10px 20px 0px 20px">
+                                                    <span style="font-size: 12px;color: #6C757D">每日一练进行次数</span>
+                                                    <br>
+                                                    <span style="font-weight: bolder;color: #1a1e21;font-size: 20px">473</span>
+                                                </div>
+                                                <div class="" id="chartDis4" style="width: 100%;height: 100%; padding: 0 0">
+
+                                                </div> <!-- end card-body-->
+                                                <script>
+                                                    var chart = echarts.init(document.getElementById('chartDis4'));
+                                                    var option = {
+                                                        triggerOn: 'mousemove',
+                                                        enterable: true,
+
+                                                        xAxis: {
+                                                            type: 'category',
+                                                            boundaryGap: false,
+                                                            data: ['1', '2', '3', '4', '5', '6'],
+                                                            show: false,
+                                                        },
+                                                        yAxis: {
+                                                            type: 'value',
+                                                            show: false,
+                                                        },
+                                                        tooltip: {
+                                                            trigger: 'axis',
+                                                            axisPointer: {
+                                                                label: {
+                                                                    backgroundColor: '#996ce8'
+                                                                }
+                                                            }
+                                                        },
+                                                        areaStyle: {
+                                                            color: {
+                                                                type: 'linear',
+                                                                x: 0,
+                                                                y: 0,
+                                                                x2: 0,
+                                                                y2: 1,
+                                                                colorStops: [
+                                                                    {
+                                                                        offset: 0,
+                                                                        color: '#f1f5ff' // 0% 处的颜色
+                                                                    },
+                                                                    {
+                                                                        offset: 1,
+                                                                        color: '#fff' // 100% 处的颜色
+                                                                    }
+                                                                ],
+                                                                global: false
+                                                            }
+                                                        },
+                                                        grid:{
+                                                            top:"0px",
+                                                            left:"20px",
+                                                            right:"20px",
+                                                            bottom:"0px"
+                                                        },
+                                                        series: [
+                                                            {
+                                                                data: [20,30,25,40,23,50,80],
+                                                                type: 'line',
+                                                                smooth: true,
+                                                                areaStyle: {},
+                                                                symbol: 'none',
+                                                            }
+                                                        ]
+                                                    };
+
+                                                    chart.setOption(option);
+                                                    window.onresize = chart.resize;
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="card widget-flat" style="margin-bottom: 15px">
+                                                <div style="padding: 10px 20px 0px 20px">
+                                                    <span style="font-size: 12px;color: #6C757D">每日一练平均完成率（%）</span>
+                                                    <br>
+                                                    <span style="font-weight: bolder;color: #1a1e21;font-size: 20px">45</span>
+                                                </div>
+                                                <div class="" id="chartDis5" style="width: 100%;height: 100%; padding: 0 0">
+
+                                                </div> <!-- end card-body-->
+                                                <script>
+                                                    var chart = echarts.init(document.getElementById('chartDis5'));
+                                                    var option = {
+                                                        triggerOn: 'mousemove',
+                                                        enterable: true,
+
+                                                        xAxis: {
+                                                            type: 'category',
+                                                            boundaryGap: false,
+                                                            data: ['1', '2', '3', '4', '5', '6'],
+                                                            show: false,
+                                                        },
+                                                        yAxis: {
+                                                            type: 'value',
+                                                            show: false,
+                                                        },
+                                                        tooltip: {
+                                                            trigger: 'axis',
+                                                            axisPointer: {
+                                                                label: {
+                                                                    backgroundColor: '#996ce8'
+                                                                }
+                                                            }
+                                                        },
+                                                        areaStyle: {
+                                                            color: {
+                                                                type: 'linear',
+                                                                x: 0,
+                                                                y: 0,
+                                                                x2: 0,
+                                                                y2: 1,
+                                                                colorStops: [
+                                                                    {
+                                                                        offset: 0,
+                                                                        color: '#f1f5ff' // 0% 处的颜色
+                                                                    },
+                                                                    {
+                                                                        offset: 1,
+                                                                        color: '#fff' // 100% 处的颜色
+                                                                    }
+                                                                ],
+                                                                global: false
+                                                            }
+                                                        },
+                                                        grid:{
+                                                            top:"0px",
+                                                            left:"20px",
+                                                            right:"20px",
+                                                            bottom:"0px"
+                                                        },
+                                                        series: [
+                                                            {
+                                                                data: [50, 32, 61, 34, 80, 90],
+                                                                type: 'line',
+                                                                smooth: true,
+                                                                areaStyle: {},
+                                                                symbol: 'none',
+                                                            }
+                                                        ]
+                                                    };
+
+                                                    chart.setOption(option);
+                                                    window.onresize = chart.resize;
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="" style="margin: 15px 20px">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>排名</th>
+                                                <th>搜索关键词</th>
+                                                <th>搜索数</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>定积分</td>
+                                                <td>1021</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>微分方程</td>
+                                                <td>618</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>反函数</td>
+                                                <td>438</td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>极限</td>
+                                                <td>405</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="card card-h-100">
+                                <div class="card-body" style="padding: 24px;height: 100%">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h5 class="header-title" style="color:#6C757D;">热门搜索</h5>
+                                    </div>
+                                    <div id="main" class="chart-wrapper" style="width: 100%;height: 400px">
+
+                                    </div>
+                                    <script>
+                                        var chart = echarts.init(document.getElementById('main'));
+
+                                        var option = {
+                                            tooltip: {},
+                                            grid:{
+                                                top:"0px",
+                                                left:"20px",
+                                                right:"20px",
+                                                bottom:"0px"
+                                            },
+                                            series: [{
+                                                type: 'wordCloud',
+                                                gridSize: 25,
+                                                sizeRange: [12, 80],
+                                                rotationRange: [0 , 0],
+                                                shape: '',
+                                                width: '100%',
+                                                height: '100%',
+                                                drawOutOfBound: true,
+                                                textStyle: {
+                                                    color: function () {
+                                                        return 'rgb(' + [
+                                                            Math.round(Math.random() * 160),
+                                                            Math.round(Math.random() * 160),
+                                                            Math.round(Math.random() * 160)
+                                                        ].join(',') + ')';
+                                                    }
+                                                },
+                                                emphasis: {
+                                                    textStyle: {
+                                                        shadowBlur: 10,
+                                                        shadowColor: '#333'
+                                                    }
+                                                },
+                                                data: [
+                                                    {
+                                                        name: '定积分',
+                                                        value: 1021,
+                                                        textStyle: {
+                                                            color: 'black'
+                                                        },
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '微分方程',
+                                                        value: 618,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '反函数',
+                                                        value: 438,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '极限',
+                                                        value: 405,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '导数',
+                                                        value: 246,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '空间几何',
+                                                        value: 224,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '微积分',
+                                                        value: 189,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '函数',
+                                                        value: 148,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '矩阵',
+                                                        value: 111,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '向量',
+                                                        value: 96,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '幂级数',
+                                                        value: 84,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '无穷级数',
+                                                        value: 58,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '多元函数',
+                                                        value: 55,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '一元函数',
+                                                        value: 55,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '代数',
+                                                        value: 46,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '傅里叶级数',
+                                                        value: 36,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '函数积分',
+                                                        value: 36,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '一元函数',
+                                                        value: 28,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '多元函数',
+                                                        value: 27,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        name: '平面向量',
+                                                        value: 26,
+                                                        emphasis: {
+                                                            textStyle: {
+                                                                color: 'red'
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            }]
+                                        };
+
+                                        chart.setOption(option);
+
+                                        window.onresize = chart.resize;
+                                    </script>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div>
+                    </div>
+
+                </div> <!-- end col-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

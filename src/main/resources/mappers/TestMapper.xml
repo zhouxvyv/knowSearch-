@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.TestMapper">
+    <sql id="userChoose">
+        <where>
+            <choose>
+                <when test="userId!= null and userId != ''">
+                    and user_id=#{userId}
+                </when>
+                <otherwise>
+                    and userId==null
+                </otherwise>
+            </choose>
+        </where>
+
+    </sql>
+    <sql id="allId">
+        <where>
+            and test_id=#{testId} and user_id=#{userId}
+        </where>
+    </sql>
+
+    <select id="getPageTest" resultType="test" >
+        select a.test_id,a.test_name,a.subject_id,a.upload_time,a.source_url,c.subject_name,count(b.exam_id) count,avg(grade) avg_grade,a.like_count
+                from testtable a left join exam b on a.test_id=b.test_id,subjecttable c
+                where (a.test_name regexp #{testName} or c.subject_name like #{testName}) and a.subject_id = c.subject_id
+                group by a.test_id,a.test_name,a.subject_id
+                limit #{pageIndex},#{pageSize}
+    </select>
+    <select id="getTestNameLikeText" parameterType="String" resultType="test" >
+        select a.test_id,a.test_name,a.subject_id,a.upload_time,a.source_url,c.subject_name,count(b.exam_id) count,avg(grade) avg_grade,a.like_count
+                from testtable a left join exam b on a.test_id=b.test_id,subjecttable c
+                where (a.test_name regexp #{testName} or c.subject_name regexp #{testName}) and a.subject_id = c.subject_id
+                group by a.test_id,a.test_name,a.subject_id
+    </select>
+    <select id="getTestNameLikeTextOrHasTopic" parameterType="map" resultMap="testWithTopic">
+        select  a.test_id,a.test_name,a.subject_id,a.upload_time,a.source_url,a.like_count,d.topic_order_number,d.topic_id
+        from testtable a left join (
+        select * from testtopicpaper
+        where topic_id in
+              <foreach collection="topicIdList" item="item" index="topic" open="(" separator="," close=")">
+                    #{item.topicId}
+                </foreach>) d on a.test_id = d.test_id
+        where d.topic_id!=0 or test_name regexp #{text}
+        group by test_id,test_name,subject_id
+    </select>
+    <select id="getLikeTest" parameterType="int" resultType="test" >
+        select * from test_collection
+        <include refid="userChoose"></include>
+    </select>
+    <resultMap id="testWithTopic" type="test">
+        <id column="test_id" property="testId"></id>
+        <result column="test_name" property="testName"></result>
+        <result column="subject_id" property="subjectId"></result>
+        <result column="upload_time" property="uploadTime"></result>
+        <result column="topic_order_number" property="topicNo"></result>
+        <result column="topic_id" property="topicId"></result>
+    </resultMap>
+    <select id="getTestByTopicAndMessage" parameterType="list" resultType="test" >
+        select  a.test_id,a.test_name,a.subject_id,a.upload_time,a.source_url,a.like_count,d.topic_order_num,d.topic_id
+        from testtable a,testtopicpaper d
+        where a.test_id = d.test_id and d.topic_id in
+        <foreach collection="topicIdList" index="topic" open="(" separator="," close=")">
+            #{topicId}
+        </foreach>
+        order by a.test_id,a.test_name,a.subject_id
+    </select>
+    <select id="getTestByTopic" parameterType="list" resultType="test" >
+        select  test_id,test_name,subject_id,upload_time,source_url,like_count
+        from testtable
+        where test_id in
+        (select test_id from testtopicpaper
+          where topic_id in
+        <foreach collection="topicIdList" item="item" index="topic" open="(" separator="," close=")">
+            #{item.topicId}
+        </foreach>
+        )
+    </select>
+    <insert id="addLikeTest">
+        insert into test_collection (user_id,test_id,time) values(#{userId},#{testId},#{time})
+    </insert>
+    <select id="select" resultType="boolean">
+        select * from test_collection
+        <include refid="allId"></include>
+    </select>
+    <delete id="deleteLikeTest">
+        delete from test_collection
+        <include refid="allId"></include>
+    </delete>
+
+
+    <insert id="insertOnePaper" parameterType="map">
+        insert into testtable(test_name,subject_id,upload_time,source_url,like_count) values(#{paperName},1,#{uploadTime},'www.ZhiFou.com',0)
+    </insert>
+
+    <select id="selectByNameAndDate" parameterType="map" resultType="String">
+        select test_id from testtable
+        where test_name=#{paperName} and  upload_time=#{uploadTime}
+    </select>
+
+    <insert id="isnertQueToPaper" parameterType="map">
+        insert into testtopicpaper(test_id,topic_id,topic_order_number,topic_scape) values(#{paperId},#{queId},#{queOrder},1)
+    </insert>
+
+    <select id="selectTest" resultType="test">
+        select * from testtable
+    </select>
+    <select id="getTestTopicList" resultType="topic" parameterType="int">
+        select * from topictable a,testtopicpaper b where a.topic_id=b.topic_id and test_id=#{testId} order by topic_scape,topic_order_number
+    </select>
+
+    <update id="updateTestState" parameterType="map">
+        update testtable set state=#{state} where test_id= #{testId}
+    </update>
+</mapper>

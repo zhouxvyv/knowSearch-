@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>我的数据</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="../Js/bootstrap.min.js"></script>
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/DailyPracticeData.js"></script>
+    <script src="https://chartjs.bootcss.com/docs/gitbook/gitbook-plugin-chartjs/Chart.bundle.js"></script>
+
+    <link rel="stylesheet" href="../css/DailyPracticeCenter.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/calendar2.css">
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-logo" href="#">
+                <img src="../../project/image/loge.gif" style="height: 44px;">
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="../../index3/html/home.html" class="nav-link">首页</a></li>
+                <li class="active"><a href="DailyPracticeToday.html" class="nav-link">每日一练
+                    <span class="sr-only">(current)</span>
+                </a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="logout-status">
+                <a href="#"><img src="../image/avatar_1617068871.png" class="userIcon"
+                                 style="height: 40px;border-radius: 20px;margin-top: 5px;margin-left: 10px"></a>
+                <a href="#" class="nav-link" style="margin-right: 20px ;text-decoration: none">上知否全都懂</a>
+            </ul>
+            <!--<ul class="nav navbar-nav navbar-right" id="login-status">
+                <a href="#" class="nav-link" style="margin-right: 20px ;text-decoration: none">登录</a>
+                <a href="#" class="nav-link" style="margin-right: 20px ;text-decoration: none">注册</a>
+            </ul>-->
+
+            <form class="navbar-form navbar-left" style="margin-top:10px">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="sidebar" style="width: 245px">
+            <div style="height: 265px;padding-bottom: 10px">
+                <div id="ca" class="calendar calendar-d" style="width: 220px; height: 380px;">
+                    <div class="calendar-inner" style="width: 220px;">
+                        <div class="calendar-views">
+                            <div class="view view-date" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-date=""
+                                                            class="calendar-display">2021/<span class="m">11</span></a>
+                                    <div class="calendar-arrow"><span class="prev" title="上一月"
+                                                                      data-calendar-arrow-date="">&lt;</span><span
+                                            class="next"
+                                            title="下一月"
+                                            data-calendar-arrow-date="">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="calendar-ct" style="width: 220px; height: 220px;">
+                                    <ol class="week">
+                                    </ol>
+                                    <ul class="date-items">
+                                        <li style="width: 220px;">
+                                            <ol class="days">
+
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="view view-month" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-month=""
+                                                            class="calendar-display">2021</a>
+                                    <div class="calendar-arrow">
+                                        <span class="prev" title="上一年" data-calendar-arrow-month="">&lt;</span>
+                                        <span class="next" title="下一年" data-calendar-arrow-month="">&gt;</span>
+                                    </div>
+                                </div>
+                                <ol class="calendar-ct month-items" style="width: 220px; height: 220px;">
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">1月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">2月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">3月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">4月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">5月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">6月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">7月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">8月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">9月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">10月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month=""
+                                        class="now">11月
+                                    </li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">12月</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar-label" style="display: none;"><p>HelloWorld</p><i></i></div>
+                </div>
+            </div>
+            <script src="../Js/calendar.js"></script>
+            <script>
+                $('#ca').calendar({
+                    width: 220,
+                    height: 220,
+                    data: [
+                        {
+                            date: '2015/12/24',
+                            value: 'Christmas Eve'
+                        },
+                        {
+                            date: '2015/12/25',
+                            value: 'Merry Christmas'
+                        },
+                        {
+                            date: '2016/01/01',
+                            value: 'Happy New Year'
+                        }
+                    ],
+                    onSelected: function (view, date, data) {
+                        console.log('view:' + view)
+                        alert('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+
+                $('#dd').calendar({
+                    trigger: '#dt',
+                    zIndex: 999,
+                    format: 'yyyy-mm-dd',
+                    onSelected: function (view, date, data) {
+                        console.log('event: onSelected')
+                    },
+                    onClose: function (view, date, data) {
+                        console.log('event: onClose')
+                        console.log('view:' + view)
+                        console.log('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+            </script>
+            <ul class="nav nav-sidebar">
+                <li><a href="DailyPracticeToday.html">开启每日一练<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="DailyPracticeData.html">我的数据</a></li>
+            </ul>
+
+        </div>
+
+
+        <div class="col-sm-9 col-md-10 main" style="margin-left: 245px">
+            <h1 class="page-header" style="letter-spacing: 2px;margin: 0px;color: #6C757D">我的数据</h1>
+            <div class="row">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="row" id="chartTarget1">
+                        <div class="col-sm-6" style="padding: 10px 10px">
+                            <div class="card-body">
+                                <h5 class="text-muted">本月完成练习天数</h5>
+                                <h3 class="text-h3">25<a style="font-size: 14px;color: #6C757D;text-decoration: none">&nbsp;天</a>
+                                </h3>
+                                <p class="test-muted" style="color: rgb(10, 207, 151)">
+                                    <span class="text-info">相比上个月</span>
+                                    <span class="text-false" style="color: rgb(10, 207, 151)">&nbsp;<i
+                                            class="fa fa-arrow-up" aria-hidden="true"
+                                            style="color: rgb(10, 207, 151)"></i>&nbsp;&nbsp;5.27%</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6" style="padding: 10px 10px">
+                            <div class="card-body">
+                                <h5 class="text-muted">累计正确率</h5>
+                                <h3 class="text-h3">50%&nbsp;</h3>
+                                <p class="test-muted">
+                                    <span class="text-info">相比上个月</span>
+                                    <span class="text-false" style="color: rgb(10, 207, 151)">&nbsp;<i
+                                            class="fa fa-arrow-up" aria-hidden="true"
+                                            style="color: rgb(10, 207, 151)"></i>&nbsp;&nbsp;5.27%</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="chartTarget2">
+                        <div class="col-sm-6" style="padding: 10px 10px">
+                            <div class="card-body">
+                                <h5 class="text-muted">今日答题错误数</h5>
+                                <h3 class="text-h3"><a
+                                        style="color:#FA5C7C;text-decoration: none">2&nbsp;</a>/&nbsp;10<a
+                                        style="font-size: 14px;color: #6C757D;text-decoration: none">&nbsp;题</a></h3>
+                                <p class="test-muted">
+                                    <span class="text-info">相比上一次答题</span>
+                                    <span class="text-false" style="color: #FA5C7C">&nbsp;
+                                        <i class="fa fa-arrow-down" aria-hidden="true" style="color:#FA5C7C"></i>&nbsp;&nbsp;5.27%</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6" style="padding: 10px 10px">
+                            <div class="card-body">
+                                <h5 class="text-muted">今日答题正确数</h5>
+                                <h3 class="text-h3"><a style="color:rgb(10, 207, 151);text-decoration: none">8&nbsp;</a>/&nbsp;10<a
+                                        style="font-size: 14px;color: #6C757D;text-decoration: none">&nbsp;题</a></h3>
+                                <p class="test-muted">
+                                    <span class="text-info">相比上一次答题</span>
+                                    <span class="text-false" style="color: rgb(10, 207, 151)">&nbsp;<i
+                                            class="fa fa-arrow-up" aria-hidden="true"
+                                            style="color: rgb(10, 207, 151)"></i>&nbsp;&nbsp;8.32%</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-7 col-lg-6" style="padding: 10px">
+                    <div id="chartTarget3">
+                        <div class="avgChart" style="width:100%;float: left">
+                            <h5 class="text-muted">最近六个月你的答题正确率</h5>
+                            <canvas id="spark6" width="85" height="52"
+                                    style="display: inline-block; padding-top: 40px; vertical-align: top;"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-3" style="max-width: 500px;padding: 10px">
+                    <div style="background-color: #fff;border: 1px solid #EEEEEE;height: 260px; width: 500px;padding: 5px 3px;border-radius: 5px;font-size: 10px">
+                        <div class="widget widget-tile">
+                            <div id="chartTarget4">
+                                <div>
+                                    <h5 class="text-muted" style="padding-left: 20px">最近六个月你的练习次数</h5>
+                                    <div class="chart sparkline"> <!--style="width: 60%"-->
+                                        <canvas id="spark15" width="85" height="35"
+                                                style="display: inline-block; width: 85px; height: 35px; vertical-align: top;"></canvas>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="margin-top:20px;background-color: #fff;border: 1px solid #EEEEEE;height: 260px; width: 500px;padding: 5px 3px;border-radius: 5px;font-size: 10px">
+                        <div class="widget widget-tile">
+                            <h5 class="text-muted" style="padding-left: 20px">最近六个月你最常练习</h5>
+                            <div class="chart sparkline" id="spark3"> <!--style="width: 60%"-->
+                                <canvas id="spark13" width="85" height="35"
+                                        style="display: inline-block; width: 85px; height: 35px; vertical-align: top;"></canvas>
+                            </div>
+                            <script>
+                                const ctx = document.getElementById('spark13');
+                                const spark13 = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ["JAva", "高数", "C语言", "英语", "计算机网络", "数据结构"],
+                                        datasets: [{
+                                            label: '练习次数',
+                                            data: [12, 19, 3, 5, 2, 3],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                                'rgba(153, 102, 255, 1)',
+                                                'rgba(255, 159, 64, 1)'
+                                            ],
+                                            borderWidth: 2
+                                        }]
+                                    },
+                                    options: {
+                                        elements: {
+                                            line: {
+                                                tension: 0.4,
+                                                borderWidth: 3,
+                                            }
+                                        },
+                                        scales: {
+                                            x: {
+                                                grid: {
+                                                    display: false
+                                                }
+                                            },
+                                            y:
+                                                {
+                                                    grid: {
+                                                        display: false
+                                                    }
+                                                }
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-3 col-sm-offset-5"
+                     style="background-color: #fff;border: 1px solid #EEEEEE;height: 540px; width:450px;margin-top: 10px;border-radius: 5px;font-size: 10px; margin-left: 30px">
+                    <h5 class="text-muted"
+                        style="padding: 25px 0px 0px 25px;color:#6C757D;font-weight: bold;letter-spacing: 1px">
+                        你的技能图谱</h5>
+                    <div class="chart sparkline" style="width:120%;float: left;position: relative;right: 15%;top: 10%">
+                        <canvas id="spark4" width="85" height="35"
+                                style="display: inline-block; width: 85px; height: 35px; vertical-align: top;"></canvas>
+                    </div>
+                    <script>
+                        new Chart(document.getElementById("spark4"), {
+                            type: "radar",
+                            data: {
+                                "labels": ["JAva", "C语言", "高数", "英语", "计算机网络", "数据结构"],
+                                "datasets": [{
+                                    "label": "My First Dataset",
+                                    "data": [79, 95, 90, 81, 56, 55],
+                                    "fill": true,
+                                    "backgroundColor": "rgba(255, 99, 132, 0.2)",
+                                    "borderColor": "rgb(255, 99, 132)",
+                                    "pointBackgroundColor": "rgb(255, 99, 132)",
+                                    "pointBorderColor": "#fff",
+                                    "pointHoverBackgroundColor": "#fff",
+                                    "pointHoverBorderColor": "rgb(255, 99, 132)"
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    r: {
+                                        angleLines: {
+                                            display: false
+                                        },
+                                        suggestedMin: 20,
+                                        suggestedMax: 100
+                                    }
+                                },
+                                legend: {
+                                    display: false
+                                },
+                                "elements": {"line": {"tension": 0, "borderWidth": 3}},
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    }
+                                },
+                                layout: {
+                                    padding: {
+                                        left: 60,
+                                        right: 0,
+                                        top: 0,
+                                        bottom: 100
+                                    }
+                                },
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="row card-body">
+                <h2 class="text-muted"
+                    style=";margin-left: 30px;font-size: 25px;color: #6C757D;margin-top: 0px;margin-bottom: 20px;letter-spacing: 1px">
+                    今日错题</h2>
+                <div id="queTarget">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    setTimeout(function (){
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    },1000)
+</script>
+
+</body>
+<script src="../Js/head.js"></script>
+</html>
+
+

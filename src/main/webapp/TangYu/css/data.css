@@ -1,0 +1,113 @@
+body {
+
+    background-color: #f8f8f8;
+}
+header{
+    width: 100%;
+    z-index: 10000;
+    position: fixed;
+}
+.leftbar-user {
+    background:url("https://coderthemes.com/hyper/modern/assets/images/waves.png") no-repeat;
+    padding: 10px 20px;
+    text-align: center;
+}
+.leftbar-user .leftbar-user-name {
+    font-weight: 700;
+    color: #323a46;
+    margin-left: 12px;
+    margin-top: 10px;
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+.content-page {
+    margin-left: 260px;
+    padding-left: 15px;
+    min-height: 100%;
+    z-index: -1;
+}
+body[data-leftbar-compact-mode=condensed]:not(.authentication-bg) .wrapper .content-page {
+    margin-left: 70px
+}
+
+.leftside-menu {
+    position: fixed;
+    width: 260px;
+    z-index: 10;
+    background: var(--ct-bg-leftbar-gradient);
+    top: 0;
+    margin-top: 64px;
+    -webkit-box-shadow: var(--ct-box-shadow);
+    box-shadow: var(--ct-box-shadow)
+}
+body[data-layout=detached] .leftside-menu {
+    position: absolute;
+    min-width: 260px;
+    max-width: 260px;
+    -webkit-box-shadow: var(--ct-box-shadow);
+    box-shadow: var(--ct-box-shadow);
+    margin-top: 30px;
+    padding-top: 0 !important;
+}
+.page-title-box .page-title {
+    font-size: 30px;
+    margin: 0;
+    line-height: 75px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #6c757d;
+    font-weight: 900;
+}
+.card{
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color:#ffffff;
+    background-clip: border-box;
+    border: 1px solid var(--ct-card-border-color);
+    border-radius: 0.25rem;
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.5rem 1.5rem;
+    border: 0px;
+}
+.side-nav-item{
+    padding:5px 0px;
+}
+.side-top{
+    z-index: 100000;
+}
+.side-calender,.calendar{
+    z-index: -1;
+}
+.side-calender{
+    background:url('../image/waves.png') no-repeat;
+}
+span{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/*    font-size: 14px;*/
+    line-height: 1.42857143;
+}
+.side-item{
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #7a8089;
+}
+ol, ul {
+    padding-left: 0.1rem;
+}

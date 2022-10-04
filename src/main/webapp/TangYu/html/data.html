@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>我的练习数据</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/data.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/chart.css">
+    <link rel="stylesheet" href="../css/userTarget.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://chartjs.bootcss.com/dist/Chart.bundle.js"></script>
+    <!--    <link rel="stylesheet" href="CSS/app-modern.min.css">-->
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/dataTmp.js"></script>
+    <script src="../Js/calendarPlus.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                    <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                     </a>
+                     <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                         <li><a class="dropdown-item" href="#">New project...</a></li>
+                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                         <li><a class="dropdown-item" href="#">Profile</a></li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="#">Sign out</a></li>
+                     </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a href=homePage.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a
+                        ></li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+                &lt;!&ndash;<form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>&ndash;&gt;
+            </div>
+        </div>
+    </nav>
+</header>-->
+
+<div class="container-fluid user-main">
+    <div class="wrapper">
+        <div class="leftside-menu leftside-menu-detached show bg-white" style="width: 245px;height: 90%">
+            <!--<div class="leftbar-user">
+                <a href="javascript: void(0);">
+                    <img src="Img/userLogo.png" alt="user-image" height="40" class="rounded-circle shadow-sm">
+                    <span class="leftbar-user-name">Dominic Keller</span>
+                </a>
+            </div>-->
+            <div class="side-calender" style="height: 290px;">
+                <div id="ca" class="calendar calendar-d" style="width: 240px; height: 360px;">
+                    <div class="calendar-inner" style="width: 240px;">
+                        <div class="calendar-views">
+                            <div class="view view-date" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-date=""
+                                                            class="calendar-display">2021/<span class="m">11</span></a>
+                                    <div class="calendar-arrow"><span class="prev" title="上一月"
+                                                                      data-calendar-arrow-date="">&lt;</span><span
+                                            class="next"
+                                            title="下一月"
+                                            data-calendar-arrow-date="">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="calendar-ct" style="width: 220px; height: 240px;">
+                                    <ol class="week" style="margin-bottom: 0px">
+                                    </ol>
+                                    <ul class="date-items" style="margin-bottom: 0px">
+                                        <li style="width: 220px;">
+                                            <ol class="days">
+
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="view view-month" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-month=""
+                                                            class="calendar-display">2021</a>
+                                    <div class="calendar-arrow">
+                                        <span class="prev" title="上一年" data-calendar-arrow-month="">&lt;</span>
+                                        <span class="next" title="下一年" data-calendar-arrow-month="">&gt;</span>
+                                    </div>
+                                </div>
+                                <ol class="calendar-ct month-items" style="width: 220px; height: 220px;">
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">1月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">2月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">3月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">4月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">5月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">6月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">7月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">8月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">9月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">10月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month=""
+                                        class="now">11月
+                                    </li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">12月</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar-label" style="display: none;"><p>HelloWorld</p><i></i></div>
+                </div>
+            </div>
+            <script>
+                $('#ca').calendar({
+                    width: 220,
+                    height: 240,
+                    data: [
+                        {
+                            date: '2015/12/24',
+                            value: 'Christmas Eve'
+                        },
+                        {
+                            date: '2015/12/25',
+                            value: 'Merry Christmas'
+                        },
+                        {
+                            date: '2016/01/01',
+                            value: 'Happy New Year'
+                        }
+                    ],
+                    onSelected: function (view, date, data) {
+                        console.log('view:' + view)
+                        alert('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+
+                $('#dd').calendar({
+                    trigger: '#dt',
+                    zIndex: 999,
+                    format: 'yyyy-mm-dd',
+                    onSelected: function (view, date, data) {
+                        console.log('event: onSelected')
+                    },
+                    onClose: function (view, date, data) {
+                        console.log('event: onClose')
+                        console.log('view:' + view)
+                        console.log('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+            </script>
+            <li class="side-nav-item menuitem-active bg-white side-top"  style="padding-left: 20px">
+                <a data-bs-toggle="collapse" href="https://coderthemes.com/hyper/modern/index.html#sidebarDashboards"
+                   aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #6C757D"> <strong>开启每日一练 </strong></span>
+                </a>
+                <div class="collapse" id="sidebarDashboards" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="DailyPracticeToday.html" style="color: #6C757D">高等数学</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item menuitem-active side-top pt-2 pb-2"  style="padding-left: 20px">
+                <a href="data.html">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #428bca"> <strong>我的练习数据 </strong>
+                        <i class="fa fa-angle-right" style="font-weight: 1000" aria-hidden="true"></i></span>
+                </a>
+            </li>
+
+
+        </div>
+        <div class="content-page">
+            <div class="content">
+                <div class="row" style="padding-top: 55px">
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title">我的数据</h4>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="row" id="chartTarget1">
+                            <div class="col-sm-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                                        </div>
+                                        <h6 class="text-muted" style="color: #6C757D">本月练习天数</h6>
+                                        <h4 class="mt-3 mb-3" style="color: #6C757D"><strong>-</strong><a
+                                                style="font-size: 14px;color: #6C757D;text-decoration: none">&nbsp;天</a>
+                                        </h4>
+                                        <p class="mb-0 text-nowrap">
+                                            <span style="color: #6C757D">相比上个月</span><span
+                                                class="text-false text-nowrap" style="color: rgb(10, 207, 151)">
+                                                <i class="fa fa-minus" aria-hidden="true"
+                                                   style="color: rgb(10, 207, 151)"></i>&nbsp;&nbsp;
+                                            </span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                                        </div>
+                                        <h6 class="text-muted" style="color: #6C757D">累计正确率</h6>
+                                        <h4 class="mt-3 mb-3" style="color: #6C757D"><strong>-</strong><a
+                                                style="font-size: 14px;color: #6C757D;text-decoration: none">&nbsp;%</a>
+                                        </h4>
+                                        <p class="mb-0 text-nowrap">
+                                            <span style="color: #6C757D">相比上个月</span><span
+                                                class="text-false text-nowrap" style="color: rgb(10, 207, 151)">
+                                                <i class="fa fa-minus" aria-hidden="true"
+                                                   style="color: rgb(10, 207, 151)"></i>&nbsp;&nbsp;
+                                            </span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div>
+                        </div>
+
+                        <div class="row" id="chartTarget2">
+                            <div class="col-sm-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                                        </div>
+                                        <h6 class="text-muted" style="color: #6C757D">今日答题错误数</h6>
+                                        <h4 class="mt-3 mb-3" style="color: #6C757D"><strong
+                                                style="color: #FA5C7C">-</strong><a href=""
+                                                                                    style="text-decoration: none;color: #6C757D"><strong>&nbsp;/&nbsp;-</strong></a>
+                                            <a href="" style="text-emphasis: none; color: #6C757D;font-size: 14px">&nbsp;题</a>
+                                        </h4>
+                                        <p class="mb-0 text-nowrap">
+                                            <span style="color: #6C757D">今天还没有完成答题哦</span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                            <div class="col-sm-6">
+                                <div class="card widget-flat">
+                                    <div class="card-body">
+                                        <div class="float-end">
+                                            <i class="mdi mdi-account-multiple widget-icon"></i>
+                                        </div>
+                                        <h6 class="text-muted" style="color: #6C757D">本月练习天数</h6>
+                                        <h4 class="mt-3 mb-3" style="color: #6C757D"><strong
+                                                style="color: rgb(10, 207, 151)">-</strong><a href=""
+                                                                                              style="text-decoration: none;color: #6C757D"><strong>&nbsp;/&nbsp;-</strong></a>
+                                            <a href="" style="text-emphasis: none; color: #6C757D;font-size: 14px">&nbsp;题</a>
+                                        </h4>
+                                        <p class="mb-0 text-nowrap">
+                                            <span style="color: #6C757D">今天还没有完成答题哦</span>
+                                        </p>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col--></div> <!-- end row -->
+
+                    </div> <!-- end col -->
+
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="card card-h-100">
+                            <div class="card-body" style="padding: 24px">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="header-title" style="color:#6C757D;">最近六个月你的练习次数</h5>
+                                </div>
+                                <div class="chart-wrapper" id="chartTarget3">
+                                    <canvas id="chart"></canvas>
+                                    <script>
+                                        var data = {
+                                            labels: ['-', '-', '-', '-', '-', '-'],
+                                            datasets: [{
+                                                label: "练习次数",
+                                                backgroundColor: [
+                                                    'rgba(255, 99, 132, 0.2)',
+                                                    'rgba(54, 162, 235, 0.2)',
+                                                    'rgba(255, 206, 86, 0.2)',
+                                                    'rgba(75, 192, 192, 0.2)',
+                                                    'rgba(153, 102, 255, 0.2)',
+                                                    'rgba(255, 159, 64, 0.2)'
+                                                ],
+                                                borderColor: [
+                                                    'rgba(255, 99, 132, 1)',
+                                                    'rgba(54, 162, 235, 1)',
+                                                    'rgba(255, 206, 86, 1)',
+                                                    'rgba(75, 192, 192, 1)',
+                                                    'rgba(153, 102, 255, 1)',
+                                                    'rgba(255, 159, 64, 1)'
+                                                ],
+                                                borderWidth: 2,
+                                                data: [],
+                                            }]
+                                        };
+
+                                        var options = {
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            layout: {
+                                                padding: {
+                                                    left: 0,
+                                                    right: 0,
+                                                    top: 0,
+                                                    bottom: 0
+                                                }
+                                            },
+                                            scales: {
+                                                xAxes: [{
+                                                    gridLines: {
+                                                        display: false
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    gridLines: {
+                                                        display: false
+                                                    }
+                                                }]
+                                            }
+                                        };
+
+                                        new Chart('chart', {
+                                            type: 'line',
+                                            options: options,
+                                            data: data
+                                        });
+
+                                    </script>
+                                </div>
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+
+                    </div> <!-- end col -->
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="header-title" style="color: #6C757D;">你的综合正确率</h5>
+                                </div>
+
+                                <div dir="ltr">
+                                    <div class="chart-container1" id="chartTarget4">
+                                        <canvas id="chart2" style="height: 300px"></canvas>
+                                        <script>
+                                            new Chart(document.getElementById("chart2"), {
+                                                type: 'line',
+                                                data: {
+                                                    labels: ['-', '-', '-', '-', '-', '-'],
+                                                    datasets: [{
+                                                        label: '正确率（%）',
+                                                        backgroundColor: 'rgb(10, 207, 151,0.3)',
+                                                        borderColor: 'rgb(10, 207, 151,0.3)',
+                                                        data: [
+
+                                                        ],
+                                                        fill: true,
+                                                    }]
+                                                },
+                                                options: {
+                                                    tension: 0.4,
+                                                    scales: {
+                                                        xAxes: [{
+                                                            gridLines: {
+                                                                display: false
+                                                            }
+                                                        }],
+                                                        yAxes: [{
+                                                            gridLines: {
+                                                                display: false
+                                                            }
+                                                        }]
+                                                    },
+                                                    maintainAspectRatio: false,
+                                                }
+                                            });
+                                        </script>
+
+                                    </div>
+                                </div>
+
+                            </div> <!-- end card-body-->
+                        </div> <!-- end card-->
+                    </div> <!-- end col-->
+
+                    <div class="col-lg-4">
+                        <div col-sm-12>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="mb-1 mt-0 fw-normal" style="color: #6C757D;">你的技能图谱</h5>
+                                    <div dir="ltr">
+                                        <div class="chart-container2" id="chartTarget5">
+                                            <canvas id="chart3"></canvas>
+                                            <script>
+                                                var data = {
+                                                    labels: ["Java", "C语言", "高数", "英语", "计算机网络", "数据结构"],
+                                                    datasets: [{
+                                                        label: "Dataset #1",
+                                                        backgroundColor: "#cdb3fd85",
+                                                        borderColor: "#885be4",
+                                                        borderWidth: 2,
+                                                        hoverBackgroundColor: "#cdb3fd85",
+                                                        hoverBorderColor: "#885be4",
+                                                        data: [],
+                                                    }]
+                                                };
+
+                                                var options = {
+                                                    maintainAspectRatio: false,
+
+                                                    scales: {
+                                                        r: {
+                                                            angleLines: {
+                                                                display: false
+                                                            },
+                                                            suggestedMin: 20,
+                                                            suggestedMax: 100
+                                                        }
+                                                    },
+                                                    legend: {
+                                                        display: false
+                                                    },
+                                                    "elements": {"line": {"tension": 0, "borderWidth": 3}},
+                                                    plugins: {
+                                                        legend: {
+                                                            display: false,
+                                                        }
+                                                    },
+                                                    layout: {
+                                                        padding: {
+                                                            left: 0,
+                                                            right: 0,
+                                                            top: 20,
+                                                            bottom: 0,
+                                                        }
+                                                    },
+                                                };
+
+                                                new Chart('chart3', {
+                                                    type: 'radar',
+                                                    options: options,
+                                                    data: data
+                                                });
+
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div>
+
+                    </div> <!-- end col-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../Js/headUser.js"></script>
+</body>
+</html>

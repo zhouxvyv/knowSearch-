@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZHIFOU Background</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/background.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/backgroundQues.css">
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/echarts.min.js"></script>
+    <script src="../Js/echarts-wordcloud.js"></script>
+    <script src="../../kityformula-master/example/editor/ckeditor.js"></script>
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="../Js/backgroundInsertQues.js"></script>
+</head>
+<body>
+<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03152a;max-height: 50px;padding: 4px 0">
+        <div class="container-fluid">
+            <a href="../../index3/html/home.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZHIFOUBlackSeries.png" alt="zhifou" height="45px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid user-main" style="padding-left: 0px">
+    <div class="wrapper">
+        <div class="leftside-menu leftside-menu-detached show bg-white" style="width: 190px;height: 100%">
+            <div class="leftbar-user" style="height: 50px">
+
+
+            </div>
+            <li class="side-nav-item menuitem-active side-top pt-2 pb-2"
+                style="float: left;width: 100%;margin-left: 20px">
+                <i class="fa fa-bar-chart" aria-hidden="true" style="color: #6C757D;margin-right: 10px"></i>
+                <a href="BackgroundData.html">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #6C757D">数据面板
+                        </span>
+                </a>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #428bca;margin-right: 10px;font-weight: bolder"></i>
+                <a data-bs-toggle="collapse" href="#sidebarDashboards"
+                   aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #428bca"><strong>题单数据</strong></span>
+                </a>
+                <div class="collapse show" id="sidebarDashboards" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertQues.html" style="color: #428bca">新增客观题</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundQueManage.html" style="color: #6C757D">题目管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item menuitem-active side-top" style="margin-top: 10px;float: left;margin-left: 20px">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="color: #6C757D;margin-right: 10px;"></i>
+                <a data-bs-toggle="collapse" href="#sidebarDashboards2"
+                   aria-expanded="false" aria-controls="sidebarDashboards2" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span  style="color: #6C757D">试卷数据&nbsp;&nbsp;</span>
+                </a>
+                <div class="collapse" id="sidebarDashboards2" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="BackgroundInsertPaper.html" style="color: #6C757D">新增试卷</a>
+                        </li>
+                        <li class="side-item">
+                            <a href="BackgroundPaperManage.html" class="active" style="color: #6C757D">试卷管理</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+        </div>
+        <div class="content-page" style="padding-left: 0">
+            <div class="content">
+                <div class="quesMain" style="padding-top: 65px">
+                    <div class="card widget-flat" style="margin-bottom: 0">
+                        <div class="row" style="padding-top: 20px;padding-bottom: 20px;width: 1100px;padding-left: 18%">
+                            <div class="col-sm-5">
+                                <div class="row" style="padding-left: 40px">
+                                    <div id="num1" class="number number_cur col-sm-1"
+                                         style="float: left;font-size: 16px;padding-top: 3px;padding-left: 10px">1
+                                    </div>
+                                    <div class="col-sm-5" style="padding-top: 5px">
+                                        <span style="margin-left: 10px;font-size: 16px">输入题目内容</span>
+                                    </div>
+                                    <div class="space col-sm-5" style="margin-top: 15px"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="row" style="padding-left: 20px">
+                                    <div id="num2" class="number col-sm-1"
+                                         style="float: left;font-size: 16px;padding-top: 3px;padding-left: 10px">2
+                                    </div>
+                                    <div class="col-sm-5" style="padding-top: 5px">
+                                        <span style="margin-left: 10px;font-size: 16px">检查输入内容</span>
+                                    </div>
+                                    <div class="space col-sm-5" style="margin-top: 15px"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="padding-left: 0">
+                                <div style="padding-left: 0px">
+                                    <div id="num3" class="number"
+                                         style="float: left;font-size: 16px;padding-top: 3px;padding-left: 2px">3
+                                    </div>
+                                    <div style="padding-top: 5px">
+                                        <span style="margin-left: 10px;font-size: 16px">完成</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="page1" class="card widget-flat" style="margin-bottom: 0;display: block">
+                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
+
+                        <div class="col-sm-8 bg-white" style="margin-left: 17%">
+                            <div style="margin-left: 4%">
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>难度</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio1" value="简单">
+                                        <label class="form-check-label" for="inlineRadio1"
+                                               style="color: #0b894a"><strong>简单</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio2" value="中等" checked>
+                                        <label class="form-check-label" for="inlineRadio2"
+                                               style="color: #f5d814 "><strong>中等</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio3" value="困难">
+                                        <label class="form-check-label" for="inlineRadio3"
+                                               style="color:#e74f5b"><strong>困难</strong></label>
+                                    </div>
+                                </div>
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>学科</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                               id="inlineRadio4" value="1"checked>
+                                        <label class="form-check-label" for="inlineRadio1"
+                                               style="color: #6C757D "><strong>高等数学</strong></label>
+                                    </div>
+                                </div>
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>类型</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio7" value="1">
+                                        <label class="form-check-label" for="inlineRadio8"
+                                               style="color: #6C757D "><strong>填空题</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio8" value="2" checked>
+                                        <label class="form-check-label" for="inlineRadio7"
+                                               style="color: #6C757D"><strong>单选题</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio9" value="3">
+                                        <label class="form-check-label" for="inlineRadio7"
+                                               style="color: #6C757D"><strong>多选题</strong></label>
+                                    </div>
+                                </div>
+                                <div id="choiceAmount" style="padding: 0px 15px 10px 15px;display: block" class="row">
+                                    <label for="amountRange" class="form-label"
+                                           style="color: #6C757D;width: 20%"><strong>选项数量</strong>
+                                        <span id="amountResult" class="badge rounded bg-primary font-10"
+                                              style="margin-left: 14px">4</span>
+                                    </label>
+
+                                    <input type="range" style="width: 50%;padding-top: 15px" class="form-range" min="2"
+                                           max="6" step="1" id="amountRange">
+                                </div>
+                                <script>
+
+                                </script>
+                            </div>
+
+                            <div style="margin-bottom: 20px" id="quesMain">
+                                <div id="descriptionInfo" class="info_before">请输入题干信息</div>
+
+                            </div>
+                            <div style="width: 90%;margin-left: 4%">
+                                <div class="col-sm-12">
+                                    <div id="body" name="body" style="display: none;margin-top: 20px">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                CKEDITOR.replace('body', {
+                                    filebrowserImageUploadUrl: "/",
+                                    height: 120
+                                });
+                            </script>
+                            <button id="btnAppend" onclick="a()" style="margin-top: 10px;margin-right: 6%;width: 100px;height:40px;background-color: #4e8ccd;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">保存题目描述
+                            </button>
+                            <button id="btnDelete" onclick="deleteQue()" style="margin-top: 10px;margin-right: 1%;width: 60px;height:40px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">撤销
+                            </button>
+
+                        </div>
+
+                        <div id="nextStep1" class="col-sm-8 bg-white" style="margin-left: 17%;display: none">
+                            <button id="btnNextStep" class="btnNext" onclick="nextStep1()"
+                                    style="width: 100px;margin-left: 43%">下一步
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="page2" class="card widget-flat" style="margin-bottom: 0;display: none">
+
+                    <div id="queOverview" style="width: 800px;margin-left: 17%" >
+                        <div style="margin-left: 20px;font-size: 30px;font-weight: bolder;color: #CC544EFF">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;请核对题目信息</div>
+                        <div class="queDescription" style="width: 200px;padding-top: 20px;margin-left: 20px;color: #4e8ecf">基本信息：</div>
+                        <div class="que_box" style="/*border: 1px solid #6C757D;*/margin-left: 20px;margin-top: 15px;background-color: #dee7f3;padding:15px;border-radius: 10px">
+                            <div id="queType" class="ans" style="width: 90%;margin-left: 20px"><!--<span style="font-weight: bolder">类型&nbsp;：&nbsp;&nbsp;&nbsp;</span>单选题--></div>
+                            <div id="subject" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"><span style="font-weight: bolder">学科&nbsp;：&nbsp;&nbsp;&nbsp;</span>高等数学</div>
+                            <div id="difficulty" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"><!--<span style="font-weight: bolder">难度&nbsp;：&nbsp;&nbsp;&nbsp;</span>中等--></div>
+                        </div>
+                        <div class="queDescription" style="width: 200px;padding-top: 20px;margin-left: 20px;color: #4e8ecf">题干与选项：</div>
+                        <div class="que_box" style="/*border: 1px solid #6C757D;*/margin-left: 20px;margin-top: 15px;background-color: #dee7f3;padding:15px;border-radius: 10px">
+                            <div id="queDescription" class="queDescription" style="width: 90%;margin-left: 20px">f(x)在x=0的某个邻域内有定义，且f(0)=0，若`lim_{xrightarrow0}frac{1-cosx^2}{f(x)int_{0}^{x}   ln (1+t^ {2})dt}`=3，则f(x)在x=0处()。</div>
+                            <div id="queOptions" class="queOptions">
+
+                            </div>
+                        </div>
+                        <div class="queDescription" style="width: 200px;padding-top: 20px;margin-left: 20px;color: #4e8ecf">答案与解析：</div>
+                        <div id="exTarget"  class="que_box" style="/*border: 1px solid #6C757D;*/margin-left: 20px;margin-top: 15px;background-color: #dee7f3;padding:15px;border-radius: 10px">
+                            <div id="queAns" class="ans" style="width: 90%;margin-left: 20px"></div>
+                            <div id="queexplain" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"></div>
+                        </div>
+                        <div id="nextStep2" class="col-sm-8 bg-white" style="margin-left: 17%;display: block;padding-bottom: 40px">
+                            <div class="row">
+                                <button id="btnBackStep1" class="btnPage2" onclick="backStep1()"
+                                        style="width: 100px;margin-left: 23%;float: left">上一步
+                                </button>
+                                <button id="btnNextStep2" class="btnPage2" onclick="nextStep2()"
+                                        style="width: 100px;margin-left: 13%;float:right;">下一步
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="page3" class="card widget-flat" style="margin-bottom: 0;display: none">
+                    <div id="succesInfo" class="bg-white" style="width: 800px;padding-bottom: 120px;display: block;padding-left: 25%;padding-top: 30px">
+                        <div >
+                            <i class="fa fa-check-circle" style="font-size: 90px;color: #67c300;padding-left: 60%" aria-hidden="true"></i>
+                            <br>
+                            <span style="padding-left: 59%;font-size: 22px;font-weight: bolder">操作成功</span>
+                            <br>
+                            <div id="nextStep3" class="col-sm-8" style="margin-left: 31%;display: block;padding-bottom: 40px;margin-top: 30px">
+                                <div class="row" style="padding-left: 10px">
+                                    <button id="btnInit" class="btnPage2" onclick="rollBack()"
+                                            style="width: 100px;margin-left: 23%;float: left;background-color: #578dd0;height: 35px">再添加一题
+                                    </button>
+                                    <button id="returnBtn" class="btnPage2" onclick="rollBack()"
+                                            style="width: 100px;margin-left: 3%;float:right;height: 35px">返回
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="finalQueInfo" class="que_box" style="width: 500px;margin-left: 18%;margin-top: 15px;background-color: #e7ebf1;padding:15px;border-radius: 10px">
+                            <div id="info" class="ans" style="width: 90%;margin-left: 20px"><span style="font-weight: bolder">题目识别信息&nbsp;：&nbsp;&nbsp;&nbsp;</span>单选题·高等数学·中等难度</div>
+                            <div id="queId" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"><span style="font-weight: bolder">题目编号&nbsp;：&nbsp;&nbsp;&nbsp;</span>12094</div>
+                            <div id="operator" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"><span style="font-weight: bolder">管理员编号&nbsp;：&nbsp;&nbsp;&nbsp;</span>10011</div>
+                            <div id="insertDate" class="ans" style="width: 90%;margin-left: 20px;margin-top: 10px"><span style="font-weight: bolder">添加时间&nbsp;：&nbsp;&nbsp;&nbsp;</span>2022年4月26日 13：50：31</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

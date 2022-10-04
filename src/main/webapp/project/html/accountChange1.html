@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>个人主页</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+  <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <script src="../bootstrap/js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/calendar.css">
+</head>
+<body style="overflow-x: hidden;background: #f4f5f6">
+<div class="row box" >
+  <div class="row show" id="head" >
+    <div style="float: left;padding-left: 30px">
+      <img  class="img1" src="../image/loge1.png">
+      <span class="form-a">个人中心</span>
+    </div>
+    <div style="float: right;padding-right: 40px">
+      <a class="home" href="/TangYu/html/homePage.html">首页</a>
+      <img class="form" src="../image/avatar.jpg">
+      <span class="form-text">palpitate</span>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 10px" id="all">
+    <div class="col-xs-2">
+      <div style="width: 175px;height: 250px;background: #fdfdfe">
+        <ul class="container-left">
+          <li id="home"  >个人资料</li>
+          <li id="account" style="background: #f0f0f5" >账号设置</li>
+          <li id="mistake">错题集</li>
+          <li id="collection" >收藏夹</li>
+          <li id="record">搜题记录</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-10">
+
+      <div class="row " >
+        <div class="head-1">账号设置/修改密码</div>
+        <div class="row shadow">
+          <div style="padding-left: 300px;padding-top: 10px">
+            <div  style="line-height: 30px;"><span><p style="float: left;line-height: 30px;padding-right: 10px">输入旧密码: </p></span><input id="old" class="input-m"  placeholder="  请输入旧密码" type="password"><span id="show1"><img src="../image/show.png" style="padding-left:5px;width: 35px;cursor: pointer"></span></div>
+            <div  style="line-height: 30px;"><p style="float: left;clear: left;padding-right: 10px">输入新密码: </p><input id="new" class="input-m" placeholder="  6-12位的数字或字母组合" type="password"><span id="show2"><img src="../image/show.png" style="padding-left:5px;padding-top:13px;width: 35px;cursor: pointer"></span><span style="padding-left:5px;padding-top:30px;"id="msg1"></span></div>
+            <div  style="line-height: 30px;"><p style="float: left;line-height: 30px;clear: left;padding-right: 10px">确认新密码: </p><input id="re"  class="input-m" placeholder="  确认新密码" type="password"><span id="show3"><img src="../image/show.png" style="padding-left:5px;padding-top:25px;width: 35px;cursor: pointer"></span><span style="padding-left:5px;padding-top:25px;width: 35px;" id="msg2" ></span></div>
+            <div class="button-p"><button class="btn" id="decide">确认</button></div>
+            <div style="padding-left: 100px;padding-bottom: 10px" id="result"></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/calendar.js"></script>
+<script src="/project/js/changePage.js"></script>
+<script>
+
+  $("#show1").click(function (){
+    var old=$("#old")
+    if(old.attr("type")=="password")
+    old.attr("type","text");
+    else
+      old.attr("type","password");
+  })
+  $("#show2").click(function (){
+    var old=$("#new")
+    if(old.attr("type")=="password")
+      old.attr("type","text");
+    else
+      old.attr("type","password");
+  })
+  $("#show3").click(function (){
+    var old=$("#re")
+    if(old.attr("type")=="password")
+      old.attr("type","text");
+    else
+      old.attr("type","password");
+  })
+
+  var f1=false;
+  var f2=false;
+  var pattern=/^[a-zA-Z0-9_-]{6,12}$/;
+  $("#new").blur(function (){
+    var Pwd=$("#new").val();
+    var msg=$("#msg1");
+    if(!pattern.test(Pwd))
+    {
+      msg.css("color","red");
+      msg.html("密码格式不正确，请重新输入");
+      f2=false;
+    }
+    else
+    {
+      msg.html("");
+      f1=true;
+    }
+  })
+  $("#re").blur(function (){
+    var Pwd=$("#new").val();
+    var msg=$("#msg2");
+    var rePwd=$("#re").val();
+    if(Pwd!=rePwd)
+    {
+      msg.css("color","red");
+      msg.html("两次密码输入不一致");
+    }
+    else
+    {
+      msg.html("");
+      f2=true;
+    }
+  })
+  $("#decide").click(function (){
+      var old=$("#old").val();
+      var rePwd=$("#re").val();
+      if(f1&&f2){
+        $.post("/user/updatePwd.action",{Pwd:old,rePwd:rePwd},function (data){
+          var result=$("#result");
+          if(data.success)
+          {
+            result.css("color","green");
+            alert("修改成功");
+            window.open("/TangYu/html/homePage.html");
+            $.post("/exitServlet.Servlet");
+          }
+          else
+          {
+            result.css("color","red");
+            result.html("旧密码输入错误，请重新输入");
+          }
+        },"json")
+      }
+    })
+
+</script>
+<script src="../js/head.js"></script>
+</body>
+</html>

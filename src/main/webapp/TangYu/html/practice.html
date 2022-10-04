@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>每日一练</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/practice.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/userTarget.css">
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/practice.js"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body class=" bg-secondary-20">
+<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white" >
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                    <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                     </a>
+                     <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                         <li><a class="dropdown-item" href="#">New project...</a></li>
+                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                         <li><a class="dropdown-item" href="#">Profile</a></li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="#">Sign out</a></li>
+                     </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="homePage.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+                &lt;!&ndash;<form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>&ndash;&gt;
+            </div>
+        </div>
+    </nav>
+</header>-->
+<main class="container">
+    <div id="listState" value="0"></div>
+    <div class="row g-5 py-1 " style="background-color: #f2f2f2;margin: 0 50px">
+        <div class="col-md-9 row ">
+
+            <div class="col-md-1 bg-white pb-5">
+
+            </div>
+
+            <div class="col-md-10 bg-white pb-5">
+                <div id="dpTitle">
+                    <h2 class=" pb-2 pt-2 mb-2 border-bottom">
+                        每日一练
+                        <p class="text-muted fs-5" style="margin-top: 10px">11月17日 高等数学</p>
+                    </h2>
+                </div>
+                <div id="queTarget">
+
+                </div>
+            </div><!--<div class="vr p-0" style="line-height: normal;margin-top: 100px;margin-left: 20px"></div>-->
+            <div class="col-md-1 bg-white pb-5">
+
+            </div>
+        </div>
+
+
+        <div class="col-md-3 bg-white" style="margin-left: 3px;margin-top: 0px">
+            <div class="mt-3 mb-3 p-3 bg-white rounded shadow-sm">
+                <h4 class="" style="color: #5d5c5c">每日一练</h4>
+                <p class="mb-0" style="font-size: 14px;letter-spacing: 1px;color: #858383">
+                    根据您的搜索与练习记录，知否为您精选了练习题。完成每日练习还将获得积分，快来试试吧！</p>
+            </div>
+            <div class="position-sticky" style="top: 2rem;">
+
+                <div class="shadow-sm p-3 mb-3 bg-white rounded queNav "
+                     id="queNav"
+                     style="height: auto; margin-top: 20px;padding: 20px 7px 10px 7px;border-radius: 5px;box-shadow: 3px 3px 5px  2px #cccccc;top: 0;">
+                    <div class="questionNav">
+                        <!--<p style="font-weight: bolder;font-size: 20px;"
+                           class="d-flex justify-content-center text-muted">答题卡</p>-->
+                        <div class="nav">
+                            <ul class="" id="queUl">
+                                <div id="qc_1" class="qc">
+                                    <li class="active Qfocus">
+                                        <a href="javascript:;" onclick="jump(this);" pageid="que_1" class="qc-a">
+                                            1
+                                        </a></li>
+                                </div>
+                                <div id="qc_2" class="qc">
+                                    <li class="active" style="background-color: #d55353">
+                                        <a style="color: white" href="javascript:;" onclick="jump(this);" pageid="que_2"
+                                           class="qc-a">2</a></li>
+                                </div>
+                                <div id="qc_3" class="qc">
+                                    <li style="background-color: #92c288">
+                                        <a style="color: white" href="javascript:;" onclick="jump(this);" pageid="que_3"
+                                           class="qc-a">3</a>
+                                    </li>
+                                </div>
+                                <div id="qc_4" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_4" class="qc-a">4</a>
+                                    </li>
+                                </div>
+                                <div id="qc_5" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_5" class="qc-a">5</a>
+                                    </li>
+                                </div>
+                                <div id="qc_6" class="qc">
+                                    <li style="background-color:  #2f67c5">
+                                        <a style="color: white" href="javascript:;" onclick="jump(this);"
+                                           pageid="que_6" class="qc-a">6</a></li>
+                                </div>
+                                <div id="qc_7" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_7" class="qc-a">7</a>
+                                    </li>
+                                </div>
+                                <div id="qc_8" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_8" class="qc-a">8</a>
+                                    </li>
+                                </div>
+                                <div id="qc_9" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_9" class="qc-a">9</a>
+                                    </li>
+                                </div>
+                                <div id="qc_10" class="qc">
+                                    <li><a href="javascript:;" onclick="jump(this);" pageid="que_10" class="qc-a">10</a>
+                                    </li>
+                                </div>
+
+                            </ul>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-12 text-nowrap d-flex justify-content-center">
+                                <div class="select_tip" style="border-color:#DDDDDD;"></div>
+                                <span class="que-span">未答题</span>
+                            </div>
+                            <div class="col-lg-6 col-sm-12 text-nowrap d-flex justify-content-center">
+                                <div class="select_tip" style="border-color: #2f67c5;background:  #2f67c5;"></div>
+                                <span class="que-span">已答题</span>
+                            </div>
+
+                        </div>
+                        <div class="quw-Submit" align="center">
+                            <div class="commonBut wj_color submitBut" id="DPSubmit">
+                                <a href="#" style="text-decoration: none ;color: #5183ea">立即提交</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var num = 0;
+                    var li = new Array();
+                    var amount = document.getElementById('queAmount').getAttribute("value");
+
+                    function setArry() {
+                        for (var i = 1; i <= amount; i++) {
+                            li[i] = 0;
+                        }
+                    }
+
+                    function getRaio() {
+                        var name1;
+                        var amount = document.getElementById('queAmount').getAttribute("value");
+                        var state = document.getElementById('listState').getAttribute("value");
+                        for (var i = 1; i <= amount; i++) {
+                            name1 = 'answer' + String(i);
+                            var ans = $('input[type=radio][name=' + name1 + ']:checked').val();
+                            if (li[i] != 1 && ans != null) {
+                                num += 1;
+                                li[i] = 1;
+                            }
+                            if (ans != null && state != 1) {
+                                var swiperHtml = '';
+                                swiperHtml += '<li style="background-color:  #2f67c5"><a  style="color: white" href="javascript:;"  class="qc-a" onclick="jump(this);" pageid="que_' + i + '">' + i + '</a></li>\n';
+                                var target = 'qc_' + i;
+                                $('#' + target).html(swiperHtml);
+                            }
+                        }
+                    }
+                </script>
+                <script>
+                    function jump(objinfo) {
+                        var value = $(objinfo).attr("pageid");
+                        $('html,body').animate({scrollTop: $('#' + value).offset().top - 200}, 170, "linear");
+                    }
+
+                    window.onload = function () {
+                        var quenav = document.getElementById("queNav");
+                        window.onscroll = function () {
+                            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                            if (scrollTop > 940) {
+                                quenav.style.top = 0;
+                            } else {
+                                quenav.style.top = "-120";
+                            }
+                        }
+                    }
+                </script>
+
+                <div class="p-2 mb-3 bg-white rounded shadow-sm">
+                    <div class="row">
+                        <a href="data.html" class="pt-1" style="text-decoration: none">
+                            <img src="../image/dataCenter.png" alt="" style="width: 17%" class=" col-md-3">
+                            <span class="col-md-7 pt-1 " style="font-weight: bolder;color: #5183ea">&nbsp;&nbsp;查看你的练习数据&nbsp;</span>
+                            <i class="fa fa-area-chart" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class=" mb-5 bg-white pb-5 shadow-sm rounded "
+                     style="padding-bottom: 50px;padding-left: 20px;padding-top: 20px">
+                    <p style="font-weight: bolder;font-size: 20px;color: #a8a7a7">精选题单</p>
+                    <div class="sidebar-recom">
+
+                        <a href="#" style="text-decoration: none; color: #8c8c8c">
+                            <img src="../image/hot.png"
+                                 style="height: 40px;width: 40px;padding-left: 0px; border-radius: 10px">
+                            <span>&nbsp;&nbsp;🔥&nbsp;知否本月热题 </span>
+                        </a>
+                    </div>
+                    <div class="sidebar-recom">
+                        <a href="#" style="text-decoration: none;color: #8c8c8c">
+                            <img src="../image/top.png"
+                                 style="height: 40px;width: 40px;padding-left: 0px;border-radius: 10px">
+                            <span>&nbsp;&nbsp;❤️ &nbsp;知否本月精选 </span>
+                        </a>
+                    </div>
+                    <div class="sidebar-recom">
+                        <a href="#" style="text-decoration: none;color: #8c8c8c">
+                            <img src="../image/200.png"
+                                 style="height: 40px;width: 40px;padding-left: 0px;border-radius: 10px">
+                            <span>&nbsp;&nbsp;📖  &nbsp;知否考研必刷 </span>
+                        </a>
+                    </div>
+                    <div class="sidebar-recom">
+                        <a href="#" style="text-decoration: none;color: #8c8c8c">
+                            <img src="../image/50.png"
+                                 style="height: 40px;width: 40px;padding-left: 0px;border-radius: 10px">
+                            <span>&nbsp;&nbsp;📑 &nbsp;知否易错50题 </span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="ZF-footer">
+    <p class="text-muted" style="margin-bottom: 0.1rem">© 2022 ZhiFou, Inc</p>
+    <p>
+        <a href="#" style="text-decoration: none;color: #adb5bd">Back to top</a>
+    </p>
+</footer>
+
+<script src="../Js/headUser.js"></script>
+</body>
+</html>

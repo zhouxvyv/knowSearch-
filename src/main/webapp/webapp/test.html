@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="CSS/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/homePage.css">
+    <link rel="stylesheet" href="CSS/bootstrap-icons.css">
+    <link rel="stylesheet" href="CSS/practice.css">
+    <link rel="stylesheet" href="CSS/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="Js/calendar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script>
+    <script src="Js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="Js/bootstrap.bundle.min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+            <img src="Img/loge.gif" alt="zhifou" height="38px" style="margin-left: 10px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" style="margin: 0px 20px">
+                    <a href="#" class="nav-link px-2 "><strong>首页</strong></a>
+                </li>
+                <li class="nav-item" style="margin: 0px 20px">
+                    <a href="#" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                </li>
+                <li class="nav-item" style="margin: 0px 20px">
+                    <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a
+                    ></li>
+                <li class="nav-item" style="margin: 0px 20px">
+                    <a href="#" class="nav-link px-2 "><strong>我的课程</strong></a>
+                </li>
+                <li class="nav-item" style="margin: 0px 20px">
+                    <a href="#" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                </li>
+
+            </ul>
+            <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <img src="Img/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                </a>
+                <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+            <!--<form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>-->
+        </div>
+    </div>
+</nav>
+
+<div class="chartjs-wrapper">
+    <iframe class="chartjs-hidden-iframe" tabindex="-1"
+            style="display: block; overflow: hidden; border: 0px; margin: 0px; inset: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+    <canvas id="chartjs-1" class="chartjs" width="761" height="380"
+            style="display: block; height: 293px; width: 586px;"></canvas>
+    <script>new Chart(document.getElementById("chartjs-1"), {
+        "type": "bar",
+        "data": {
+            "labels": ["January", "February", "March", "April", "May", "June", "July"],
+            "datasets": [{
+                "label": "My First Dataset",
+                "data": [65, 59, 80, 81, 56, 55, 40],
+                "fill": false,
+                "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)"],
+                "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)"],
+                "borderWidth": 1
+            }]
+        },
+        "options": {"scales": {"yAxes": [{"ticks": {"beginAtZero": true}}]}}
+    });</script>
+</div>
+</body>
+</html>

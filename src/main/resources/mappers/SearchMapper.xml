@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhifou.ztc.mapper.SearchMapper">
+
+
+
+
+    <select id="search" resultType="search" parameterType="map">
+        select * from search where user_id=#{user.userId} order by time desc limit #{num},3
+    </select>
+
+    <delete id="deleteAllRecordOfUser" parameterType="user">
+        delete from search where user_id=#{userId}
+    </delete>
+
+    <insert id="insertRecord" parameterType="search">
+        insert into search (user_id,image,time,title) values(#{userId},#{image},#{time},#{title})
+    </insert>
+    <insert id="insert" parameterType="search">
+        insert into search (user_id,image,time,title) values(#{userId},#{image},#{time},#{title})
+    </insert>
+
+</mapper>

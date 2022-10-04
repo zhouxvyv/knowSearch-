@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知否--登录</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div id = "container">
+    <div id="login-mainer" style="width: 350px;height: 275px;background-color: #2aabd2;border-radius: 20px">
+        <h2 style="height: 60px;font-size: 30px;line-height: 60px;width: 350px;text-align: center">知否-登录</h2>
+        <form action="" onsubmit="return false">
+            <div style="height: 60px;width: 350px;padding: 0 25px">
+                <label style="display: inline-block;width: 60px;height: 40px;float: left;font-size: 18px;text-align: center;line-height: 40px;letter-spacing: 3px">账号:</label>
+                <input id="submit_no" type="text" name="no" style="display: inline-block;width: 235px;height: 40px;outline: 0;float: left;border: 2px solid #88ddee;border-radius: 10px;padding-left: 12px">
+                <p id="submit_no_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+            </div>
+            <div style="height: 60px;width: 350px;padding: 0 25px">
+                <label style="display: inline-block;width: 60px;height: 40px;float: left;font-size: 18px;text-align: center;line-height: 40px;letter-spacing: 3px">密码:</label>
+                <input id="submit_pwd" type="password" name="pwd"style="display: inline-block;width: 235px;height: 40px;outline: 0;float: left;border: 2px solid #88ddee;border-radius: 10px;padding-left: 12px">
+                <p id="submit_pwd_alert" style="display: block;width: 300px;height: 20px;font-size: 12px;float: left;line-height: 18px;padding-left: 80px;color: red;"></p>
+            </div>
+            <div style="height: 60px;width: 350px;padding: 0 25px">
+                <button id="submit" style="cursor: pointer;margin: 0 13px 0 47px;height: 40px;width: 90px;float: left;border-radius: 5px;border: 2px solid #88ddee;background-color: #4fa0ff;font-size: 20px;font-weight: bold;color: white;">登&nbsp;&nbsp;录</button>
+                <button id="keepsubmit" style="cursor: pointer;margin: 0 47px 0 13px;height: 40px;width: 90px;float: left;border-radius: 5px;border: 2px solid #88ddee;background-color: green;font-size: 18px;font-weight: bold;color: white">保持登录</button>
+                <p style="width: 300px;height: 30px;line-height: 30px;padding-left: 80px;font-size: 14px">还没有账号,去<a href="home.html" style="font-size: 18px;line-height: 30px;text-decoration: none">注册</a>一个</p>
+            </div>
+        </form>
+        <script>
+            var flickerNo = 0
+            var flickerNoRun = ""
+            var flickerPwd = 0
+            var flickerPwdRun = ""
+            var keep = 0
+            function isOkNo(){
+
+                var no=$("#submit_no").val()
+                if(no===undefined || no.length===0){
+                    $("#submit_no_alert").text("用户名不能为空..")
+                    console.log(no)
+                    return false
+                }
+                else if(no.length<6){
+                    $("#submit_no_alert").text("用户名格式不规范,不能少于六位..")
+                    return false
+                }
+                $("#submit_no_alert").text("")
+                return true
+
+            }
+            function isOkPwd(){
+                var pwd=$("#submit_pwd").val()
+                if(pwd===undefined || pwd.length===0){
+                    $("#submit_pwd_alert").text("密码不能为空..")
+                    return false
+                }
+                else if(pwd.length<6){
+                    $("#submit_pwd_alert").text("密码不能少于6位..")
+                    return false
+                }
+
+                $("#submit_pwd_alert").text("")
+
+                return true;
+            }
+            $("#submit_no").change(function (e){
+                isOkNo()
+            })
+            $("#submit").click(function (){
+                keep="N"
+                checkLogin()
+            })
+            $("#keepsubmit").click(function (){
+                keep="Y"
+                checkLogin()
+            })
+            function checkLogin(){
+                var okNo = isOkNo()
+                var okPwd = isOkPwd()
+                if(!okNo){
+                    flickerNo = 0
+                    flickerNoRun = setInterval(function (){
+                        var nowColor = $("#submit_no")[0].style.borderColor
+                        console.log(nowColor)
+                        if(flickerNo == 5)
+                            clearInterval(flickerNoRun)
+                        if(nowColor==="red")
+                            $("#submit_no").css("border-color","#88ddee")
+                        else $("#submit_no").css("border-color","red")
+                        flickerNo++
+                    },200)
+                }
+                if(!okPwd){
+                    flickerPwd = 0
+                    flickerPwdRun = setInterval(function (){
+                        var nowColor = $("#submit_pwd")[0].style.borderColor
+                        console.log(nowColor)
+                        if(flickerPwd == 5)
+                            clearInterval(flickerPwdRun)
+                        if(nowColor==="red")
+                            $("#submit_pwd").css("border-color","#88ddee")
+                        else $("#submit_pwd").css("border-color","red")
+                        flickerPwd++
+                    },200)
+                }
+                if(isOkNo() && isOkPwd()){
+                    submitLogin()
+                }
+            }
+            function submitLogin(){
+                $.ajax({
+                    url: "/loginServlet.Servlet",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        no: $("#submit_no").val(),
+                        pwd: $("#submit_pwd").val(),
+                        keep: keep
+                    },
+                    success: function (data){
+                        console.log(data)
+                        if(data.success){
+                            alert("登录成功")
+                        }else {
+                            $("#submit_pwd_alert").text(data.message)
+                        }
+                    }
+                })
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>

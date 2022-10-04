@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>开启每日一练</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/homePage.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/data.css">
+    <link rel="stylesheet" href="../css/calendar.css">
+    <link rel="stylesheet" href="../css/chart.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/DP.css">
+    <link rel="stylesheet" href="../css/userTarget.css">
+    <!--    <link rel="stylesheet" href="CSS/app-modern.min.css">-->
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="../Js/calendar.js"></script>
+    <script src="../Js/DailyPracticeToday.js"></script>
+    <script src="../Js/calendarPlus.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <!--<li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a>
+                    </li>-->
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="/TangYu/html/uploadAnswerPage.html" class="nav-link px-2 "><strong>我来作答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="javascript: alert('请自行解决')" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div id="noUserTarget" >
+                    <a onclick="clickToLogin()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder;">登录</a>
+                    <span style="font-weight: bolder">
+                        &nbsp;&nbsp;/&nbsp;&nbsp;
+                    </span>
+                    <a onclick="clickToSignUp()" style="cursor: pointer;text-decoration: none;color: #0d6efd;font-weight: bolder">注册</a>
+                    <!-- <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                     </a>
+                     <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                         <li><a class="dropdown-item" href="#">New project...</a></li>
+                         <li><a class="dropdown-item" href="#">Settings</a></li>
+                         <li><a class="dropdown-item" href="#">Profile</a></li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="#">Sign out</a></li>
+                     </ul>-->
+                </div>
+                <div style="display: none" id="userTarget">
+                    <script>
+                        defaultUrl = "../image/avatar_1617068871.png"
+                    </script>
+                    <img id="userAvatar" src="../image/avatar_1617068871.png" onError="this.src=defaultUrl;this.onerror=null">
+                    <div id="userName">
+                        <span></span>
+                        <div id="navigate">
+                            <ul>
+                                <li><a href="/project/html/home.html">我的主页</a></li>
+                                <li><a href="/project/html/mistake.html">错题本</a></li>
+                                <li><a href="/project/html/record.html">搜索记录</a></li>
+                                <li><a href="/project/html/collection.html">我的收藏</a></li>
+                                <li><a href="/project/html/lesson.html">我的课程</a></li>
+                                <li><a id="exit" onclick="exit()" href="">退出</a></li>
+                                <script>
+                                    function exit(){
+                                        $.ajax({
+                                            url: "/exitServlet.Servlet",
+                                            type: "post",
+                                            dataType: "json",
+                                            data: {},
+                                            success: function (res){
+                                                if(res.success){
+                                                    window.open("/TangYu/html/homePage.html","_self")
+                                                }
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<header style="margin-bottom: 0px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container-fluid">
+            <a href="homePage.html"
+               class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="../image/ZhiFouLogo.png" alt="zhifou" height="44px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="homePage.html" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="DailyPracticeToday.html" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="uploadAnswerPage.html" class="nav-link px-2 "><strong>我来解答</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="../image/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+                &lt;!&ndash;<form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>&ndash;&gt;
+            </div>
+        </div>
+    </nav>
+</header>-->
+
+<div class="container-fluid user-main">
+    <div class="wrapper">
+        <div class="leftside-menu leftside-menu-detached show bg-white" style="width: 245px;height: 90%">
+            <!--<div class="leftbar-user">
+                <a href="javascript: void(0);">
+                    <img src="Img/userLogo.png" alt="user-image" height="40" class="rounded-circle shadow-sm">
+                    <span class="leftbar-user-name">Dominic Keller</span>
+                </a>
+            </div>-->
+            <div class="side-calender" style="height: 290px;">
+                <div id="ca" class="calendar calendar-d" style="width: 240px; height: 360px;">
+                    <div class="calendar-inner" style="width: 240px;">
+                        <div class="calendar-views">
+                            <div class="view view-date" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-date=""
+                                                            class="calendar-display">2021/<span class="m">11</span></a>
+                                    <div class="calendar-arrow"><span class="prev" title="上一月"
+                                                                      data-calendar-arrow-date="">&lt;</span><span
+                                            class="next"
+                                            title="下一月"
+                                            data-calendar-arrow-date="">&gt;</span>
+                                    </div>
+                                </div>
+                                <div class="calendar-ct" style="width: 220px; height: 240px;">
+                                    <ol class="week" style="margin-bottom: 0px;padding-left: 0px">
+                                    </ol>
+                                    <ul class="date-items" style="margin-bottom: 0px">
+                                        <li style="width: 220px;">
+                                            <ol class="days">
+
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="view view-month" style="width: 220px;">
+                                <div class="calendar-hd"><a href="javascript:;" data-calendar-display-month=""
+                                                            class="calendar-display">2021</a>
+                                    <div class="calendar-arrow">
+                                        <span class="prev" title="上一年" data-calendar-arrow-month="">&lt;</span>
+                                        <span class="next" title="下一年" data-calendar-arrow-month="">&gt;</span>
+                                    </div>
+                                </div>
+                                <ol class="calendar-ct month-items" style="width: 220px; height: 220px;">
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">1月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">2月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">3月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">4月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">5月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">6月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">7月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">8月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">9月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">10月</li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month=""
+                                        class="now">11月
+                                    </li>
+                                    <li style="width:80px;height:80px;line-height:80px" data-calendar-month="">12月</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar-label" style="display: none;"><p>HelloWorld</p><i></i></div>
+                </div>
+            </div>
+            <script>
+                $('#ca').calendar({
+                    width: 220,
+                    height: 240,
+                    data: [
+                        {
+                            date: '2015/12/24',
+                            value: 'Christmas Eve'
+                        },
+                        {
+                            date: '2015/12/25',
+                            value: 'Merry Christmas'
+                        },
+                        {
+                            date: '2016/01/01',
+                            value: 'Happy New Year'
+                        }
+                    ],
+                    onSelected: function (view, date, data) {
+                        console.log('view:' + view)
+                        alert('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+
+                $('#dd').calendar({
+                    trigger: '#dt',
+                    zIndex: 999,
+                    format: 'yyyy-mm-dd',
+                    onSelected: function (view, date, data) {
+                        console.log('event: onSelected')
+                    },
+                    onClose: function (view, date, data) {
+                        console.log('event: onClose')
+                        console.log('view:' + view)
+                        console.log('date:' + date)
+                        console.log('data:' + (data || 'None'));
+                    }
+                });
+            </script>
+            <li class="side-nav-item menuitem-active bg-white side-top" style="padding-left: 20px">
+                <a data-bs-toggle="collapse" href="https://coderthemes.com/hyper/modern/index.html#sidebarDashboards"
+                   aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link collapsed">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #428bca"> <strong>开启每日一练 <i class="fa fa-angle-right" style="font-weight: 1000"
+                                                                    aria-hidden="true"></i></strong></span>
+                </a>
+                <div class="collapse show" id="sidebarDashboards" style="">
+                    <ul class="side-nav-second-level">
+                        <li class="side-item">
+                            <a href="DailyPracticeToday.html" style="color:#428bca">高等数学&nbsp;&nbsp;<i
+                                    class="fa fa-angle-right"
+                                    style="font-weight: 1000"
+                                    aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+            <li class="side-nav-item menuitem-active side-top pt-2 pb-2" style="padding-left: 20px">
+                <a href="data.html">
+                    <i class="uil-home-alt"></i>
+                    <span style="color: #6C757D"> <strong>我的练习数据 </strong>
+                        </span>
+                </a>
+            </li>
+        </div>
+
+
+        <div class="dp-main bg-white" style="padding-left: 0px;margin-left: 250px;height: 90%">
+            <div class="content">
+                <div class="row" style="padding-left: 12px;padding-right: 12px">
+                    <div class="col-12 bg-white">
+                        <div class="page-title-box">
+                            <h6 class="page-title text-white" style="margin-left: 12px;font-size: 20px;">高等数学</h6>
+                        </div>
+
+                    </div>
+                </div>
+                <main style="background-color: white;height: 100%">
+                    <div class="container col-xl-12 col-xxl-12  d-none d-lg-block"
+                         style="margin-left: 0px;padding-top: 0px" id="dpMain">
+                        <p class="col-md-5 d-none d-lg-block" style="font-size: 60px ;padding-left: 60px"><strong>行 动 ,
+                            趁 现 在</strong></p>
+
+                        <div class="row align-items-center" style="padding-left: 80px">
+                            <div class="col-lg-6 "
+                                 style="border:solid 2px #dee2e6;position: relative;padding: 1rem;margin: 1rem -1.25rem 0;border: solid #dee2e6;border-width: 1px;border-radius: 0.5rem">
+                                <div style="padding:15px 15px ;">
+                                    <span style="color: #6C757D; font-size: 16px"><strong>即将开启今日<span
+                                            style="color: #5599e0;font-size: 17px">&nbsp;高等数学&nbsp;</span>练习</strong></span>
+                                </div>
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>难度</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio1" value="1">
+                                        <label class="form-check-label" for="inlineRadio1"
+                                               style="color: #0b894a"><strong>简单</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio2" value="2" checked>
+                                        <label class="form-check-label" for="inlineRadio2"
+                                               style="color: #f5d814 "><strong>中等</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions1"
+                                               id="inlineRadio3" value="3">
+                                        <label class="form-check-label" for="inlineRadio3"
+                                               style="color:#e74f5b"><strong>困难</strong></label>
+                                    </div>
+                                </div>
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>状态</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                               id="inlineRadio4" value="1"><i class="fa fa-minus"
+                                                                              aria-hidden="true"
+                                                                              style="color: #6C757D "></i>
+                                        <label class="form-check-label" for="inlineRadio1"
+                                               style="color: #6C757D "><strong>未开始</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                               id="inlineRadio5" value="2" checked><i
+                                            class="fa fa fa-hand-o-right" style="color:#5599e0" aria-hidden="true"></i>
+                                        <label class="form-check-label" for="inlineRadio3"
+                                               style="color:#5599e0"><strong>无限制</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2"
+                                               id="inlineRadio6" value="3"><i class="fa fa-check"
+                                                                              aria-hidden="true"
+                                                                              style="color: #0b894a"></i>
+                                        <label class="form-check-label" for="inlineRadio2"
+                                               style="color: #0b894a "><strong>已练习</strong></label>
+                                    </div>
+                                </div>
+                                <div style="padding: 15px">
+                                    <span style="color: #6C757D"><strong>类型</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio7" value="1">
+                                        <label class="form-check-label" for="inlineRadio8"
+                                               style="color: #6C757D "><strong>填空题</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio8" value="2" checked>
+                                        <label class="form-check-label" for="inlineRadio7"
+                                               style="color: #6C757D"><strong>选择题</strong></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions3"
+                                               id="inlineRadio9" value="3">
+                                        <label class="form-check-label" for="inlineRadio8"
+                                               style="color: #6C757D "><strong>随机</strong></label>
+                                    </div>
+                                </div>
+                                <div style="padding: 10px 15px">
+                                    <label for="amountRange" class="form-label"
+                                           style="color: #6C757D"><strong>数量</strong></label>
+                                    <span id="amountResult" class="badge rounded bg-primary font-10"
+                                          style="margin-left: 34px">10</span>
+                                    <input type="range" class="form-range" min="5" max="15" step="1" id="amountRange">
+                                </div>
+                                <script>
+                                    var li = new Array();
+
+                                    function setArry() {
+                                        for (var i = 1; i <= amount; i++) {
+                                            li[i] = 0;
+                                        }
+                                    }
+
+                                    function getAns() {
+                                        var topicConstructURL = "/DpListConstructSpringMVC";
+                                        var ansTmp = null;
+                                        var cnt = 0;
+                                        var nowDate = new Date();
+                                        var month = nowDate.getMonth() + 1;
+                                        var day = nowDate.getDate();
+                                        month = (month.toString().length == 1) ? ("0" + month) : month;
+                                        day = (day.toString().length == 1) ? ("0" + day) : day;
+                                        var targetDay = nowDate.getFullYear() + '-' + month + '-' + day;
+                                        for (var i = 1; i <= 9; i++) {
+                                            var ansStr = "inlineRadio" + String(i);
+                                            ansTmp = $('input[type=radio][id=' + ansStr + ']:checked').val();
+                                            if (ansTmp != null) {
+                                                cnt++;
+                                                li[cnt] = ansTmp;
+
+                                            }
+                                        }
+                                        var amount = $('input[type=range][id=amountRange]').val();
+                                        var sub = 1;
+                                        $.post(topicConstructURL, {
+                                            difficulty: li[1],
+                                            state: li[2],
+                                            amount: amount,
+                                            subject: sub,
+                                            type: li[3]
+                                        }, function (data) {
+                                            if (data.result) {
+                                                var URL = 'practice.html' + '?date=' + targetDay;
+                                                window.location.replace(URL);
+                                            }
+                                        });
+                                    };
+                                    $(function () {
+                                        $("#amountRange").on("input", function () {
+                                            //在输入框中打印输入的值
+                                            $("#amountResult").text($(this).val());
+                                        });
+                                    });
+                                </script>
+                                <div class="row justify-content-md-center">
+                                    <button type="button" onclick="getAns()" class="btn rounded badge p-2 "
+                                            style="background-color: #68ad6e;width: 20%;padding-left: 40%">立即开启练习&nbsp;&nbsp;&nbsp;<i
+                                            class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-lg-6">
+                                <img src="../image/7.png" alt="" width="400" style=";padding-left: 15px">
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<footer class="ZF-footer">
+    <p class="text-muted">© 2022 ZhiFou, Inc</p>
+    <p>
+        <a href="#" style="text-decoration: none;color: #adb5bd">Back to top</a>
+    </p>
+</footer>-->
+
+<script src="../Js/headUser.js"></script>
+</body>
+</html>

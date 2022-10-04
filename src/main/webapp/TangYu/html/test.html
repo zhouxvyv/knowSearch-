@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/practice.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <script src="../Js/jquery-3.5.1.js"></script>
+    <script type="text/javascript"
+            src="../../MathJax-2.7.7/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <script src="../Js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+<div style="margin-bottom: 20px" id="quesMain">
+    <div id="descriptionInfo" class="info_before info_after">题目描述预览 ：</div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac1" onclick="deleteType2(1)"
+                style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;">
+            修改
+        </button>
+    </div>
+
+    <div id="queInfo0" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+
+    <div id="guiedInfo0" class="test info_before info_after">选项A预览 ：</div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac2" onclick="deleteType2(2)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;">
+            修改
+        </button>
+    </div>
+    <div id="queInfo1" class="test" style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+    <div name="option" id="guiedInfo1" class="test info_before info_after"
+         style="margin-left: 4%;margin-bottom: 10px;font-size: 16px;">选项B预览 ：
+    </div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac3" onclick="deleteType2(3)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">修改
+        </button>
+    </div>
+    <div id="queInfo2" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+    <div name="option" id="guiedInfo2" class="test info_before info_after"
+         style="margin-left: 4%;margin-bottom: 10px;font-size: 16px;">选项C预览 ：
+    </div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac4" onclick="deleteType2(4)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">修改
+        </button>
+    </div>
+    <div id="queInfo3" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+    <div name="option" id="guiedInfo3" class="test info_before info_after"
+         style="margin-left: 4%;margin-bottom: 10px;font-size: 16px;">选项D预览 ：
+    </div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac5" onclick="deleteType2(5)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">修改
+        </button>
+    </div>
+    <div id="queInfo4" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+    <div name="option" id="guiedInfo4" class="test info_before info_after"
+         style="margin-left: 4%;margin-bottom: 10px;font-size: 16px;">答案预览 ：
+    </div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac6" onclick="deleteType2(6)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">修改
+        </button>
+    </div>
+    <div id="queInfo5" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+    <div name="exp" id="guiedInfo5" class="test info_before info_after">解析预览 ：</div>
+    <div class="test" style="float:right;margin-top: 0px;">
+        <button id="btnRefac7" onclick="deleteType2(7)" style="margin-top: 0px;margin-right: 6%;width: 40px;height:25px;background-color: #cc544e;color: #FFFFFF;border: 0px;float: right;border-radius: 0.3rem;font-weight: bolder;
+                            ">修改
+        </button>
+    </div>
+    <div id="queInfo6" class="test"
+         style="width:90%;margin-left: 4%;margin-bottom: 10px;font-size: 16px;color: #6C757D;padding:20px;border: 1px solid #d5d5da">
+        1
+    </div>
+</div>
+
+
+</body>
+</html>

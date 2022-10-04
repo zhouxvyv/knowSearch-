@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <!-- 必须的 meta 标签 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="CSS/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/homePage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+<script src="Js/bootstrap.bundle.min.js"></script>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="#" class="d-flex align-items-center col-lg-1  mb-lg-0 link-dark text-decoration-none">
+                <img src="Img/loge.gif" alt="zhifou" height="38px" style="margin-left: 10px">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>首页</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 text-secondary"><strong>每日一练</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>在线考试</strong></a
+                        ></li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>我的课程</strong></a>
+                    </li>
+                    <li class="nav-item" style="margin: 0px 20px">
+                        <a href="#" class="nav-link px-2 "><strong>帮助与反馈</strong></a>
+                    </li>
+
+                </ul>
+                <div class="flex-shrink-0 dropdown d-flex dropstart" style="margin-left: 0%;margin: 0px 30px">
+                    <a href="#" class="d-block link-dark text-decoration-none mx-auto" id="dropdownUser2"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="Img/userLogo.png" alt="mdo" width="32" height="32" class="rounded-circle ">
+                    </a>
+                    <ul class="dropdown-menu dropstart text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <img src="Img/homePage.svg" alt="" width="270"style="margin-top: 40px">
+        </div>
+    </div>
+</div>-->
+<main style="background-color: white">
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5 d-none d-lg-block">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-8 text-center text-lg-start">
+                <div class="row row-cols-auto ">
+                    <p class="col-md-6 d-none d-lg-block text-center" style="font-size: 45px"><strong>知 你 所 求</strong></p>
+                    <p class="col-md-6 d-none d-lg-block" style="font-size: 45px"><strong>搜 你 所 想</strong></p>
+                </div>
+
+                <p class="text-center" style="font-size: 60px"><strong> </strong></p>
+                <p class="text-start text-muted" style="font-size: 35px;padding-left: 30px"><strong>上 知 否 全 都 懂</strong></p>
+                <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-lg-9 d-flex align-items-center form-group">
+                                <input class="form-control border-0 shadow-0 input-form" type="text" name="search"
+                                       placeholder="有问题  就会有答案">
+                            </div>
+                            <div class="col-lg-1 align-items-center">
+                                <i class="bi bi-file-earmark-arrow-up" style="font-size: 2rem; color: darkgray;"></i>
+                            </div>
+                            <div class="col-lg-2 d-grid">
+                                <button class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-4">
+                <img src="Img/homePage.svg" alt="" width="230" style="margin-top: 40px">
+            </div>
+        </div>
+    </div>
+    <div class="container col-xl-10 col-xxl-8 px-4 d-lg-none">
+        <div class="row align-items-center g-lg-5">
+            <div class="col-xs-6 row justify-content-center" style="max-width: 45% ;margin-left: 20%">
+                <img src="Img/homePage.svg" alt="" width="100px" style="margin-top: 40px" class="">
+            </div>
+            <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-9 d-flex align-items-center form-group">
+                            <input class="form-control border-0 shadow-0" type="text" name="search"
+                                   placeholder="有问题 就会有答案">
+                            <i class="fa fa-folder-open" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-lg-1 align-items-center">
+
+                        </div>
+                        <div class="col-lg-2 d-grid">
+                            <button class="btn btn-primary rounded-pill h-100" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="ZF-footer">
+    <p class="text-muted" style="margin-bottom: 0.1rem;font-size: 14px">© 2022 ZhiFou, Inc</p>
+    <p>
+        <a href="#" style="text-decoration: none;color: #adb5bd;font-size: 14px">Back to top</a>
+    </p>
+</footer>
+</body>
+</html>

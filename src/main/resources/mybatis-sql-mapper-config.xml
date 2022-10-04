@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="druid.properties"></properties>
+    <settings>
+        <setting name="cacheEnabled" value="true" />
+        <setting name="useGeneratedKeys" value="true" />
+        <setting name="defaultExecutorType" value="REUSE" />
+        <setting name="logImpl" value="LOG4J" /><!--  STDOUT_LOGGING  -->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="com.zhifou.ztc.pojo.User" alias="user"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Answer" alias="answer"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Collection" alias="collections"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Mistake" alias="mistake"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.NoTopic" alias="noTopic"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.domain.Domainct.Record" alias="record"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Search" alias="search"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Topic" alias="topic"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Test" alias="test"></typeAlias>
+        <typeAlias type="com.zhifou.ztc.pojo.Subject" alias="subject"></typeAlias>
+    </typeAliases>
+
+    <plugins>
+
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--分页参数合理化 -->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+                <dataSource type="POOLED">
+                    <property name="driver" value="${driverClassName}"/>
+                    <property name="url" value="${url}"/>
+                    <property name="username" value="${username}"/>
+                    <property name="password" value="${password}"/>
+                </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/UserMapper.xml"></mapper>
+        <mapper resource="mappers/AnswerMapper.xml"></mapper>
+        <mapper resource="mappers/CollectionMapper.xml"></mapper>
+        <mapper resource="mappers/MistakeMapper.xml"></mapper>
+        <mapper resource="mappers/NoAnswerTopicMapper.xml"></mapper>
+        <mapper resource="mappers/SearchMapper.xml"></mapper>
+        <mapper resource="mappers/TestMapper.xml"></mapper>
+        <mapper resource="mappers/TopicMapper.xml"></mapper>
+        <mapper resource="mappers/SubjectMapper.xml"></mapper>
+    </mappers>
+</configuration>
